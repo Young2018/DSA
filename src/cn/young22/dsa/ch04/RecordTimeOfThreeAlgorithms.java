@@ -14,9 +14,10 @@ package cn.young22.dsa.ch04;
 
 public class RecordTimeOfThreeAlgorithms {
 	public static void main(String[] args){
-		// a variable which represents the largest number
+		// a variable which represents a very large number
 		final long A_LARGE_NUMBER = 1000000;
 		
+		// test algorithm 1
 		System.out.println("This program uses algorithm 1 to add 1 to 10000000");
 		long startTime1 = System.nanoTime(); 
 		long counter1 = 0;
@@ -27,7 +28,7 @@ public class RecordTimeOfThreeAlgorithms {
 		long endTime1 = System.nanoTime(); 
 		System.out.println("Algorithm 1 costs: " + (endTime1 - startTime1) + "ns\n");
 		
-		
+		// test algorithm 2
 		System.out.println("This program uses algorithm 2 to add 1 to 10000000");
 		long startTime2 = System.nanoTime(); 
 		long counter2 = 0;
@@ -42,6 +43,7 @@ public class RecordTimeOfThreeAlgorithms {
 		long endTime2 = System.nanoTime(); 
 		System.out.println("Algorithm 2 costs: " + (endTime2 - startTime2) + "ns\n");
 		
+		// test algorithm 3
 		System.out.println("This program uses algorithm 3 to add 1 to 10000000");
 		long startTime3 = System.nanoTime();
 		long counter3 = 0;
