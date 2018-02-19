@@ -1,6 +1,6 @@
 package cn.young22.dsa.ch05;
 /**
- * An interface for the ADT stack
+ * 一个抽象数据类型栈的接口
  * */
 public interface StackInterface<T> {
 	/**
