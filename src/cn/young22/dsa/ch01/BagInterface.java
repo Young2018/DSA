@@ -54,8 +54,8 @@ public interface BagInterface<T> {
 	
 	/**
 	 * 
-	* @FunctionName: remove
-	* @Action: 删除一个指定的元素
+	* @FunctionName: removeAll
+	* @Action: 删除一个指定的元素在数组中的所有出现
 	* @param @param anEntry
 	* @ReturnType： boolean    
 	* @return：成功则返回真，失败返回假
