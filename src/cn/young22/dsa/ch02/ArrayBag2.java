@@ -2,6 +2,17 @@ package cn.young22.dsa.ch02;
 
 import cn.young22.dsa.ch01.BagInterface;
 
+/** ArrayBag2类在ArrayBag1类的基础上添加了:
+ * 	remove()的实现
+ *  remove(T anEntry)的实现
+ *  removeAll(T anEntry)的实现
+ *  clear()的实现
+ *  
+ *  在实现上述4个方法时，用到了一下几个方法：
+ *  getIndexOf(T anEntry)		通过给定值找到它在包中的第一次出现位置
+ *  removeEntry(int givenIndex)	通过给定的在数组中的索引删除包中的元素
+ * */
+
 public class ArrayBag2<T> implements BagInterface<T>{
 	private final T[] bag;	
 	private int numberOfEntries;
@@ -77,7 +88,13 @@ public class ArrayBag2<T> implements BagInterface<T>{
 		return result;
 	}	
 	
-	//若包满了，则返回True,否则，返回false
+	/**
+	 * 
+	* @FunctionName: isArrayFull
+	* @Action: 判断包是否满了
+	* @ReturnType： boolean    
+	* @return 若包满，返回真，否则返回假
+	 */
 	public boolean isArrayFull(){
 		//当数组中的元素个数大于或等于数组的大小时，返回True
 		return numberOfEntries >= bag.length;
@@ -102,7 +119,6 @@ public class ArrayBag2<T> implements BagInterface<T>{
 	 */
 	public int getCurrentSize(){
 		return numberOfEntries;
-		
 	};
 	
 	
@@ -140,6 +156,14 @@ public class ArrayBag2<T> implements BagInterface<T>{
 		return anEntry.equals(result);
 	}
 	
+	/**
+	 * 
+	* @FunctionName: removeAll
+	* @Action: 删除一个指定的元素在数组中的所有出现
+	* @param @param anEntry
+	* @ReturnType： boolean    
+	* @return：成功则返回真，失败返回假
+	 */
 	public boolean removeAll(T anEntry){
 		//检查对象是否正常初始化
 		checkInitialization();
@@ -206,7 +230,14 @@ public class ArrayBag2<T> implements BagInterface<T>{
 		return getIndexOf(anEntry) > -1;
 	}
 	
-	//根据给定的元素，在bag中找到其下标值
+	/**
+	 * 
+	* @FunctionName: getIndexOf
+	* @Action: 根据给定的元素，在bag中找到其下标值
+	* @param @param anEntry 
+	* @ReturnType： int    
+	* @return: 给定值的下标
+	 */
 	private int getIndexOf(T anEntry){
 		int where = -1;
 		boolean found = false;
@@ -226,6 +257,14 @@ public class ArrayBag2<T> implements BagInterface<T>{
 	}// end getIndexOf
 	
 	// Removes and returns the entry at a given index within the array
+	/**
+	 * 
+	* @FunctionName: removeEntry
+	* @Action: 通过给定索引删除包中的元素 
+	* @param @param givenIndex
+	* @ReturnType： T    
+	* @return 若删除成功，返回True,否则,返回False
+	 */
 	private T removeEntry(int givenIndex){
 		T result = null;
 		
@@ -240,7 +279,12 @@ public class ArrayBag2<T> implements BagInterface<T>{
 		return result;
 	}//end removeEntry
 	
-	//检查对象是否正常初始化，若未正常初始化，则抛出安全异常
+	/**
+	 * 
+	* @FunctionName: checkInitilization
+	* @Action: 检测对象是否被正常初始化,若对象未正常初始化，则抛出异常
+	* @ReturnType： void    
+	 */
 	public void checkInitialization(){
 		if(!initialized){
 			throw new SecurityException("ArrayBag object is not initialized properly");
