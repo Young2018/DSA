@@ -38,6 +38,7 @@ public class ArrayBagDemo2 {
 		displayBag(aBag);
 	} // end testAdd	
 	
+	//test remove() and remove(T anEntry) method
 	private static void testRemove(BagInterface<String> aBag, String[] contents){
 		for(int index = 0; index < contents.length; index++){
 			String aString = contents[index];
