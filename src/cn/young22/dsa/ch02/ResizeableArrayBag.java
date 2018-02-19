@@ -3,7 +3,10 @@ package cn.young22.dsa.ch02;
 import java.util.Arrays;
 
 import cn.young22.dsa.ch01.BagInterface;
-
+/** 数组容量可增大的ArrayBag
+ *  这个类与ArrayBag2类的主要不同在于添加元素时，
+ *  当判断ifArrayFull为True时，不再是拒绝添加，而是倍增数组容量再继续添加新元素
+ * */
 public class ResizeableArrayBag<T> implements BagInterface<T>{
 
 	private T[] bag;	//cannot be final due to doubling
@@ -40,17 +43,19 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 		initialized = true;
 	}
 	
+	/** 获取包中当前的元素个数*/
 	@Override
 	public int getCurrentSize() {
 		return numberOfEntries;
 	}
 
+	/** 判断包是否为空*/
 	@Override
 	public boolean isEmpty() {		
 		return numberOfEntries == 0;
 	}
 	
-	//添加新的元素，当数组容量满时，则倍增数组容量，之后再将新元素加到数组最后
+	/**添加新的元素，当数组容量满时，则倍增数组容量，之后再将新元素加到数组最后*/
 	@Override
 	public boolean add(T newEntry) {
 		checkInitialization();
@@ -61,7 +66,8 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 		numberOfEntries++;		
 		return true;
 	}
-
+	
+	/** 删除包中的最后一个元素*/
 	@Override
 	public T remove() {
 		checkInitialization();
@@ -71,6 +77,7 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 		return result;
 	}
 
+	/** 删除给定元素在包中的第一次出现*/
 	@Override
 	public boolean remove(T anEntry) {
 		checkInitialization();
@@ -79,26 +86,28 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 		//删除给定下标index的元素并将返回值赋值给result
 		T result = removeEntry(index);
 		//使用equals方法判断是否返回成功，
-		//若anEntry的值与bag[index]的值相等，返回True,否则返回False
-		//System.out.println("****anEntry "+anEntry+"  bag[index] "+ bag[index]);
+		//若anEntry的值与result的值相等，返回True,否则返回False
 		return anEntry.equals(result);
 	}
 
+	/** 删除包中所有的给定的元素*/
 	@Override
 	public boolean removeAll(T anEntry) {
 		checkInitialization();
+		// 得到给定元素在数组中第一次出现的下标并赋值给index
 		int index = getIndexOf(anEntry);
+		// 初始化 result
 		T result = null;
 		
 		//通过循环删除包中所有给定的值
-		while(index > -1){
-			result = removeEntry(index);
-			index = getIndexOf(anEntry);
+		while(index > -1){					// 若index不为负值即包中仍有给定的元素，则继续循环
+			result = removeEntry(index);	// 删除给定数组下标的元素，并将返回值赋给result
+			index = getIndexOf(anEntry);	// 继续再包中寻找给定值的下标
 		}
-		
-		return anEntry.equals(result);
+		return anEntry.equals(result);		// 返回查找删除结果，若删除成功，返回True,否则，返回False
 	}
-
+	
+	/** 清空包中的所有元素*/
 	@Override
 	public void clear() {
 		//通过isEmpty来控制while循环，
@@ -108,6 +117,7 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 			remove();
 		}
 	}
+	
 	/** 根据指定的下标去删除包中的元素*/
 	private T removeEntry(int givenIndex){
 		
@@ -125,6 +135,7 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 		return result;		
 	}
 
+	/** 查找给定元素出现在包中的次数*/
 	@Override
 	public int getFrequencyOf(T anEntry) {
 		checkInitialization();
@@ -137,13 +148,14 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 		return counter;
 	}
 	
-	//使用getIndexOf方法来查看包中是否包含指定元素
+	/** 使用getIndexOf方法来查看包中是否包含指定元素*/
 	@Override
 	public boolean contains(T anEntry) {
 		checkInitialization();
 		return getIndexOf(anEntry) > -1;
 	}
 
+	/** 将包中的元素赋值给新的数组数组并返该数组*/
 	@Override
 	public T[] toArray() {
 		checkInitialization();
@@ -157,13 +169,12 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 		return result;
 	}
 	
-	//判断数组是否满了
+	/** 判断数组是否满了*/
 	private boolean isArrayFull(){
 		return numberOfEntries >= bag.length;
 	}
 	
-	// Throws an exception if the client requests a capacity that is too large
-	// 判断客户端所要求的包的容量是否过大，若过大则抛出异常
+	/** 判断客户端所要求的包的容量是否过大，若过大则抛出异常*/
 	private void checkCapacity(int capacity){
 		if(capacity > MAX_CAPACITY){
 			throw new IllegalStateException("Attempt to create a bag"+
@@ -172,7 +183,7 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 		}
 	}
 	
-	//Throws an exception if receiving object is not initialized
+	/** 判断对象是否正常初始化，若未正常初始化，则抛出异常*/
 	private void checkInitialization(){
 		if(!initialized){
 			throw new SecurityException("Uninitialized object used " + 
@@ -180,14 +191,18 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 		}
 	}//end checkinitialization
 	
-	//倍增数组容量
+	/** 倍增数组容量方法，使用Arrays工具，
+	 *  将原数组拷贝到一个新的容量为原数组两倍的数组中
+	 *  把新数组的引用赋值给原变量
+	 *  即完成了数组的扩容操作
+	 * */
 	private void doubleCapacity(){
 		int newLength = 2 * bag.length;
 		checkCapacity(newLength);
 		bag = Arrays.copyOf(bag, newLength);
 	}//end doubleCapacity
 	
-	//根据给定值查找元素在数组中的下标位置
+	/** 根据给定值查找元素在数组中的下标位置*/
 	private int getIndexOf(T anEntry){
 		//初试化元素下标位置
 		int where = -1;
