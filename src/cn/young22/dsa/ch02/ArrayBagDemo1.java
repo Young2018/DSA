@@ -13,7 +13,7 @@ public class ArrayBagDemo1 {
 		testIsEmpty(aBag, true);
 		String[] testStrings1 = {"A"};
 		testFrequency(aBag, testStrings1);
-		testCotains(aBag, testStrings1);
+		testContains(aBag, testStrings1);
 		
 		// Adding strings
 		String[] contentsOfBag1 = {"A", "A", "B", "A", "C", "A"};
@@ -27,7 +27,7 @@ public class ArrayBagDemo1 {
 		testIsEmpty(aBag, false);
 		String[] teStrings2 = {"A", "B", "C", "D", "Z"};
 		testFrequency(aBag, teStrings2);
-		testCotains(aBag, teStrings2);
+		testContains(aBag, teStrings2);
 		
 		//-------------------------------------------------
 		
@@ -38,7 +38,7 @@ public class ArrayBagDemo1 {
 		// Tests on an empty bag
 		testIsEmpty(aBag, true);
 		testFrequency(aBag, testStrings1);
-		testCotains(aBag, testStrings1);
+		testContains(aBag, testStrings1);
 		
 		// Adding strings
 		String[] contentsOfBag2 = {"A", "B", "A", "C", "B", "C", "D"};
@@ -47,7 +47,7 @@ public class ArrayBagDemo1 {
 		//tests on a bag that is full
 		testIsEmpty(aBag, false);
 		testFrequency(aBag, teStrings2);
-		testCotains(aBag, teStrings2);
+		testContains(aBag, teStrings2);
 	}//end main
 	
 	// test the method add
@@ -94,7 +94,7 @@ public class ArrayBagDemo1 {
 	}
 	
 	//Tests the method contains
-	private static void testCotains(BagInterface<String> aBag, String[] tests){
+	private static void testContains(BagInterface<String> aBag, String[] tests){
 		System.out.println("Testing the method contains:");
 		for (int index = 0; index < tests.length; index++){
 			System.out.println("Does this bag cotain " + tests[index] +
