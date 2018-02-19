@@ -1,5 +1,8 @@
 package cn.young22.dsa.ch01;
-
+/**
+ * 包的具体实现代码框架
+ * 类要实现BagInterface<T>的方法
+ * */
 public class Bag<T> implements BagInterface<T>{
 
 	@Override
