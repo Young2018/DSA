@@ -8,10 +8,13 @@ package cn.young22.dsa.ch02;
 import cn.young22.dsa.ch01.BagInterface;
 
 public class ArrayBag<T> implements BagInterface<T> {
+	//定义终态的泛型数组bag
 	private final T[] bag;	
+	//定义包中元素的个数
 	private int numberOfEntries;
+	//定义包中默认元素的个数
 	private static final int DEFAULT_CAPACITY = 25;
-	//默认构造器方法
+	//默认构造器方法，创建一个默认容量的包
 	public ArrayBag(){
 		this(DEFAULT_CAPACITY);
 	}
@@ -50,6 +53,13 @@ public class ArrayBag<T> implements BagInterface<T> {
 		return null;
 	}	
 	
+	/**
+	 * 
+	* @FunctionName: isArrayFull
+	* @Action: 判断包是否满了
+	* @ReturnType： boolean    
+	* @return 若包满，返回真，否则返回假
+	 */
 	public boolean isArrayFull(){
 		//to be defined
 		return false;
@@ -136,6 +146,15 @@ public class ArrayBag<T> implements BagInterface<T> {
 	public boolean contains(T anEntry) {
 		return false;
 	}
+	
+	/**
+	 * 
+	* @FunctionName: removeAll
+	* @Action: 删除一个指定的元素在数组中的所有出现
+	* @param @param anEntry
+	* @ReturnType： boolean    
+	* @return：成功则返回真，失败返回假
+	 */
 	@Override
 	public boolean removeAll(T anEntry) {
 		// TODO Auto-generated method stub
