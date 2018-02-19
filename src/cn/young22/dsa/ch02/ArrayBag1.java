@@ -1,7 +1,20 @@
 package cn.young22.dsa.ch02;
 
 import cn.young22.dsa.ch01.BagInterface;
-
+/**
+ * ArrayBag1类，添加了：
+ * 构造方法时增加了安全性检查，
+ * 		判断客户端要求的容量是否小于包的最大容量，若不满足，抛出异常
+ * 		添加了initialized变量来检测对象是否正常初始化
+ * checkInitialization的实现
+ * add(T anEntry)的实现
+ * toArray()的实现
+ * isArrayFull()的实现
+ * isEmpty()的实现
+ * getCurrentSize()的实现
+ * getFrequencyOf(T anEntry)的实现
+ * contains(T anEntry)的实现
+ * */
 public class ArrayBag1<T> implements BagInterface<T> {
 	//定义一个泛型的数组，并设置为final,不让它被修改
 	private final T[] bag;	
@@ -107,6 +120,7 @@ public class ArrayBag1<T> implements BagInterface<T> {
 	public boolean isEmpty(){
 		return numberOfEntries == 0;
 	};
+	
 	/**
 	 * 
 	* @FunctionName: getCurrentSize
@@ -196,6 +210,15 @@ public class ArrayBag1<T> implements BagInterface<T> {
 	 */
 	public void clear() {
 	}
+	
+	/**
+	 * 
+	* @FunctionName: removeAll
+	* @Action: 删除一个指定的元素在数组中的所有出现
+	* @param @param anEntry
+	* @ReturnType： boolean    
+	* @return：成功则返回真，失败返回假
+	 */
 	@Override
 	public boolean removeAll(T anEntry) {
 		// TODO Auto-generated method stub
