@@ -1,8 +1,14 @@
 package cn.young22.dsa.ch03;
 
 import cn.young22.dsa.ch01.BagInterface;
-
+/**
+ *  这个版本的LinkedBag1类在LinkedBag类的基础上实现了:
+ *  	构造方法
+ *  	isEmpty()方法
+ *  	getFrequencyOf()方法
+ */
 public class LinkedBag1<T> implements BagInterface<T>{
+	
 	private class Node {
 		private T 	data;	// Entry in bag
 		private Node next; 	// Link to the next node
