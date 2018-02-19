@@ -2,6 +2,11 @@ package cn.young22.dsa.ch02;
 
 import cn.young22.dsa.ch01.BagInterface;
 
+/**
+ * 这个类使用来测试ArrayBag2中新添加的方法的
+ * 主要测试了remove系列的方法
+ * */
+
 public class ArrayBagDemo2 {
 
 	public static void main(String[] args) {
@@ -12,9 +17,10 @@ public class ArrayBagDemo2 {
 		testAdd(aBag, contentsOfBag);
 		
 		//Removing Strings
-		//String[] testString3 = {"", "B", "A", "C", "D", "A"};
+		String[] testString = {"", "B", "A", "C", "D", "A"};
+		testRemove(aBag, testString);
 		
-		//testRemove(aBag, testString3);
+		//test method removeAll(T anEntry)
 		aBag.removeAll("A");
 		displayBag(aBag);
 	}
@@ -28,8 +34,7 @@ public class ArrayBagDemo2 {
 			aBag.add(content[index]);
          System.out.print(content[index] + " ");
 		} // end for
-      System.out.println();
-      
+      System.out.println();    
 		displayBag(aBag);
 	} // end testAdd	
 	
@@ -37,14 +42,15 @@ public class ArrayBagDemo2 {
 		for(int index = 0; index < contents.length; index++){
 			String aString = contents[index];
 			if(aString.equals("") || (aString == null)){
+				//test remove()
 				System.out.println("\nRemoving a string from the bag");
 				String removedString = aBag.remove();
 				System.out.println("remove returns " + removedString);
 			}else{
-				//test remove(aString)
+				//test remove(T anEntry)
 				System.out.println("\nRemoving \"" + aString + "\" from the bag:");
 				boolean result = aBag.remove(aString);
-				System.out.println("remove(\"" + aString + "\" returns " + result);
+				System.out.println("remove(\"" + aString + "\") returns " + result);
 			}
 			displayBag(aBag);
 		}
@@ -64,3 +70,43 @@ public class ArrayBagDemo2 {
 		System.out.println();
 	} // end displayBag
 }
+
+/**
+Expected output:
+
+Adding A A B A C fadsd 
+The bag contains 6 string(s), as follows:
+A A B A C fadsd 
+
+Removing a string from the bag
+remove returns fadsd
+The bag contains 5 string(s), as follows:
+A A B A C 
+
+Removing "B" from the bag:
+remove("B") returns true
+The bag contains 4 string(s), as follows:
+A A C A 
+
+Removing "A" from the bag:
+remove("A") returns true
+The bag contains 3 string(s), as follows:
+A A C 
+
+Removing "C" from the bag:
+remove("C") returns true
+The bag contains 2 string(s), as follows:
+A A 
+
+Removing "D" from the bag:
+remove("D") returns false
+The bag contains 2 string(s), as follows:
+A A 
+
+Removing "A" from the bag:
+remove("A") returns true
+The bag contains 1 string(s), as follows:
+A 
+The bag contains 0 string(s), as follows:
+
+ */
