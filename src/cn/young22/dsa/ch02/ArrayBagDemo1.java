@@ -2,6 +2,7 @@ package cn.young22.dsa.ch02;
 
 import cn.young22.dsa.ch01.BagInterface;
 
+/** ≤‚ ‘ArrayBag1µƒ¿‡*/
 public class ArrayBagDemo1 {
 
 	public static void main(String[] args) {
@@ -17,6 +18,10 @@ public class ArrayBagDemo1 {
 		// Adding strings
 		String[] contentsOfBag1 = {"A", "A", "B", "A", "C", "A"};
 		testAdd(aBag, contentsOfBag1);
+		
+		// testing toArray()
+		System.out.println("\nTesting toArray method");
+		displayBag(aBag);
 		
 		// Tests on a bag that is not empty
 		testIsEmpty(aBag, false);
@@ -47,7 +52,7 @@ public class ArrayBagDemo1 {
 	
 	// test the method add
 	private static void testAdd(BagInterface<String> aBag, String[] content){
-		System.out.print("Adding to the bag");
+		System.out.println("Adding to the bag");
 		for(int index = 0; index < content.length; index++){
 			aBag.add(content[index]);
 			System.out.print(content[index] + " ");
@@ -68,23 +73,24 @@ public class ArrayBagDemo1 {
 		
 		System.out.println("isEmpty finds the bag ");
 		if(correctResult && aBag.isEmpty()){
-			System.out.print("empty: OK.");
+			System.out.println("empty: OK.");
 		}else if(correctResult){
-			System.out.print("not empty, but it is empty: ERROR");			
+			System.out.println("not empty, but it is empty: ERROR");			
 		}else if(!correctResult && aBag.isEmpty()){
-			System.out.print("empty, but it is not empty: ERROR");
+			System.out.println("empty, but it is not empty: ERROR");
 		}else{
-			System.out.print("not empty: OK");
+			System.out.println("not empty: OK");
 		}
 	}
 	
 	//Tests the method getFrequency
 	private static void testFrequency(BagInterface<String> aBag, String[] tests){
-		System.out.println("Testing the method of getFrequency of:");
+		System.out.println("\nTesting the method of getFrequency of:");
 		for(int index = 0; index < tests.length; index++){
 			System.out.println("In this bag, the count of " + tests[index] + 
 					" is " + aBag.getFrequencyOf(tests[index]));
 		}
+		System.out.println();
 	}
 	
 	//Tests the method contains
@@ -96,7 +102,7 @@ public class ArrayBagDemo1 {
 		}
 	}
 	
-	//dispaly the size of the bag and the items in the bag
+	//Tests the method toArray() and display the size of the bag and the items in the bag
 	private static void displayBag(BagInterface<String> aBag){
 		System.out.println("The bag contains " + aBag.getCurrentSize() + 
 				"string(s), as follows:");
@@ -113,20 +119,31 @@ public class ArrayBagDemo1 {
  * Expected output: 
 Testing the method isEmpty with an empty bag
 isEmpty finds the bag 
-empty: OK.Testing the method of getFrequency of:
+empty: OK.
+
+Testing the method of getFrequency of:
 In this bag, the count of A is 0
+
 Testing the method contains:
 Does this bag cotain A? false
-Adding to the bagA A B A C A 
+Adding to the bag
+A A B A C A 
+
+Testing toArray method
+The bag contains 6string(s), as follows:
+A A B A C A 
 
 Testing the method isEmpty with a bag that is not empty
 isEmpty finds the bag 
-not empty: OKTesting the method of getFrequency of:
+not empty: OK
+
+Testing the method of getFrequency of:
 In this bag, the count of A is 4
 In this bag, the count of B is 1
 In this bag, the count of C is 1
 In this bag, the count of D is 0
 In this bag, the count of Z is 0
+
 Testing the method contains:
 Does this bag cotain A? true
 Does this bag cotain B? true
@@ -138,25 +155,31 @@ A new empty bag:
 
 Testing the method isEmpty with an empty bag
 isEmpty finds the bag 
-empty: OK.Testing the method of getFrequency of:
+empty: OK.
+
+Testing the method of getFrequency of:
 In this bag, the count of A is 0
+
 Testing the method contains:
 Does this bag cotain A? false
-Adding to the bagA B A C B C D 
+Adding to the bag
+A B A C B C D 
 
 Testing the method isEmpty with a bag that is not empty
 isEmpty finds the bag 
-not empty: OKTesting the method of getFrequency of:
+not empty: OK
+
+Testing the method of getFrequency of:
 In this bag, the count of A is 2
 In this bag, the count of B is 2
 In this bag, the count of C is 2
 In this bag, the count of D is 1
 In this bag, the count of Z is 0
+
 Testing the method contains:
 Does this bag cotain A? true
 Does this bag cotain B? true
 Does this bag cotain C? true
 Does this bag cotain D? true
 Does this bag cotain Z? false
-
  */
