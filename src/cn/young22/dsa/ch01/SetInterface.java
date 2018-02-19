@@ -1,5 +1,6 @@
 package cn.young22.dsa.ch01;
 /**
+ * Set是不包括重复元素的包(Bag),其操作与ADT包的操作类似
  * 一个描述集合(Set)对象操作的接口
  */
 public interface SetInterface<T> {
