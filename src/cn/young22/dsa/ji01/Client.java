@@ -21,7 +21,7 @@ public class Client {
 	}
 }
 /*
- * Expected output:
+ * output:
  * 	
  * 	(hi,how are you?)
 	(how are you?,hi)
