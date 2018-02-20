@@ -2,6 +2,7 @@ package cn.young22.dsa.ch01;
 
 import jdk.nashorn.internal.objects.annotations.Getter;
 
+/** 一个用来描述商品名称和价格的类*/
 public class Item {
 	private String description;	//物品描述
 	private int    price;		//物品价格，以分为单位
