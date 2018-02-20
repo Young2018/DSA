@@ -12,12 +12,12 @@ public class LinkedBag2<T> implements BagInterface<T>{
 		private T 	data;	// Entry in bag
 		private Node next; 	// Link to the next node
 		
-		/** 仅适用data初始化的Node*/
+		/** 仅使用data初始化的Node*/
 		private Node(T dataPortion){
 			this(dataPortion, null);
 		}
 		
-		/** 适用data和nextNode初始化的节点*/
+		/** 使用data和nextNode初始化的节点*/
 		private Node(T dataPortion, Node nextNode){
 			data = dataPortion;
 			next = nextNode;
