@@ -16,21 +16,23 @@ import cn.young22.dsa.ch01.BagInterface;
  * contains(T anEntry)的实现
  * */
 public class ArrayBag1<T> implements BagInterface<T> {
-	//定义一个泛型的数组，并设置为final,不让它被修改
+	// 定义一个泛型的数组，并设置为final,不让它被修改
 	private final T[] bag;	
-	//定义int类型的numberOfEntries变量，用来存放包中的元素个数
+	// 定义int类型的numberOfEntries变量，用来存放包中的元素个数
 	private int numberOfEntries;
-	//布尔型的变量initialized用在构造方法中，用来判断对象是否正常被构造完全
+	// 布尔型的变量initialized用在构造方法中，用来判断对象是否正常被构造完全
 	private boolean initialized = false;
-	//初试的包容量
+	// 初试的包容量
 	private static final int DEFAULT_CAPACITY = 25;
-	//包的最大容量
+	// 包的最大容量
 	private static final int MAX_CAPACITY = 10000;
-	//默认构造器方法
+	
+	/** 默认构造器方法*/
 	public ArrayBag1(){
 		this(DEFAULT_CAPACITY);
 	}
-	//创建一个给定容量的ArrayBag对象
+	
+	/** 创建一个给定容量的ArrayBag对象*/
 	public ArrayBag1(int desiredCapacity) {
 		if(desiredCapacity <= MAX_CAPACITY){
 			//由于不可以创建泛型的数组，故先创建Object类型的数组，再强制类型转换成泛型的数组，然后赋值给bag
@@ -224,8 +226,4 @@ public class ArrayBag1<T> implements BagInterface<T> {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
-	
-	
-	
 }
