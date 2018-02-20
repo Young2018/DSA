@@ -13,14 +13,14 @@ public class ArrayBagDemo2 {
 		String[] contentsOfBag = {"A", "A", "B", "A", "C", "fadsd"};
 		BagInterface<String> aBag = new ArrayBag2<>(contentsOfBag.length);
 		
-		//Adding Strings
+		// Adding Strings
 		testAdd(aBag, contentsOfBag);
 		
-		//Removing Strings
+		// Removing Strings
 		String[] testString = {"", "B", "A", "C", "D", "A"};
 		testRemove(aBag, testString);
 		
-		//test method removeAll(T anEntry)
+		// test method removeAll(T anEntry)
 		aBag.removeAll("A");
 		displayBag(aBag);
 	}
@@ -38,17 +38,17 @@ public class ArrayBagDemo2 {
 		displayBag(aBag);
 	} // end testAdd	
 	
-	//test remove() and remove(T anEntry) method
+	// test remove() and remove(T anEntry) method
 	private static void testRemove(BagInterface<String> aBag, String[] contents){
 		for(int index = 0; index < contents.length; index++){
 			String aString = contents[index];
 			if(aString.equals("") || (aString == null)){
-				//test remove()
+				// test remove()
 				System.out.println("\nRemoving a string from the bag");
 				String removedString = aBag.remove();
 				System.out.println("remove returns " + removedString);
 			}else{
-				//test remove(T anEntry)
+				// test remove(T anEntry)
 				System.out.println("\nRemoving \"" + aString + "\" from the bag:");
 				boolean result = aBag.remove(aString);
 				System.out.println("remove(\"" + aString + "\") returns " + result);
