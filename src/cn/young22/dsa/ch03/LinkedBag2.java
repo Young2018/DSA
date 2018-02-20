@@ -199,7 +199,7 @@ public class LinkedBag2<T> implements BagInterface<T>{
 				currentNode = currentNode.next;
 			}
 		}
-		//返回查找结果
+		// 返回查找结果
 		return found;
 	}
 	

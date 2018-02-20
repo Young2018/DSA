@@ -59,12 +59,12 @@ public class LinkedBagDemo2 {
 		for(int index = 0; index < contents.length; index++){
 			String aString = contents[index];
 			if(aString.equals("") || (aString == null)){
-				//test remove()
+				// test remove()
 				System.out.println("\nRemoving a string from the bag");
 				String removedString = aBag.remove();
 				System.out.println("remove returns " + removedString);
 			}else{
-				//test remove(T anEntry)
+				// test remove(T anEntry)
 				System.out.println("\nRemoving \"" + aString + "\" from the bag:");
 				boolean result = aBag.remove(aString);
 				System.out.println("remove(\"" + aString + "\") returns " + result);
@@ -98,8 +98,8 @@ public class LinkedBagDemo2 {
 		System.out.println();
 	} // end displayBag
 	
-	//Tests the method isEmpty
-	//correctResult indicates what isEmpty should return
+	// Tests the method isEmpty
+	// correctResult indicates what isEmpty should return
 	private static void testIsEmpty(BagInterface<String> aBag, boolean correctResult){
 		System.out.print("Testing the method isEmpty with ");
 		if(correctResult){
@@ -121,7 +121,7 @@ public class LinkedBagDemo2 {
 		System.out.println();
 	}
 	
-	//Tests the method getFrequency
+	// Tests the method getFrequency
 	private static void testFrequency(BagInterface<String> aBag, String[] tests){
 		System.out.println("\nTesting the method of getFrequency of:");
 		for(int index = 0; index < tests.length; index++){
@@ -131,7 +131,7 @@ public class LinkedBagDemo2 {
 		System.out.println();
 	}
 	
-	//Tests the method contains
+	// Tests the method contains
 	private static void testContains(BagInterface<String> aBag, String[] tests){
 		System.out.println("Testing the method contains:");
 		for (int index = 0; index < tests.length; index++){

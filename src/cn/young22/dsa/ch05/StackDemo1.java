@@ -12,13 +12,13 @@ public class StackDemo1 {
 	public static void main(String[] args){
 
 		// 初始化stringStacks
-		//StackInterface<String> stringStack = new LinkedStack<>();
+		// StackInterface<String> stringStack = new LinkedStack<>();
 		// 测试ArrayStack
 		// StackInterface<String> stringStack = new ArrayStack();
 		// 测试 VectorStack
 		StackInterface<String> stringStack = new VectorStack<>();
 		
-		// 想栈中添加几个字符串
+		// 向栈中添加几个字符串
 		stringStack.push("Jim");
 		stringStack.push("Jess");
 		stringStack.push("Jill");

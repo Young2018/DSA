@@ -44,11 +44,11 @@ public class ArrayBagDemo1 {
 		String[] contentsOfBag2 = {"A", "B", "A", "C", "B", "C", "D"};
 		testAdd(aBag, contentsOfBag2);
 		
-		//tests on a bag that is full
+		// tests on a bag that is full
 		testIsEmpty(aBag, false);
 		testFrequency(aBag, teStrings2);
 		testContains(aBag, teStrings2);
-	}//end main
+	}// end main
 	
 	// test the method add
 	private static void testAdd(BagInterface<String> aBag, String[] content){
@@ -61,8 +61,8 @@ public class ArrayBagDemo1 {
 		
 	}
 	
-	//Tests the method isEmpty
-	//correctResult indicates what isEmpty should return
+	// Tests the method isEmpty
+	// correctResult indicates what isEmpty should return
 	private static void testIsEmpty(BagInterface<String> aBag, boolean correctResult){
 		System.out.print("\nTesting the method isEmpty with ");
 		if(correctResult){
@@ -83,7 +83,7 @@ public class ArrayBagDemo1 {
 		}
 	}
 	
-	//Tests the method getFrequency
+	// Tests the method getFrequency
 	private static void testFrequency(BagInterface<String> aBag, String[] tests){
 		System.out.println("\nTesting the method of getFrequency of:");
 		for(int index = 0; index < tests.length; index++){
@@ -93,7 +93,7 @@ public class ArrayBagDemo1 {
 		System.out.println();
 	}
 	
-	//Tests the method contains
+	// Tests the method contains
 	private static void testContains(BagInterface<String> aBag, String[] tests){
 		System.out.println("Testing the method contains:");
 		for (int index = 0; index < tests.length; index++){
@@ -102,7 +102,7 @@ public class ArrayBagDemo1 {
 		}
 	}
 	
-	//Tests the method toArray() and display the size of the bag and the items in the bag
+	// Tests the method toArray() and display the size of the bag and the items in the bag
 	private static void displayBag(BagInterface<String> aBag){
 		System.out.println("The bag contains " + aBag.getCurrentSize() + 
 				"string(s), as follows:");

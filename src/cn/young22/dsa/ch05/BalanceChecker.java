@@ -44,9 +44,9 @@ public class BalanceChecker {
 					isBalanced = isPaired(openDelimiter, nextCharacter);
 				}
 				break;
-			} //end switch
+			} // end switch
 			index++;
-		}//end while
+		}// end while
 		
 		// 通过循环处理完所有字符后，再看栈中是否还有字符，若还有字符，说明表达式是不平衡的
 		if(!openDelimiterStack.isEmpty()){
@@ -61,5 +61,5 @@ public class BalanceChecker {
 		return(open == '(' && close == ')' ||
 				open == '[' && close == ']' ||
 				open == '{' && close == '}');
-	}//end isPaired
+	}// end isPaired
 }

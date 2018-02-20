@@ -23,9 +23,9 @@ public class LinkedBag<T> implements BagInterface<T>{
 			next = nextNode;
 		}
 	}
-	//头结点
+	// 头结点
 	private Node firstNode;
-	//包中的节点个数
+	// 包中的节点个数
 	private int numberOfEntries;
 	
 	

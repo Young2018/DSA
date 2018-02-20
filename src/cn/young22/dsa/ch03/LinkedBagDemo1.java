@@ -7,7 +7,7 @@ public class LinkedBagDemo1 {
 
 	public static void main(String[] args) {
 		System.out.println("Creating an empty bag");
-		//创建一个LinkedBag1类型的对象并赋值给BagInterface<String>类型的aBag
+		// 创建一个LinkedBag1类型的对象并赋值给BagInterface<String>类型的aBag
 		BagInterface<String> aBag = new LinkedBag1<>();
 		
 		// tests the method isEmpty

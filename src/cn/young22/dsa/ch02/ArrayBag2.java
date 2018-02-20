@@ -159,7 +159,7 @@ public class ArrayBag2<T> implements BagInterface<T>{
 		int index = getIndexOf(anEntry);
 		// 删除给定下标的元素
 		T result = removeEntry(index);
-		//  返回删除的结果
+		// 返回删除的结果
 		return anEntry.equals(result);
 	}
 	

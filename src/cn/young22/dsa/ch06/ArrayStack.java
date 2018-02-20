@@ -17,7 +17,7 @@ public class ArrayStack<T> implements StackInterface<T>{
 	/** 默认构造器方法，生成一个默认容量的栈对象*/
 	public ArrayStack(){
 		this(DEFAULT_CAPACITY);
-	}//end default constructor
+	}// end default constructor
 	
 	/** 客户指定栈容量的构造方法，根据用户指定的栈容量生成一个栈对象*/
 	public ArrayStack(int initialCapacity) {
@@ -85,7 +85,7 @@ public class ArrayStack<T> implements StackInterface<T>{
 	/** 清除栈中的所有元素*/
 	@Override
 	public void clear() {
-		//当栈不为空时，则一直pop出栈顶元素
+		// 当栈不为空时，则一直pop出栈顶元素
 		while(!isEmpty()){
 			pop();
 		}

@@ -21,8 +21,8 @@ public class LinkedStack<T> implements StackInterface<T>{
 	
 	/** 头结点*/
 	private class Node{
-		private T 	data; //Entry in stack
-		private Node next; //link to the next node
+		private T 	data; // Entry in stack
+		private Node next; // link to the next node
 		
 		/** 结点的构造方法，仅用data域初始化结点*/
 		private Node(T dataPortion){
@@ -54,7 +54,7 @@ public class LinkedStack<T> implements StackInterface<T>{
 		private void setNextNode(Node nextNode){
 			next = nextNode;
 		}
-	}//end Node
+	}// end Node
 	
 	/** push方法，将客户给的新值加到栈顶*/
 	@Override
