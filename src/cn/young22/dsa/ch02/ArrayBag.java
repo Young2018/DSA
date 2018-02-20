@@ -9,17 +9,18 @@ import cn.young22.dsa.ch01.BagInterface;
  *  实现BagInterface<T>中要求实现的方法
  * */
 public class ArrayBag<T> implements BagInterface<T> {
-	//定义终态的泛型数组bag
+	// 定义终态的泛型数组bag
 	private final T[] bag;	
-	//定义包中元素的个数
+	// 定义包中元素的个数
 	private int numberOfEntries;
-	//定义包中默认元素的个数
+	// 定义包中默认元素的个数
 	private static final int DEFAULT_CAPACITY = 25;
-	//默认构造器方法，创建一个默认容量的包
+	
+	/** 默认构造器方法，创建一个默认容量的包*/
 	public ArrayBag(){
 		this(DEFAULT_CAPACITY);
 	}
-	//创建一个给定容量的ArrayBag对象
+	/** 创建一个给定容量的ArrayBag对象*/
 	public ArrayBag(int capacity) {
 		@SuppressWarnings("unchecked")
 		T[] tempBag = (T[])new Object[capacity];
