@@ -6,10 +6,6 @@ import cn.young22.dsa.ch02.ArrayBag1;
  * 
 * @TypeName：OnlineShopper   
 * @Description： 一个用来维持在线商城购物车的类
-* @Author：杨荣
-* @CreateTime：2018年2月16日 下午8:16:22     
-* @ModifyRemarks：   
-* @version:
  */
 public class OnlineShopper {
 
