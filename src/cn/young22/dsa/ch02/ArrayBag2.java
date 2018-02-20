@@ -14,26 +14,33 @@ import cn.young22.dsa.ch01.BagInterface;
  * */
 
 public class ArrayBag2<T> implements BagInterface<T>{
+	// 定义一个泛型的数组，并设置为final,不让它被修改
 	private final T[] bag;	
+	// 定义int类型的numberOfEntries变量，用来存放包中的元素个数
 	private int numberOfEntries;
+	// 布尔型的变量initialized用在构造方法中，用来判断对象是否正常被构造完全
 	private boolean initialized = false;
+	// 初试的包容量
 	private static final int DEFAULT_CAPACITY = 25;
+	// 包的最大容量
 	private static final int MAX_CAPACITY = 10000;
-	//默认构造器方法
+	
+	/** 默认构造器方法*/
 	public ArrayBag2(){
 		this(DEFAULT_CAPACITY);
 	}
-	//创建一个给定容量的ArrayBag对象
+	
+	/** 创建一个给定容量的ArrayBag对象*/
 	public ArrayBag2(int desiredCapacity) {
-		//将客户指定的容量与最大的容量比较，若大于最大容量，则抛出异常
+		// 将客户指定的容量与最大的容量比较，若大于最大容量，则抛出异常
 		if(desiredCapacity <= MAX_CAPACITY){
-			//在分配数组是不能使用泛型，但可以使用Object类型
-			//故先分配Object类型的数组，再进行强制类型转换，变成泛型数组
-			//但是转型完后还会在编译时出现警告
-			//ArrayBag2.java uses unchecked or unsafe operations
-			//Note:Recompile with -Xlint:unchecked for details
-			//由于数组刚刚分配，其中仅含有null项，故这种类型转换时安全的，使用
-			//@SuppressWarnings("unchecked")来让编译程序忽略这个警告
+			// 在分配数组是不能使用泛型，但可以使用Object类型
+			// 故先分配Object类型的数组，再进行强制类型转换，变成泛型数组
+			// 但是转型完后还会在编译时出现警告
+			// ArrayBag2.java uses unchecked or unsafe operations
+			// Note:Recompile with -Xlint:unchecked for details
+			// 由于数组刚刚分配，其中仅含有null项，故这种类型转换时安全的，使用
+			// @SuppressWarnings("unchecked")来让编译程序忽略这个警告
 			@SuppressWarnings("unchecked")
 			T[] tempBag = (T[])new Object[desiredCapacity];
 			bag = tempBag;
@@ -60,7 +67,7 @@ public class ArrayBag2<T> implements BagInterface<T>{
 		if(isArrayFull()){
 			result = false;
 		}else{
-			//Assertion: result is true here
+			// Assertion: result is true here
 			bag[numberOfEntries] = newEntry;
 			numberOfEntries++;
 		}
@@ -96,7 +103,7 @@ public class ArrayBag2<T> implements BagInterface<T>{
 	* @return 若包满，返回真，否则返回假
 	 */
 	public boolean isArrayFull(){
-		//当数组中的元素个数大于或等于数组的大小时，返回True
+		// 当数组中的元素个数大于或等于数组的大小时，返回True
 		return numberOfEntries >= bag.length;
 	}
 	
@@ -132,7 +139,7 @@ public class ArrayBag2<T> implements BagInterface<T>{
 	 */
 	public T remove() {
 		checkInitialization();
-		//删除包中的最后一个元素
+		// 删除包中的最后一个元素
 		T result = removeEntry(numberOfEntries - 1);
 		return result;
 	}
@@ -146,13 +153,13 @@ public class ArrayBag2<T> implements BagInterface<T>{
 	* @return：成功则返回真，失败返回假
 	 */
 	public boolean remove(T anEntry) {
-		//检查对象是否正常初始化
+		// 检查对象是否正常初始化
 		checkInitialization();
-		//获取给定元素的下标位置
+		// 获取给定元素的下标位置
 		int index = getIndexOf(anEntry);
-		//删除给定下标的元素
+		// 删除给定下标的元素
 		T result = removeEntry(index);
-		//返回删除的结果
+		//  返回删除的结果
 		return anEntry.equals(result);
 	}
 	
@@ -165,14 +172,14 @@ public class ArrayBag2<T> implements BagInterface<T>{
 	* @return：成功则返回真，失败返回假
 	 */
 	public boolean removeAll(T anEntry){
-		//检查对象是否正常初始化
+		// 检查对象是否正常初始化
 		checkInitialization();
-		//查找bag中第一个给定值的位置
+		// 查找bag中第一个给定值的位置
 		int index = getIndexOf(anEntry);
-		//初始化result为null
+		// 初始化result为null
 		T result = null;
 		
-		//通过循环删除包中所有的给定的值
+		// 通过循环删除包中所有的给定的值
 		while(index > -1){
 			result = removeEntry(index);
 			index = getIndexOf(anEntry);		
@@ -188,7 +195,7 @@ public class ArrayBag2<T> implements BagInterface<T>{
 	* @ReturnType： void    
 	 */
 	public void clear() {
-		//若包不为空，则一直删除该包的最后一个元素
+		// 若包不为空，则一直删除该包的最后一个元素
 		while(!isEmpty()){
 			remove();
 		}
@@ -206,7 +213,7 @@ public class ArrayBag2<T> implements BagInterface<T>{
 		checkInitialization();
 		int counter = 0;
 		for(int index = 0; index < numberOfEntries; index++){
-			//这里不可以使用bag[index].equals(anEntry),因为bag[index]可能没有值，程序会抛出NullPointerException
+			// 这里不可以使用bag[index].equals(anEntry),因为bag[index]可能没有值，程序会抛出NullPointerException
 			if(anEntry.equals(bag[index])){
 				counter++;
 			}
@@ -225,8 +232,8 @@ public class ArrayBag2<T> implements BagInterface<T>{
 	 */
 	public boolean contains(T anEntry) {
 		checkInitialization();
-		//调用getIndexOf方法在bag数组中找anEntry，
-		//若找到，返回的值不为负值
+		// 调用getIndexOf方法在bag数组中找anEntry，
+		// 若找到，返回的值不为负值
 		return getIndexOf(anEntry) > -1;
 	}
 	
@@ -256,7 +263,6 @@ public class ArrayBag2<T> implements BagInterface<T>{
 		return where;
 	}// end getIndexOf
 	
-	// Removes and returns the entry at a given index within the array
 	/**
 	 * 
 	* @FunctionName: removeEntry
@@ -269,15 +275,15 @@ public class ArrayBag2<T> implements BagInterface<T>{
 		T result = null;
 		
 		if(!isEmpty() && (givenIndex > -1)){
-			result = bag[givenIndex]; //要删除的元素
-			int lastIndex = numberOfEntries - 1;//找到最后一个元素的下标
-			bag[givenIndex] = bag[lastIndex];//将最后一个元素移到要删除元素的位置
-			bag[lastIndex] = null;//将最后一个元素的值赋值为null
-			numberOfEntries--;//将bag中的元素数目-1
-		}//end if
+			result = bag[givenIndex]; // 要删除的元素
+			int lastIndex = numberOfEntries - 1;// 找到最后一个元素的下标
+			bag[givenIndex] = bag[lastIndex];// 将最后一个元素移到要删除元素的位置
+			bag[lastIndex] = null;// 将最后一个元素的值赋值为null
+			numberOfEntries--;// 将bag中的元素数目-1
+		}// end if
 		
 		return result;
-	}//end removeEntry
+	}// end removeEntry
 	
 	/**
 	 * 
