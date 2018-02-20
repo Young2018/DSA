@@ -3,7 +3,7 @@ package cn.young22.dsa.ch01;
 import cn.young22.dsa.ch02.ArrayBag;
 /** 小猪存钱罐类*/
 public class PiggyBank {
-	//私有的包类型的变量coins
+	// 私有的包类型的变量coins
 	private BagInterface<Coin> coins;
 	/** 构造方法，新生产一个ArrayBag对象并赋值给coins*/
 	public PiggyBank(){
