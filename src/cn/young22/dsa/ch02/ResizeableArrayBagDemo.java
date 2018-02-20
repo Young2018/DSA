@@ -7,37 +7,37 @@ import cn.young22.dsa.ch01.BagInterface;
 public class ResizeableArrayBagDemo {
 
 	public static void main(String[] args) {
-		//A bag whose initial capacity is small
-		//初始化一个容量只有3的包
+		// A bag whose initial capacity is small
+		// 初始化一个容量只有3的包
 		BagInterface<String> aBag = new ResizeableArrayBag<>(3);
-		//测试此时包空是否为真
+		// 测试此时包空是否为真
 		testIsEmpty(aBag, true);
 		
-		//测试add方法，将contentsOfBag的值赋值到aBag中
-		//注意，这时contentsOfBag中有7个元素，而初始化的aBag的容量仅为3，故在运行时aBag会自动的增加容量
+		// 测试add方法，将contentsOfBag的值赋值到aBag中
+		// 注意，这时contentsOfBag中有7个元素，而初始化的aBag的容量仅为3，故在运行时aBag会自动的增加容量
 		System.out.println("Adding to the bag more strings that its initial capacity");
 		String[] contentsOfBag = {"A", "D", "B", "A", "C", "A", "D"};
 		testAdd(aBag, contentsOfBag);
 		
-		//添加了元素后再测试isEmpty方法
+		// 添加了元素后再测试isEmpty方法
 		testIsEmpty(aBag, false);
 		String[] testStrings2 = {"A", "B", "C", "D", "Z"};
-		//使用testStrings2去测试每个给定字符出现在aBag中的频率或判断包中是否包含给定字符
+		// 使用testStrings2去测试每个给定字符出现在aBag中的频率或判断包中是否包含给定字符
 		testFrequency(aBag, testStrings2);
 		testContains(aBag, testStrings2);
 		
-		//测试remove()和remove(anEntry)方法，
-		//若传入的字符串为""或null则调用remove()方法，删除包中的最后一个元素的值
-		//否则，则调用remove(anEntry)方法，删除包中给定值的第一次出现
+		// 测试remove()和remove(anEntry)方法，
+		// 若传入的字符串为""或null则调用remove()方法，删除包中的最后一个元素的值
+		// 否则，则调用remove(anEntry)方法，删除包中给定值的第一次出现
 		String[] testStrings3 = {"", "B", "A", "C", "Z"};
 		testRemove(aBag, testStrings3);
 		
-		//测试removeAll()方法，删除给定元素在包中的所有值
+		// 测试removeAll()方法，删除给定元素在包中的所有值
 		System.out.println("\nRemove the specific string in the bag");
 		aBag.removeAll("A");
 		displayBag(aBag);
 		
-		//测试clear()方法，情况整个包中的元素
+		// 测试clear()方法，情况整个包中的元素
 		System.out.println("\nClearing the bag:");
 		aBag.clear();
 		testIsEmpty(aBag, true);
@@ -54,19 +54,19 @@ public class ResizeableArrayBagDemo {
 		System.out.println();
 		
 		displayBag(aBag);
-	}//end testAdd
+	}// end testAdd
 	
 	/** Tests the two remove methods*/
 	private static void testRemove(BagInterface<String> aBag, String[] tests){
 		for(int index = 0; index < tests.length; index++){
 			String aString = tests[index];
 			if(aString.equals("") || (aString == null)){
-				//test remove
+				// test remove
 				System.out.println("\nRemoving a string from the bag:");
 				String removedString = aBag.remove();
 				System.out.println("remove() returns" + removedString);
 			}else{
-				//testremove(aString)
+				// testremove(aString)
 				System.out.println("\nRemoving \"" + aString + "\" from the bag:");
 				boolean result = aBag.remove(aString);
 				System.out.println("remove(\"" + aString + "\") returns " + result);
@@ -76,7 +76,7 @@ public class ResizeableArrayBagDemo {
 	}
 	
 	/** Tests the method isEmpty*/
-	//correctResult indicates what isEmpty should return
+	// correctResult indicates what isEmpty should return
 	private static void testIsEmpty(BagInterface<String> aBag, boolean coorrectResult){
 		System.out.print("Testing isEmpty with ");
 		if(coorrectResult){
@@ -125,7 +125,7 @@ public class ResizeableArrayBagDemo {
 			System.out.print(bagArray[index] + " ");
 		}
 		System.out.println();
-	}//end displayBag
+	}// end displayBag
 }
 
 /*

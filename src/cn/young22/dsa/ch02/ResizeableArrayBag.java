@@ -9,7 +9,7 @@ import cn.young22.dsa.ch01.BagInterface;
  * */
 public class ResizeableArrayBag<T> implements BagInterface<T>{
 
-	private T[] bag;	//cannot be final due to doubling
+	private T[] bag;	// cannot be final due to doubling
 	private int numberOfEntries;
 	private boolean initialized = false;
 	private static final int DEFAULT_CAPACITY = 25;
@@ -22,7 +22,7 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 	
 	/** 以给定容量的的方式初始化一个ResizeableArrayBag对象*/
 	public ResizeableArrayBag(int initialCapacity) {
-		//检查用户指定的容量是否超过最大容量
+		// 检查用户指定的容量是否超过最大容量
 		checkCapacity(initialCapacity);
 		
 		@SuppressWarnings("unchekced")
@@ -35,11 +35,11 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 	/** 以给定包内容的方式初始化一个ResizeableArrayBag对象*/
 	public ResizeableArrayBag(T[] contents) {
 		checkCapacity(contents.length);
-		//使用Arrays工具数组将contents的内容复制给bag
+		// 使用Arrays工具数组将contents的内容复制给bag
 		bag = Arrays.copyOf(contents, contents.length);
-		//将contents的length赋值给numberOfEntries
+		// 将contents的length赋值给numberOfEntries
 		numberOfEntries = contents.length;
-		//初始化完毕
+		// 初始化完毕
 		initialized = true;
 	}
 	
@@ -71,9 +71,9 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 	@Override
 	public T remove() {
 		checkInitialization();
-		//删除最包的最后一个元素并将返回值赋值给result
+		// 删除最包的最后一个元素并将返回值赋值给result
 		T result = removeEntry(numberOfEntries - 1);
-		//返回删除元素的值
+		// 返回删除元素的值
 		return result;
 	}
 
@@ -81,12 +81,12 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 	@Override
 	public boolean remove(T anEntry) {
 		checkInitialization();
-		//找到数组中第一次出现给定值的下标并赋值给index
+		// 找到数组中第一次出现给定值的下标并赋值给index
 		int index = getIndexOf(anEntry);
-		//删除给定下标index的元素并将返回值赋值给result
+		// 删除给定下标index的元素并将返回值赋值给result
 		T result = removeEntry(index);
-		//使用equals方法判断是否返回成功，
-		//若anEntry的值与result的值相等，返回True,否则返回False
+		// 使用equals方法判断是否返回成功，
+		// 若anEntry的值与result的值相等，返回True,否则返回False
 		return anEntry.equals(result);
 	}
 
@@ -99,7 +99,7 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 		// 初始化 result
 		T result = null;
 		
-		//通过循环删除包中所有给定的值
+		// 通过循环删除包中所有给定的值
 		while(index > -1){					// 若index不为负值即包中仍有给定的元素，则继续循环
 			result = removeEntry(index);	// 删除给定数组下标的元素，并将返回值赋给result
 			index = getIndexOf(anEntry);	// 继续再包中寻找给定值的下标
@@ -110,9 +110,9 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 	/** 清空包中的所有元素*/
 	@Override
 	public void clear() {
-		//通过isEmpty来控制while循环，
-		//若isEmpty=False，则每次删除包的最后一个元素
-		//若isEmpty=True,则结束循环
+		// 通过isEmpty来控制while循环，
+		// 若isEmpty=False，则每次删除包的最后一个元素
+		// 若isEmpty=True,则结束循环
 		while(!isEmpty()){
 			remove();
 		}
@@ -122,8 +122,8 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 	private T removeEntry(int givenIndex){
 		
 		T result = null;
-		//若包非空，且给定的下标非负，则将包的最后一个元素赋值到要删除的元素的位置
-		//再将最后一个元素赋值为null,最后将numberOfEntries-1
+		// 若包非空，且给定的下标非负，则将包的最后一个元素赋值到要删除的元素的位置
+		// 再将最后一个元素赋值为null,最后将numberOfEntries-1
 		if(!isEmpty() && (givenIndex >= 0)){
 			result = bag[givenIndex];
 			int lastIndex = numberOfEntries - 1;
@@ -189,7 +189,7 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 			throw new SecurityException("Uninitialized object used " + 
 					"to call an ArrayBag method");
 		}
-	}//end checkinitialization
+	}// end checkinitialization
 	
 	/** 倍增数组容量方法，使用Arrays工具，
 	 *  将原数组拷贝到一个新的容量为原数组两倍的数组中
@@ -200,28 +200,28 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 		int newLength = 2 * bag.length;
 		checkCapacity(newLength);
 		bag = Arrays.copyOf(bag, newLength);
-	}//end doubleCapacity
+	}// end doubleCapacity
 	
 	/** 根据给定值查找元素在数组中的下标位置*/
 	private int getIndexOf(T anEntry){
-		//初试化元素下标位置
+		// 初试化元素下标位置
 		int where = -1;
-		//初始化查找结果
+		// 初始化查找结果
 		boolean found = false;
-		//初始化数组下标
+		// 初始化数组下标
 		int index = 0;
 
-		//若找到该元素在数组中的位置，则结束循环，found=true
-		//若知道循环结束仍未找到元素，则结束循环，found=false
+		// 若找到该元素在数组中的位置，则结束循环，found=true
+		// 若知道循环结束仍未找到元素，则结束循环，found=false
 		while(!found && (index < numberOfEntries)){
 			if(anEntry.equals(bag[index])){
 				found = true;
 				where = index;
 			}
-			//每经过一个元素，数组下标+1
+			// 每经过一个元素，数组下标+1
 			index++;
 		}
-		//返回给定元素下标位置
+		// 返回给定元素下标位置
 		return where;
 	}
 }
