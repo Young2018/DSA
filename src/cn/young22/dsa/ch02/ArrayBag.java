@@ -1,12 +1,13 @@
 package cn.young22.dsa.ch02;
+
+import cn.young22.dsa.ch01.BagInterface;
+
 /** 使用数组实现包的类的代码结构
  *  定义该类的私有数据:存储元素的包bag, 包中的元素个数numberOfEntries
  *  及数组的默认容量DEFAULT_CAPACITY
  *  实现构造方法： 实现一个给定容量的ArrayBag构造方法，在该方法中初始化bag数组
  *  实现BagInterface<T>中要求实现的方法
  * */
-import cn.young22.dsa.ch01.BagInterface;
-
 public class ArrayBag<T> implements BagInterface<T> {
 	//定义终态的泛型数组bag
 	private final T[] bag;	
