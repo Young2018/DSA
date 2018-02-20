@@ -37,7 +37,7 @@ public class ArrayBag<T> implements BagInterface<T> {
 	* @return: 当添加成功时返回真，当添加失败时返回假
 	 */
 	public boolean add(T newEntry) {
-		//to be defined
+		// to be defined
 		return false;
 	}
 
@@ -51,7 +51,7 @@ public class ArrayBag<T> implements BagInterface<T> {
 	* 		  注意：若包为空，则返回的数组也为空
 	 */
 	public T[] toArray() {
-		//to be defined
+		// to be defined
 		return null;
 	}	
 	
@@ -63,7 +63,7 @@ public class ArrayBag<T> implements BagInterface<T> {
 	* @return 若包满，返回真，否则返回假
 	 */
 	public boolean isArrayFull(){
-		//to be defined
+		// to be defined
 		return false;
 	}
 	
@@ -75,7 +75,7 @@ public class ArrayBag<T> implements BagInterface<T> {
 	* @return：返回真或假
 	 */
 	public boolean isEmpty(){
-		//to be defined
+		// to be defined
 		return false;
 		
 	};
