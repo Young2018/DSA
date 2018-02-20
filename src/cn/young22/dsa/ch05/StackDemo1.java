@@ -1,12 +1,22 @@
 package cn.young22.dsa.ch05;
 
+import cn.young22.dsa.ch06.ArrayStack;
 import cn.young22.dsa.ch06.LinkedStack;
-/** 测试LinkedStack方法*/
+import cn.young22.dsa.ch06.VectorStack;
+/** 测试所实现的
+ * 	LinkedStack
+ * 	VectorStack
+ *  ArrayStack
+ * */
 public class StackDemo1 {
 	public static void main(String[] args){
 
 		// 初始化stringStacks
-		StackInterface<String> stringStack = new LinkedStack<>();
+		//StackInterface<String> stringStack = new LinkedStack<>();
+		// 测试ArrayStack
+		// StackInterface<String> stringStack = new ArrayStack();
+		// 测试 VectorStack
+		StackInterface<String> stringStack = new VectorStack<>();
 		
 		// 想栈中添加几个字符串
 		stringStack.push("Jim");
