@@ -5,8 +5,8 @@ package cn.young22.dsa.ch01;
 public class Coin {
 	private enum CoinSide {HEADS, TAILS}
 	private CoinName myName;
-	private int value;	//以分(cent)为单位
-	private int year;  //铸币年份(mint year)
+	private int value;	// 以分(cent)为单位
+	private int year;  // 铸币年份(mint year)
 	private CoinSide sideUp;
 	
 	/**
