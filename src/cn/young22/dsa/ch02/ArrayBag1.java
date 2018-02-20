@@ -35,12 +35,12 @@ public class ArrayBag1<T> implements BagInterface<T> {
 	/** 创建一个给定容量的ArrayBag对象*/
 	public ArrayBag1(int desiredCapacity) {
 		if(desiredCapacity <= MAX_CAPACITY){
-			//由于不可以创建泛型的数组，故先创建Object类型的数组，再强制类型转换成泛型的数组，然后赋值给bag
+			// 由于不可以创建泛型的数组，故先创建Object类型的数组，再强制类型转换成泛型的数组，然后赋值给bag
 			@SuppressWarnings("unchecked")
 			T[] tempBag = (T[])new Object[desiredCapacity];
 			bag = tempBag;
 			numberOfEntries = 0;
-			//初始化完成后，将initialized的值赋为true
+			// 初始化完成后，将initialized的值赋为true
 			initialized = true;
 		}else{
 			throw new IllegalStateException("Attempt to create a bag, whose capacity exceeds allowed maximum");			
@@ -56,14 +56,14 @@ public class ArrayBag1<T> implements BagInterface<T> {
 	* @return: 当添加成功时返回真，当添加失败时返回假
 	 */
 	public boolean add(T newEntry) {
-		checkInitilization();	//check if the object has been initialized properly
-		boolean result = true;	//default result is true
-		if(isArrayFull()){		//if isArrayFull is true, add operation failed
+		checkInitilization();	// check if the object has been initialized properly
+		boolean result = true;	// default result is true
+		if(isArrayFull()){		// if isArrayFull is true, add operation failed
 			result = false;
 		}else{
-			//Assertion: result is true here
-			bag[numberOfEntries] = newEntry;//put the newEntry in the end of the bag
-			numberOfEntries++;//incresement of numberOfEntries
+			// Assertion: result is true here
+			bag[numberOfEntries] = newEntry;// put the newEntry in the end of the bag
+			numberOfEntries++;// increment of numberOfEntries
 		}
 		return result;
 	}
@@ -79,10 +79,10 @@ public class ArrayBag1<T> implements BagInterface<T> {
 	 */
 	public T[] toArray() {
 		checkInitilization();	
-		//the cast is safe because the new array contains null entries
+		// the cast is safe because the new array contains null entries
 		@SuppressWarnings("unchecked")
-		T[] result = (T[])new Object[numberOfEntries]; //Unchecked cast
-		//用循环的方式将bag中的元素赋值给一个新的数组
+		T[] result = (T[])new Object[numberOfEntries]; // Unchecked cast
+		// 用循环的方式将bag中的元素赋值给一个新的数组
 		for(int index = 0; index < numberOfEntries; index++){
 			result[index] = bag[index];
 		}
@@ -145,7 +145,7 @@ public class ArrayBag1<T> implements BagInterface<T> {
 	public int getFrequencyOf(T anEntry) {
 		checkInitilization();
 		int counter = 0;
-		//使用for循环遍历整改包，碰到与给定值相等的元素则counter+1,直到遍历完整改数组
+		// 使用for循环遍历整改包，碰到与给定值相等的元素则counter+1,直到遍历完整改数组
 		for(int index = 0; index < numberOfEntries; index++){
 			if(anEntry.equals(bag[index])){
 				counter++;
@@ -167,9 +167,9 @@ public class ArrayBag1<T> implements BagInterface<T> {
 		checkInitilization();
 		boolean found = false;
 		int index = 0;
-		//使用found和index两个判断条件来遍历整改包
-		//若在包中找到给定元素，循环结束,found=true
-		//若遍历完整改包，任没找到给定元素，循环结束，found=false;
+		// 使用found和index两个判断条件来遍历整改包
+		// 若在包中找到给定元素，循环结束,found=true
+		// 若遍历完整改包，任没找到给定元素，循环结束，found=false;
 		while(!found && (index < numberOfEntries)){
 			if(anEntry.equals(bag[index])){
 				found = true;
