@@ -1,6 +1,6 @@
 package cn.young22.dsa.ch01;
 
-/** 一个用来解释小猪存钱罐的类*/
+/** 一个用来测试小猪存钱罐的类*/
 public class PiggyBankExample {
 
 	public static void main(String[] args) {
