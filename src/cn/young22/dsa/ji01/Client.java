@@ -1,5 +1,5 @@
 package cn.young22.dsa.ji01;
-/** ²âÊÔOrderedPairÀà*/
+/** OrderedPairç±»çš„æµ‹è¯•*/
 public class Client {
 
 	public static void main(String[] args) {

@@ -1,7 +1,7 @@
 package cn.young22.dsa.ch05;
 
-/** ²âÊÔBalanceCheckerÀà£¬
- *  Ê¹ÓÃÒ»¸öÆ½ºâµÄ±í´ïÊ½ºÍÒ»¸ö²»Æ½ºâµÄ±í´ïÊ½À´²âÊÔBalanceCheckerÀà
+/** æµ‹è¯•BalanceCheckerç±»ï¼Œ
+ *  ä½¿ç”¨ä¸€ä¸ªå¹³è¡¡çš„è¡¨è¾¾å¼å’Œä¸€ä¸ªä¸å¹³è¡¡çš„è¡¨è¾¾å¼æ¥æµ‹è¯•BalanceCheckerç±»
  * */
 public class BalanceCheckerDemo {
 	public static void main(String[] args){
@@ -25,7 +25,6 @@ public class BalanceCheckerDemo {
 }
 /*
 Output:
-
 a {b [c (d + e)/2 - f] + 1} is balanced
 a {b [c (d + e)/2 - f + 1} is not balanced
 */

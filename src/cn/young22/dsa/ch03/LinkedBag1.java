@@ -2,10 +2,10 @@ package cn.young22.dsa.ch03;
 
 import cn.young22.dsa.ch01.BagInterface;
 /**
- *  Õâ¸ö°æ±¾µÄLinkedBag1ÀàÔÚLinkedBagÀàµÄ»ù´¡ÉÏÊµÏÖÁË:
- *  	¹¹Ôì·½·¨
- *  	isEmpty()·½·¨
- *  	getFrequencyOf()·½·¨
+ *  è¿™ä¸ªç‰ˆæœ¬çš„LinkedBag1ç±»åœ¨LinkedBagç±»çš„åŸºç¡€ä¸Šå®ç°äº†:
+ *  	æ„é€ æ–¹æ³•
+ *  	isEmpty()æ–¹æ³•
+ *  	getFrequencyOf()æ–¹æ³•
  */
 public class LinkedBag1<T> implements BagInterface<T>{
 	

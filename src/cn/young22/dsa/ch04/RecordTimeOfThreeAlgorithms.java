@@ -1,14 +1,14 @@
 package cn.young22.dsa.ch04;
 
-/** <p>�����ʹ����˵���ò�ͬ���㷨����ͬһ���µ�Ч�ʵĲ��</p>
- *  <p>ʹ�������㷨�������1�ӵ�һ���ܴ���������ʽ�� 1 + 2 + 3 + ... + A_LARGE_NUMBER</p>
+/** <p>这个类使用来说明用不同的算法来做同一件事的效率的差别</p>
+ *  <p>使用三个算法来计算从1加到一个很大的整数这个式子 1 + 2 + 3 + ... + A_LARGE_NUMBER</p>
  *  
- *  <p>�㷨1ʹ��һ��ѭ�����ü�����counter��1�ӵ�A_LARGE_NUMBER</p>
- *  <p>�㷨2ʹ��˫��ѭ�����������A_LARGE_NUMBER����ѭ�����ܴ�����
- *  	���ڲ���index������ѭ���Ĵ������ڲ�ѭ��ִ�е��������ǰҪ�ӵ�����</p>
- *  <p>�㷨3ʹ�ø�˹�㷨ֱ�Ӽ������� counter = (1 + A_LARGE_NUMBER) * A_LARGE_NUMBER / 2</p>
+ *  <p>算法1使用一个循环，让计数器counter从1加到A_LARGE_NUMBER</p>
+ *  <p>算法2使用双重循环，在外层由A_LARGE_NUMBER控制循环的总次数，
+ *  	在内层有index来控制循环的次数，内层循环执行的是算出当前要加的整数</p>
+ *  <p>算法3使用高斯算法直接计算出结果 counter = (1 + A_LARGE_NUMBER) * A_LARGE_NUMBER / 2</p>
  *  
- *  <p>ʹ������Ϊ��λ�����Ը����㷨�õ���ͽ����ʱ�䣬���бȽϣ��Ӷ��ó�����ҪѰ����õ��㷨ȥ���Ч��</p>
+ *  <p>使用纳秒为单位计算以各个算法得到求和结果的时间，进行比较，从而得出，需要寻求更好的算法去提高效率</p>
  *  
  * */
 
@@ -56,19 +56,15 @@ public class RecordTimeOfThreeAlgorithms {
 }
 /*
 output: 
-
 This program uses algorithm 1 to add 1 to 10000000
 result: 500000500000
 Algorithm 1 costs: 5456347ns
-
 This program uses algorithm 2 to add 1 to 10000000
 result: 500000500000
 Algorithm 2 costs: 18675768010ns
-
 This program uses algorithm 3 to add 1 to 10000000
 result: 500000500000
 Algorithm 3 costs: 105467ns
-
-������������Կ�����ʹ�ø�˹�������������ǰ�����㷨��
-ʹ���㷨2��Ч�����Բ����㷨1���㷨3
+从上述结果可以看出，使用高斯法求和明显优于前两种算法，
+使用算法2的效果明显不如算法1和算法3
  */

@@ -4,37 +4,37 @@ import cn.young22.dsa.ch02.ArrayBag1;
 
 /**
  * 
-* @TypeName£ºOnlineShopper   
-* @Description£º Ò»¸öÓÃÀ´Î¬³ÖÔÚÏßÉÌ³Ç¹ºÎï³µµÄÀà
+* @TypeNameï¼šOnlineShopper   
+* @Descriptionï¼š ä¸€ä¸ªç”¨æ¥ç»´æŒåœ¨çº¿å•†åŸè´­ç‰©è½¦çš„ç±»
  */
 public class OnlineShopper {
 
 	public static void main(String[] args) {
-		// Ä£ÄâÉÌÆ·
+		// æ¨¡æ‹Ÿå•†å“
 		Item[] items = {new Item("Bird feeder", 2050),
 				new Item("Squirrel guard", 1547),
 				new Item("Bird batch", 4499),
 				new Item("Sunflower seeds", 1295)
 		};
 		
-		// ´´½¨
+		// åˆ›å»º
 		BagInterface<Item> shoppingCart = new ArrayBag1<>();
-		// ÎïÆ·µÄ×Ü¼Û¸ñ
+		// ç‰©å“çš„æ€»ä»·æ ¼
 		int totalCost = 0;
 		
-		// ½«ÌôÑ¡µÄÉÌÆ·¼Óµ½¹ºÎï³µÖĞ
+		// å°†æŒ‘é€‰çš„å•†å“åŠ åˆ°è´­ç‰©è½¦ä¸­
 		for(int index = 0; index < items.length; index++){
 			Item nextItem = items[index];
 			shoppingCart.add(nextItem);
 			totalCost = totalCost + nextItem.getPrice();
 		}
 		
-		// Ã¿´ÎÉ¾³ıÒ»¸ö¹ºÎï³µÖĞµÄÉÌÆ·²¢ÏÔÊ¾ÉÌÆ·ĞÅÏ¢
+		// æ¯æ¬¡åˆ é™¤ä¸€ä¸ªè´­ç‰©è½¦ä¸­çš„å•†å“å¹¶æ˜¾ç¤ºå•†å“ä¿¡æ¯
 		while(!shoppingCart.isEmpty()){
 			System.out.println(shoppingCart.remove());
 		}
 		
-		// ÏÔÊ¾ÉÌÆ·×Ü¼Û¸ñ
+		// æ˜¾ç¤ºå•†å“æ€»ä»·æ ¼
 		System.out.println("Total cost: " + "\t$" + totalCost / 100 + "." + totalCost % 100);
 		
 	}

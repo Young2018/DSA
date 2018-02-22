@@ -4,24 +4,24 @@ import java.util.Arrays;
 import java.util.EmptyStackException;
 
 import cn.young22.dsa.ch05.StackInterface;
-/** ArrayStackÊÇÓÃÊı×éÊµÏÖµÄÕ»
- * 	ËüÊµÏÖÁËStackInterfaceµÄ¹¦ÄÜ
+/** ArrayStackæ˜¯ç”¨æ•°ç»„å®ç°çš„æ ˆ
+ * 	å®ƒå®ç°äº†StackInterfaceçš„åŠŸèƒ½
  * */
 public class ArrayStack<T> implements StackInterface<T>{
-	private T[] stack;						// ·ºĞÍµÄÕ»Êı×é
-	private int topIndex;					// ¼ÇÂ¼Õ»¶¥Î»ÖÃµÄ±äÁ¿
-	private boolean initialized = false;	// ³õÊ¼»¯±êÊ¶·û
-	private static final int DEFAULT_CAPACITY = 50;	// Ä¬ÈÏÕ»ÈİÁ¿Îª50
-	private static final int MAX_CAPACITY = 10000;	// ×î´óµÄÕ»ÈİÁ¿Îª10000
+	private T[] stack;						// æ³›å‹çš„æ ˆæ•°ç»„
+	private int topIndex;					// è®°å½•æ ˆé¡¶ä½ç½®çš„å˜é‡
+	private boolean initialized = false;	// åˆå§‹åŒ–æ ‡è¯†ç¬¦
+	private static final int DEFAULT_CAPACITY = 50;	// é»˜è®¤æ ˆå®¹é‡ä¸º50
+	private static final int MAX_CAPACITY = 10000;	// æœ€å¤§çš„æ ˆå®¹é‡ä¸º10000
 	
-	/** Ä¬ÈÏ¹¹ÔìÆ÷·½·¨£¬Éú³ÉÒ»¸öÄ¬ÈÏÈİÁ¿µÄÕ»¶ÔÏó*/
+	/** é»˜è®¤æ„é€ å™¨æ–¹æ³•ï¼Œç”Ÿæˆä¸€ä¸ªé»˜è®¤å®¹é‡çš„æ ˆå¯¹è±¡*/
 	public ArrayStack(){
 		this(DEFAULT_CAPACITY);
 	}// end default constructor
 	
-	/** ¿Í»§Ö¸¶¨Õ»ÈİÁ¿µÄ¹¹Ôì·½·¨£¬¸ù¾İÓÃ»§Ö¸¶¨µÄÕ»ÈİÁ¿Éú³ÉÒ»¸öÕ»¶ÔÏó*/
+	/** å®¢æˆ·æŒ‡å®šæ ˆå®¹é‡çš„æ„é€ æ–¹æ³•ï¼Œæ ¹æ®ç”¨æˆ·æŒ‡å®šçš„æ ˆå®¹é‡ç”Ÿæˆä¸€ä¸ªæ ˆå¯¹è±¡*/
 	public ArrayStack(int initialCapacity) {
-		// ¼ì²é¿Í»§Ö¸¶¨µÄÕ»ÈİÁ¿ÊÇ·ñÊÇĞ¡ÓÚ×î´óÕ»ÈİÁ¿µÄ
+		// æ£€æŸ¥å®¢æˆ·æŒ‡å®šçš„æ ˆå®¹é‡æ˜¯å¦æ˜¯å°äºæœ€å¤§æ ˆå®¹é‡çš„
 		checkCapacity(initialCapacity);
 		
 		// The cast is safe because the new array contains null entries
@@ -34,7 +34,7 @@ public class ArrayStack<T> implements StackInterface<T>{
 
 // <Implementations of the stack operations go here.>
 	
-	/** push·½·¨½«¿Í»§Ö¸¶¨µÄÖµ¼ÓÈëµ½Õ»¶¥*/
+	/** pushæ–¹æ³•å°†å®¢æˆ·æŒ‡å®šçš„å€¼åŠ å…¥åˆ°æ ˆé¡¶*/
 	@Override
 	public void push(T newEntry) {
 		
@@ -44,10 +44,10 @@ public class ArrayStack<T> implements StackInterface<T>{
 		topIndex++;
 	}
 	
-	/** pop·½·¨É¾³ıÕ»¶¥ÔªËØ
-	 *  ÏÈ¼ì²éÕ»ÊÇ·ñÕı³£³õÊ¼»¯£¬ÈôÎ´Õı³£³õÊ¼»¯£¬ÔòÅ×³öÒì³£
-	 *  È»ºóÔÙ¼ì²éÕ»ÊÇ·ñÎª¿Õ£¬ÈôÕ»¿Õ£¬ÔòÅ×³öÒì³£
-	 *  ÈôÕ»¶ÔÏó³õÊ¼»¯³É¹¦ÇÒÕ»²»Îª¿Õ£¬ÔòÉ¾³ıÕ»¶¥ÔªËØ
+	/** popæ–¹æ³•åˆ é™¤æ ˆé¡¶å…ƒç´ 
+	 *  å…ˆæ£€æŸ¥æ ˆæ˜¯å¦æ­£å¸¸åˆå§‹åŒ–ï¼Œè‹¥æœªæ­£å¸¸åˆå§‹åŒ–ï¼Œåˆ™æŠ›å‡ºå¼‚å¸¸
+	 *  ç„¶åå†æ£€æŸ¥æ ˆæ˜¯å¦ä¸ºç©ºï¼Œè‹¥æ ˆç©ºï¼Œåˆ™æŠ›å‡ºå¼‚å¸¸
+	 *  è‹¥æ ˆå¯¹è±¡åˆå§‹åŒ–æˆåŠŸä¸”æ ˆä¸ä¸ºç©ºï¼Œåˆ™åˆ é™¤æ ˆé¡¶å…ƒç´ 
 	 * */
 	@Override
 	public T pop() {
@@ -62,9 +62,9 @@ public class ArrayStack<T> implements StackInterface<T>{
 		}
 	}
 	
-	/** »ñÈ¡Õ»¶¥ÔªËØµÄÖµ
-	 *  Óëpop·½·¨ÀàËÆ£¬ÏÈÒª¼ì²éÕ»¶ÔÏóÊÇ·ñ³õÊ¼»¯³É¹¦ºÍÕ»ÊÇ·ñÎª¿Õ
-	 *  µ±Õ»³õÊ¼»¯³É¹¦ÇÒ²»Îª¿ÕÊ±£¬·µ»ØÕ»¶¥ÔªËØµÄÖµ
+	/** è·å–æ ˆé¡¶å…ƒç´ çš„å€¼
+	 *  ä¸popæ–¹æ³•ç±»ä¼¼ï¼Œå…ˆè¦æ£€æŸ¥æ ˆå¯¹è±¡æ˜¯å¦åˆå§‹åŒ–æˆåŠŸå’Œæ ˆæ˜¯å¦ä¸ºç©º
+	 *  å½“æ ˆåˆå§‹åŒ–æˆåŠŸä¸”ä¸ä¸ºç©ºæ—¶ï¼Œè¿”å›æ ˆé¡¶å…ƒç´ çš„å€¼
 	 * */
 	@Override
 	public T peek() {
@@ -76,16 +76,16 @@ public class ArrayStack<T> implements StackInterface<T>{
 		}
 	}
 	
-	/** ²é¿´Õ»ÊÇ·ñÎª¿Õ*/
+	/** æŸ¥çœ‹æ ˆæ˜¯å¦ä¸ºç©º*/
 	@Override
 	public boolean isEmpty() {
 		return topIndex < 0;
 	}
 	
-	/** Çå³ıÕ»ÖĞµÄËùÓĞÔªËØ*/
+	/** æ¸…é™¤æ ˆä¸­çš„æ‰€æœ‰å…ƒç´ */
 	@Override
 	public void clear() {
-		// µ±Õ»²»Îª¿ÕÊ±£¬ÔòÒ»Ö±pop³öÕ»¶¥ÔªËØ
+		// å½“æ ˆä¸ä¸ºç©ºæ—¶ï¼Œåˆ™ä¸€ç›´popå‡ºæ ˆé¡¶å…ƒç´ 
 		while(!isEmpty()){
 			pop();
 		}
@@ -94,7 +94,7 @@ public class ArrayStack<T> implements StackInterface<T>{
 	/**
 	 * 
 	* @FunctionName: checkCapacity
-	* @Action: ¼ì²â¿Í»§¶ËËùÒªµÄÈİÁ¿ÊÇ·ñ´óÓÚ×î´óÈİÁ¿Öµ
+	* @Action: æ£€æµ‹å®¢æˆ·ç«¯æ‰€è¦çš„å®¹é‡æ˜¯å¦å¤§äºæœ€å¤§å®¹é‡å€¼
 	* @param @param desiredCapacity    
 	 */
 	private void checkCapacity(int desiredCapacity){
@@ -108,8 +108,8 @@ public class ArrayStack<T> implements StackInterface<T>{
 	/**
 	 * 
 	* @FunctionName: checkInitilization
-	* @Action: ¼ì²â¶ÔÏóÊÇ·ñ±»Õı³£³õÊ¼»¯
-	* @ReturnType£º void    
+	* @Action: æ£€æµ‹å¯¹è±¡æ˜¯å¦è¢«æ­£å¸¸åˆå§‹åŒ–
+	* @ReturnTypeï¼š void    
 	* @return
 	 */
 	private void checkInitilization(){
@@ -121,8 +121,8 @@ public class ArrayStack<T> implements StackInterface<T>{
 	/**
 	 * 
 	* @FunctionName: ensureCapacity
-	* @Action: ±£Ö¤Õ»ÓĞ×ã¹»µÄÈİÁ¿ 
-	* @ReturnType£º void    
+	* @Action: ä¿è¯æ ˆæœ‰è¶³å¤Ÿçš„å®¹é‡ 
+	* @ReturnTypeï¼š void    
 	 */
 	private void ensureCapacity(){
 		if(topIndex >= stack.length - 1){

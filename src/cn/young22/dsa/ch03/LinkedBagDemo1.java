@@ -1,13 +1,13 @@
 package cn.young22.dsa.ch03;
 
 import cn.young22.dsa.ch01.BagInterface;
-/** Õâ¸öÀàÓÃÀ´²âÊÔLinkedBag1ËùÊµÏÖµÄ
- *  isEmpty·½·¨ºÍadd·½·¨*/
+/** è¿™ä¸ªç±»ç”¨æ¥æµ‹è¯•LinkedBag1æ‰€å®ç°çš„
+ *  isEmptyæ–¹æ³•å’Œaddæ–¹æ³•*/
 public class LinkedBagDemo1 {
 
 	public static void main(String[] args) {
 		System.out.println("Creating an empty bag");
-		// ´´½¨Ò»¸öLinkedBag1ÀàĞÍµÄ¶ÔÏó²¢¸³Öµ¸øBagInterface<String>ÀàĞÍµÄaBag
+		// åˆ›å»ºä¸€ä¸ªLinkedBag1ç±»å‹çš„å¯¹è±¡å¹¶èµ‹å€¼ç»™BagInterface<String>ç±»å‹çš„aBag
 		BagInterface<String> aBag = new LinkedBag1<>();
 		
 		// tests the method isEmpty
@@ -75,18 +75,12 @@ public class LinkedBagDemo1 {
 }
 /*
 output:
-
 Creating an empty bag
-
 Testing isEmpty with an empty bag:
 isEmpty finds the bag empty: OK.
-
 The bag contains the following string(s)
-
 Adding the following 7 string(s) to the bag: 
 A D B A C A D 
-
 Testing isEmpty with a bag that is not empty:
 isEmpty finds the bag not empty: OK.
-
  */

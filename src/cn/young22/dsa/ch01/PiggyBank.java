@@ -1,26 +1,26 @@
 package cn.young22.dsa.ch01;
 
 import cn.young22.dsa.ch02.ArrayBag;
-/** Ğ¡Öí´æÇ®¹ŞÀà*/
+/** å°çŒªå­˜é’±ç½ç±»*/
 public class PiggyBank {
-	// Ë½ÓĞµÄ°üÀàĞÍµÄ±äÁ¿coins
+	// ç§æœ‰çš„åŒ…ç±»å‹çš„å˜é‡coins
 	private BagInterface<Coin> coins;
-	/** ¹¹Ôì·½·¨£¬ĞÂÉú²úÒ»¸öArrayBag¶ÔÏó²¢¸³Öµ¸øcoins*/
+	/** æ„é€ æ–¹æ³•ï¼Œæ–°ç”Ÿäº§ä¸€ä¸ªArrayBagå¯¹è±¡å¹¶èµ‹å€¼ç»™coins*/
 	public PiggyBank(){
 		coins = new ArrayBag<>();
 	}
 	
-	/** ÏòcoinsÖĞÌí¼ÓÓ²±Ò*/
+	/** å‘coinsä¸­æ·»åŠ ç¡¬å¸*/
 	public boolean add(Coin aCoin){
 		return coins.add(aCoin);
 	}
 	
-	/** ÒÆ³ıcoinsÖĞµÄÓ²±Ò*/
+	/** ç§»é™¤coinsä¸­çš„ç¡¬å¸*/
 	public Coin remove(){
 		return coins.remove();
 	}
 	
-	/** ÅĞ¶ÏcoinsÊÇ·ñÎª¿Õ*/
+	/** åˆ¤æ–­coinsæ˜¯å¦ä¸ºç©º*/
 	public boolean isEmpty(){
 		return coins.isEmpty();
 	}

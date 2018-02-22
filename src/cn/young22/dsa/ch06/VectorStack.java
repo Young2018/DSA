@@ -6,92 +6,92 @@ import java.util.Vector;
 import cn.young22.dsa.ch05.StackInterface;
 
 /**
- * 	µ÷ÓÃVectorÀàÀ´ÊµÏÖÕ»µÄ¹¦ÄÜ
- *  VectorStackÊµÏÖÁËËùÓĞStackInterfaceµÄ¹¦ÄÜ
+ * 	è°ƒç”¨Vectorç±»æ¥å®ç°æ ˆçš„åŠŸèƒ½
+ *  VectorStackå®ç°äº†æ‰€æœ‰StackInterfaceçš„åŠŸèƒ½
  * */
 public class VectorStack<T> implements StackInterface<T> {
 
-	private Vector<T> stack;						// ³õÊ¼»¯Ò»¸öVector·ºĞÍµÄÕ»stack
-	private boolean initialized = false;			// ½«¶ÔÏó³õÊ¼»¯±êÊ¶·ûÉèÎªfalse
-	private static final int DEFAULT_CAPACITY = 50;	// ½«Õ»¶¥Ä¬ÈÏÈİÁ¿ÉèÎª50
-	private static final int MAX_CAPACITY = 10000;	// ½«Õ»µÄ×î´óÈİÁ¿ÉèÎª10000
+	private Vector<T> stack;						// åˆå§‹åŒ–ä¸€ä¸ªVectoræ³›å‹çš„æ ˆstack
+	private boolean initialized = false;			// å°†å¯¹è±¡åˆå§‹åŒ–æ ‡è¯†ç¬¦è®¾ä¸ºfalse
+	private static final int DEFAULT_CAPACITY = 50;	// å°†æ ˆé¡¶é»˜è®¤å®¹é‡è®¾ä¸º50
+	private static final int MAX_CAPACITY = 10000;	// å°†æ ˆçš„æœ€å¤§å®¹é‡è®¾ä¸º10000
 	
-	/** Ä¬ÈÏ¹¹Ôì·½·¨£¬Éú³ÉÒ»¸öÄ¬ÈÏÈİÁ¿µÄVectorStack¶ÔÏó*/
+	/** é»˜è®¤æ„é€ æ–¹æ³•ï¼Œç”Ÿæˆä¸€ä¸ªé»˜è®¤å®¹é‡çš„VectorStackå¯¹è±¡*/
 	public VectorStack(){
 		this(DEFAULT_CAPACITY);
 	}
 	
-	/** Õ»µÄ¹¹Ôì·½·¨£¬¸ù¾İÓÃ»§¸ø¶¨Õ»ÈİÁ¿Éú³ÉÕ»*/
+	/** æ ˆçš„æ„é€ æ–¹æ³•ï¼Œæ ¹æ®ç”¨æˆ·ç»™å®šæ ˆå®¹é‡ç”Ÿæˆæ ˆ*/
 	public VectorStack(int initialCapacity){
-		// ¼ì²éÓÃ»§¸ø¶¨ÈİÁ¿ÊÇ·ñ³¬¹ıÕ»ÈİÁ¿µÄ×î´óÖµ
+		// æ£€æŸ¥ç”¨æˆ·ç»™å®šå®¹é‡æ˜¯å¦è¶…è¿‡æ ˆå®¹é‡çš„æœ€å¤§å€¼
 		checkCapacity(initialCapacity);
-		// ÈôÎ´³¬¹ıÕ»ÈİÁ¿µÄ×î´óÖµÔòÊ¹ÓÃVectorÀà¹¹ÔìÒ»¸ö¸ø¶¨ÈİÁ¿µÄÕ»
+		// è‹¥æœªè¶…è¿‡æ ˆå®¹é‡çš„æœ€å¤§å€¼åˆ™ä½¿ç”¨Vectorç±»æ„é€ ä¸€ä¸ªç»™å®šå®¹é‡çš„æ ˆ
 		stack = new Vector<>(initialCapacity);
-		// ½«¶ÔÏó³õÊ¼»¯±êÊ¶·ûÉèÖÃÎªtrue
+		// å°†å¯¹è±¡åˆå§‹åŒ–æ ‡è¯†ç¬¦è®¾ç½®ä¸ºtrue
 		initialized = true;
 	}
 	
-	/** push·½·¨£¬ÓÃÀ´½«ÓÃ»§¸ø¶¨µÄÖµÌí¼Óµ½Õ»¶¥*/
+	/** pushæ–¹æ³•ï¼Œç”¨æ¥å°†ç”¨æˆ·ç»™å®šçš„å€¼æ·»åŠ åˆ°æ ˆé¡¶*/
 	@Override
 	public void push(T newEntry) {
-		// ¼ì²éÕ»¶ÔÏóÊÇ·ñ³õÊ¼»¯³É¹¦
+		// æ£€æŸ¥æ ˆå¯¹è±¡æ˜¯å¦åˆå§‹åŒ–æˆåŠŸ
 		checkInitilization();
-		// Èô³É¹¦£¬Ôòµ÷ÓÃVectorµÄadd·½·¨£¬½«¸ø¶¨µÄÖµ¼Óµ½Õ»¶¥
+		// è‹¥æˆåŠŸï¼Œåˆ™è°ƒç”¨Vectorçš„addæ–¹æ³•ï¼Œå°†ç»™å®šçš„å€¼åŠ åˆ°æ ˆé¡¶
 		stack.add(newEntry);
 	}
 	
-	/** pop·½·¨£¬É¾³ıÕ»¶¥ÔªËØ*/
+	/** popæ–¹æ³•ï¼Œåˆ é™¤æ ˆé¡¶å…ƒç´ */
 	@Override
 	public T pop() {
-		// ¼ì²éÕ»¶ÔÏóÊÇ·ñ³õÊ¼»¯³É¹¦
+		// æ£€æŸ¥æ ˆå¯¹è±¡æ˜¯å¦åˆå§‹åŒ–æˆåŠŸ
 		checkInitilization();
-		// ÈôÕ»Îª¿Õ£¬ÔòÅ×³öÕ»¿ÕÒì³£
+		// è‹¥æ ˆä¸ºç©ºï¼Œåˆ™æŠ›å‡ºæ ˆç©ºå¼‚å¸¸
 		if(isEmpty()){
 			throw new EmptyStackException();
 		}
-		// ÈôÕ»²»Îª¿Õ£¬ÒÆ³ıÕ»¶¥ÔªËØ
+		// è‹¥æ ˆä¸ä¸ºç©ºï¼Œç§»é™¤æ ˆé¡¶å…ƒç´ 
 		else{
 			return stack.remove(stack.size() - 1);
 		}
 	}
 	
-	/** peek·½·¨£¬»ñÈ¡Õ»¶¥ÔªËØµÄÖµ*/
+	/** peekæ–¹æ³•ï¼Œè·å–æ ˆé¡¶å…ƒç´ çš„å€¼*/
 	@Override
 	public T peek() {
-		// ¼ì²éÕ»¶ÔÏóÊÇ·ñ³õÊ¼»¯³É¹¦
+		// æ£€æŸ¥æ ˆå¯¹è±¡æ˜¯å¦åˆå§‹åŒ–æˆåŠŸ
 		checkInitilization();
-		// ÈôÕ»¿Õ£¬ÔòÅ×³öÕ»¿ÕÒì³£
+		// è‹¥æ ˆç©ºï¼Œåˆ™æŠ›å‡ºæ ˆç©ºå¼‚å¸¸
 		if(isEmpty()){
 			throw new EmptyStackException();
 		}
-		// ÈôÕ»²»Îª¿Õ£¬Ôò·µ»ØÕ»¶¥ÔªËØ(¶ÔÓÚVectorÀ´Ëµ£¬ÊÇVectorµÄ×îºóÒ»¸öÔªËØ)
+		// è‹¥æ ˆä¸ä¸ºç©ºï¼Œåˆ™è¿”å›æ ˆé¡¶å…ƒç´ (å¯¹äºVectoræ¥è¯´ï¼Œæ˜¯Vectorçš„æœ€åä¸€ä¸ªå…ƒç´ )
 		else{
 			return stack.lastElement();
 		}
 	}
 	
-	/** ÅĞ¶ÏÕ»¿Õ*/
+	/** åˆ¤æ–­æ ˆç©º*/
 	@Override
 	public boolean isEmpty() {
-		// µ÷ÓÃVectorµÄisEmpty()·½·¨¿ÉÒÔµÃµ½Õ»ÊÇ·ñÎª¿ÕµÄ½á¹û
+		// è°ƒç”¨Vectorçš„isEmpty()æ–¹æ³•å¯ä»¥å¾—åˆ°æ ˆæ˜¯å¦ä¸ºç©ºçš„ç»“æœ
 		return stack.isEmpty();
 	}
 	
-	/** Çå³ıÕ»*/
+	/** æ¸…é™¤æ ˆ*/
 	@Override
 	public void clear() {
-		// µ÷ÓÃVectorµÄclear()·½·¨¿ÉÒÔÇå³ıÕ»
+		// è°ƒç”¨Vectorçš„clear()æ–¹æ³•å¯ä»¥æ¸…é™¤æ ˆ
 		stack.clear();
 	}
 	
 	/**
 	 * 
 	* @FunctionName: checkCapacity
-	* @Action: ¼ì²â¿Í»§¶ËËùÒªµÄÈİÁ¿ÊÇ·ñ´óÓÚ×î´óÈİÁ¿Öµ
+	* @Action: æ£€æµ‹å®¢æˆ·ç«¯æ‰€è¦çš„å®¹é‡æ˜¯å¦å¤§äºæœ€å¤§å®¹é‡å€¼
 	* @param @param desiredCapacity    
 	 */
 	private void checkCapacity(int desiredCapacity){
-		// Èô¿Í»§ĞèÇóµÄÕ»ÈİÁ¿´óÓÚ×î´óµÄÕ»ÈİÁ¿£¬Å×³öÒì³£
+		// è‹¥å®¢æˆ·éœ€æ±‚çš„æ ˆå®¹é‡å¤§äºæœ€å¤§çš„æ ˆå®¹é‡ï¼ŒæŠ›å‡ºå¼‚å¸¸
 		if(desiredCapacity > MAX_CAPACITY){
 			throw new IllegalStateException("Attempt to create a bag whose capacity"+
 					" exceeds allowed maximu of" + 
@@ -102,12 +102,12 @@ public class VectorStack<T> implements StackInterface<T> {
 	/**
 	 * 
 	* @FunctionName: checkInitilization
-	* @Action: ¼ì²â¶ÔÏóÊÇ·ñ±»Õı³£³õÊ¼»¯
-	* @ReturnType£º void    
+	* @Action: æ£€æµ‹å¯¹è±¡æ˜¯å¦è¢«æ­£å¸¸åˆå§‹åŒ–
+	* @ReturnTypeï¼š void    
 	* @return
 	 */
 	private void checkInitilization(){
-		// Èô¶ÔÏóÎ´Õı³£³õÊ¼»¯£¬Å×³öÒì³£
+		// è‹¥å¯¹è±¡æœªæ­£å¸¸åˆå§‹åŒ–ï¼ŒæŠ›å‡ºå¼‚å¸¸
 		if(!initialized){
 			throw new SecurityException("ArrayBag object is not initialized properly");
 		}

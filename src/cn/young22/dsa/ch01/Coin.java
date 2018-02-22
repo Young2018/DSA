@@ -1,16 +1,16 @@
 package cn.young22.dsa.ch01;
 
-/** Ò»¸ö´ú±íÓ²±ÒµÄÀà*/
+/** ä¸€ä¸ªä»£è¡¨ç¡¬å¸çš„ç±»*/
 
 public class Coin {
 	private enum CoinSide {HEADS, TAILS}
 	private CoinName myName;
-	private int value;	// ÒÔ·Ö(cent)Îªµ¥Î»
-	private int year;  // Öı±ÒÄê·İ(mint year)
+	private int value;	// ä»¥åˆ†(cent)ä¸ºå•ä½
+	private int year;  // é“¸å¸å¹´ä»½(mint year)
 	private CoinSide sideUp;
 	
 	/**
-	 * ¹¹ÔìÆ÷·½·¨£¬ ´´½¨Ò»¸ö¸ø¶¨ÃæÖµºÍÖı±ÒÄê·İµÄ¶ÔÏó£¬ÕıÃæ³¯ÉÏµÄÃæÊÇËæ»úÉè¶¨µÄ
+	 * æ„é€ å™¨æ–¹æ³•ï¼Œ åˆ›å»ºä¸€ä¸ªç»™å®šé¢å€¼å’Œé“¸å¸å¹´ä»½çš„å¯¹è±¡ï¼Œæ­£é¢æœä¸Šçš„é¢æ˜¯éšæœºè®¾å®šçš„
 	 * @param coinValue
 	 * @param mintYear
 	 */
@@ -43,7 +43,7 @@ public class Coin {
 		sideUp = getToss();
 	}
 	/**
-	 * ¹¹ÔìÆ÷·½·¨£¬´´½¨Ò»¸ö¸ø¶¨Ó²±ÒÃû³ÆºÍÖı±ÒÄê·İµÄ¶ÔÏó£¬ÕıÃæ³¯ÉÏµÄÃæÊÇËæ»úÉè¶¨µÄ
+	 * æ„é€ å™¨æ–¹æ³•ï¼Œåˆ›å»ºä¸€ä¸ªç»™å®šç¡¬å¸åç§°å’Œé“¸å¸å¹´ä»½çš„å¯¹è±¡ï¼Œæ­£é¢æœä¸Šçš„é¢æ˜¯éšæœºè®¾å®šçš„
 	 * @param name
 	 * @param mintYear
 	 */
@@ -73,44 +73,44 @@ public class Coin {
 		}
 	}
 	
-	/** ·µ»ØÓ²±ÒµÄÃû³Æ*/
+	/** è¿”å›ç¡¬å¸çš„åç§°*/
 	public CoinName getMyName() {
 		return myName;
 	}
-	/** ·µ»ØÓ²±ÒµÄÃæÖµ*/
+	/** è¿”å›ç¡¬å¸çš„é¢å€¼*/
 	public int getValue() {
 		return value;
 	}
-	/** ·µ»ØÓ²±ÒµÄÖıÔìÄê·İ*/
+	/** è¿”å›ç¡¬å¸çš„é“¸é€ å¹´ä»½*/
 	public int getYear() {
 		return year;
 	}
-	/** Èç¹ûÍ·Ïñ³¯ÉÏÔò·µ»Ø "HEADS"£¬·ñÔò·µ»Ø"TAILS"*/
+	/** å¦‚æœå¤´åƒæœä¸Šåˆ™è¿”å› "HEADS"ï¼Œå¦åˆ™è¿”å›"TAILS"*/
 	public String getSideUp() {
 		return sideUp.toString();
 	}
 	
-	/** ÈôÍ·Ïñ³¯ÉÏ£¬Ôò·µ»ØÕæ£¬·ñÔò·µ»Ø¼Ù*/
+	/** è‹¥å¤´åƒæœä¸Šï¼Œåˆ™è¿”å›çœŸï¼Œå¦åˆ™è¿”å›å‡*/
 	public boolean isHeads(){
 		return sideUp == CoinSide.HEADS;
 	}
 	
-	/** Èô±³Ãæ(·ÇÍ·ÏñÃæ)³¯ÉÏ£¬Ôò·µ»ØÕæ£¬·ñÔò·µ»Ø¼Ù*/
+	/** è‹¥èƒŒé¢(éå¤´åƒé¢)æœä¸Šï¼Œåˆ™è¿”å›çœŸï¼Œå¦åˆ™è¿”å›å‡*/
 	public boolean isTails(){
 		return sideUp == CoinSide.TAILS;
 	}
 	
-	/** Å×ÖÀÓ²±Ò£¬³¯ÉÏµÄÃæ»áËæ»úµÄÎª"HEADS"»ò"TAILS"*/
+	/** æŠ›æ·ç¡¬å¸ï¼Œæœä¸Šçš„é¢ä¼šéšæœºçš„ä¸º"HEADS"æˆ–"TAILS"*/
 	public void toss(){
 		sideUp = getToss();
 	}
 	
-	/** ÒÔvalue/year/side-upµÄ¸ñÊ½·µ»ØÓ²±ÒµÄ×Ö·û´®ĞÅÏ¢*/
+	/** ä»¥value/year/side-upçš„æ ¼å¼è¿”å›ç¡¬å¸çš„å­—ç¬¦ä¸²ä¿¡æ¯*/
 	public String toString(){
 		return value + "/" + year + "/" + sideUp;
 	}
 	
-	/** ·µ»ØÒ»¸öÍ¶ÖÀÓ²±ÒºóµÄËæ»úÃæ³¯ÉÏµÄÖµ"HEADS"»ò"TAILS"*/
+	/** è¿”å›ä¸€ä¸ªæŠ•æ·ç¡¬å¸åçš„éšæœºé¢æœä¸Šçš„å€¼"HEADS"æˆ–"TAILS"*/
 	private CoinSide getToss(){
 		CoinSide result;
 		if(Math.random() < 0.5){

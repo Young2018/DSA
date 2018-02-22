@@ -1,4 +1,4 @@
 package cn.young22.dsa.ch01;
 
-/** Ò»¸öÓ²±ÒÃûµÄÃ¶¾ÙÀà*/
+/** ä¸€ä¸ªç¡¬å¸åç§°çš„æšä¸¾ç±»*/
 public enum CoinName {PENNY, NICKEL, DIME, QUARTER, FIFTY_CENT, DOLLAR}

@@ -2,7 +2,7 @@ package cn.young22.dsa.ch02;
 
 import cn.young22.dsa.ch01.BagInterface;
 
-/** ²âÊÔArrayBag1µÄÀà*/
+/** ä¸€ä¸ªç”¨æ¥æµ‹è¯•ArrayBag1çš„ç±»*/
 public class ArrayBagDemo1 {
 
 	public static void main(String[] args) {

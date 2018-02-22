@@ -3,8 +3,8 @@ package cn.young22.dsa.ch02;
 import cn.young22.dsa.ch01.BagInterface;
 
 /**
- * Õâ¸öÀàÊ¹ÓÃÀ´²âÊÔArrayBag2ÖĞĞÂÌí¼ÓµÄ·½·¨µÄ
- * Ö÷Òª²âÊÔÁËremoveÏµÁĞµÄ·½·¨
+ * è¿™ä¸ªç±»ä½¿ç”¨æ¥æµ‹è¯•ArrayBag2ä¸­æ–°æ·»åŠ çš„æ–¹æ³•çš„
+ * ä¸»è¦æµ‹è¯•äº†removeç³»åˆ—çš„æ–¹æ³•
  * */
 
 public class ArrayBagDemo2 {
@@ -74,40 +74,32 @@ public class ArrayBagDemo2 {
 
 /**
 Expected output:
-
 Adding A A B A C fadsd 
 The bag contains 6 string(s), as follows:
 A A B A C fadsd 
-
 Removing a string from the bag
 remove returns fadsd
 The bag contains 5 string(s), as follows:
 A A B A C 
-
 Removing "B" from the bag:
 remove("B") returns true
 The bag contains 4 string(s), as follows:
 A A C A 
-
 Removing "A" from the bag:
 remove("A") returns true
 The bag contains 3 string(s), as follows:
 A A C 
-
 Removing "C" from the bag:
 remove("C") returns true
 The bag contains 2 string(s), as follows:
 A A 
-
 Removing "D" from the bag:
 remove("D") returns false
 The bag contains 2 string(s), as follows:
 A A 
-
 Removing "A" from the bag:
 remove("A") returns true
 The bag contains 1 string(s), as follows:
 A 
 The bag contains 0 string(s), as follows:
-
  */

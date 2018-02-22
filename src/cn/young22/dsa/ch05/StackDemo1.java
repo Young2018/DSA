@@ -3,7 +3,7 @@ package cn.young22.dsa.ch05;
 import cn.young22.dsa.ch06.ArrayStack;
 import cn.young22.dsa.ch06.LinkedStack;
 import cn.young22.dsa.ch06.VectorStack;
-/** ²âÊÔËùÊµÏÖµÄ
+/** æµ‹è¯•æ‰€å®ç°çš„
  * 	LinkedStack
  * 	VectorStack
  *  ArrayStack
@@ -11,33 +11,33 @@ import cn.young22.dsa.ch06.VectorStack;
 public class StackDemo1 {
 	public static void main(String[] args){
 
-		// ³õÊ¼»¯stringStacks
+		// åˆå§‹åŒ–stringStacks
 		// StackInterface<String> stringStack = new LinkedStack<>();
-		// ²âÊÔArrayStack
+		// æµ‹è¯•ArrayStack
 		// StackInterface<String> stringStack = new ArrayStack();
-		// ²âÊÔ VectorStack
+		// æµ‹è¯• VectorStack
 		StackInterface<String> stringStack = new VectorStack<>();
 		
-		// ÏòÕ»ÖĞÌí¼Ó¼¸¸ö×Ö·û´®
+		// å‘æ ˆä¸­æ·»åŠ å‡ ä¸ªå­—ç¬¦ä¸²
 		stringStack.push("Jim");
 		stringStack.push("Jess");
 		stringStack.push("Jill");
 		stringStack.push("Jane");
 		stringStack.push("Joe");
 		
-		// È¡Õ»¶¥ÔªËØµÄÖµ
+		// å–æ ˆé¡¶å…ƒç´ çš„å€¼
 		String top = stringStack.peek();		//returns "Joe"
 		System.out.println(top + " is at the top of the stack"); 
 		
-		// É¾³ıÕ»¶¥ÔªËØµÄÖµ
+		// åˆ é™¤æ ˆé¡¶å…ƒç´ çš„å€¼
 		top = stringStack.pop();				//returns "Joe"
 		System.out.println(top + " is removed from the stack");
 		
-		// È¡Õ»¶¥ÔªËØµÄÖµ
+		// å–æ ˆé¡¶å…ƒç´ çš„å€¼
 		top = stringStack.peek();				//returns "Jane"
 		System.out.println(top + " is at the top of the stack");
 		
-		// É¾³ıÕ»¶¥ÔªËØµÄÖµ
+		// åˆ é™¤æ ˆé¡¶å…ƒç´ çš„å€¼
 		top = stringStack.pop();				//returns "Jane"
 		System.out.println(top + " is removed from the stack");
 		
@@ -45,7 +45,6 @@ public class StackDemo1 {
 }
 /**
 Output:
-
 Joe is at the top of the stack
 Joe is removed from the stack
 Jane is at the top of the stack

@@ -3,9 +3,9 @@ package cn.young22.dsa.ch02;
 import java.util.Arrays;
 
 import cn.young22.dsa.ch01.BagInterface;
-/** Êı×éÈİÁ¿¿ÉÔö´óµÄArrayBag
- *  Õâ¸öÀàÓëArrayBag2ÀàµÄÖ÷Òª²»Í¬ÔÚÓÚÌí¼ÓÔªËØÊ±£¬
- *  µ±ÅĞ¶ÏifArrayFullÎªTrueÊ±£¬²»ÔÙÊÇ¾Ü¾øÌí¼Ó£¬¶øÊÇ±¶ÔöÊı×éÈİÁ¿ÔÙ¼ÌĞøÌí¼ÓĞÂÔªËØ
+/** æ•°ç»„å®¹é‡å¯å¢å¤§çš„ArrayBag
+ *  è¿™ä¸ªç±»ä¸ArrayBag2ç±»çš„ä¸»è¦ä¸åŒåœ¨äºæ·»åŠ å…ƒç´ æ—¶ï¼Œ
+ *  å½“åˆ¤æ–­ifArrayFullä¸ºTrueæ—¶ï¼Œä¸å†æ˜¯æ‹’ç»æ·»åŠ ï¼Œè€Œæ˜¯å€å¢æ•°ç»„å®¹é‡å†ç»§ç»­æ·»åŠ æ–°å…ƒç´ 
  * */
 public class ResizeableArrayBag<T> implements BagInterface<T>{
 
@@ -15,14 +15,14 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 	private static final int DEFAULT_CAPACITY = 25;
 	private static final int MAX_CAPACITY = 10000;
 	
-	/** Ä¬ÈÏ¹¹Ôìº¯Êı£¬µ÷ÓÃ¸ø¶¨ÈİÁ¿µÄ¹¹Ôìº¯Êı½øĞĞ³õÊ¼»¯*/
+	/** é»˜è®¤æ„é€ å‡½æ•°ï¼Œè°ƒç”¨ç»™å®šå®¹é‡çš„æ„é€ å‡½æ•°è¿›è¡Œåˆå§‹åŒ–*/
 	public ResizeableArrayBag() {
 		this(DEFAULT_CAPACITY);
 	}
 	
-	/** ÒÔ¸ø¶¨ÈİÁ¿µÄµÄ·½Ê½³õÊ¼»¯Ò»¸öResizeableArrayBag¶ÔÏó*/
+	/** ä»¥ç»™å®šå®¹é‡çš„çš„æ–¹å¼åˆå§‹åŒ–ä¸€ä¸ªResizeableArrayBagå¯¹è±¡*/
 	public ResizeableArrayBag(int initialCapacity) {
-		// ¼ì²éÓÃ»§Ö¸¶¨µÄÈİÁ¿ÊÇ·ñ³¬¹ı×î´óÈİÁ¿
+		// æ£€æŸ¥ç”¨æˆ·æŒ‡å®šçš„å®¹é‡æ˜¯å¦è¶…è¿‡æœ€å¤§å®¹é‡
 		checkCapacity(initialCapacity);
 		
 		@SuppressWarnings("unchekced")
@@ -32,30 +32,30 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 		initialized = true;
 	}
 	
-	/** ÒÔ¸ø¶¨°üÄÚÈİµÄ·½Ê½³õÊ¼»¯Ò»¸öResizeableArrayBag¶ÔÏó*/
+	/** ä»¥ç»™å®šåŒ…å†…å®¹çš„æ–¹å¼åˆå§‹åŒ–ä¸€ä¸ªResizeableArrayBagå¯¹è±¡*/
 	public ResizeableArrayBag(T[] contents) {
 		checkCapacity(contents.length);
-		// Ê¹ÓÃArrays¹¤¾ßÊı×é½«contentsµÄÄÚÈİ¸´ÖÆ¸øbag
+		// ä½¿ç”¨Arrayså·¥å…·æ•°ç»„å°†contentsçš„å†…å®¹å¤åˆ¶ç»™bag
 		bag = Arrays.copyOf(contents, contents.length);
-		// ½«contentsµÄlength¸³Öµ¸ønumberOfEntries
+		// å°†contentsçš„lengthèµ‹å€¼ç»™numberOfEntries
 		numberOfEntries = contents.length;
-		// ³õÊ¼»¯Íê±Ï
+		// åˆå§‹åŒ–å®Œæ¯•
 		initialized = true;
 	}
 	
-	/** »ñÈ¡°üÖĞµ±Ç°µÄÔªËØ¸öÊı*/
+	/** è·å–åŒ…ä¸­å½“å‰çš„å…ƒç´ ä¸ªæ•°*/
 	@Override
 	public int getCurrentSize() {
 		return numberOfEntries;
 	}
 
-	/** ÅĞ¶Ï°üÊÇ·ñÎª¿Õ*/
+	/** åˆ¤æ–­åŒ…æ˜¯å¦ä¸ºç©º*/
 	@Override
 	public boolean isEmpty() {		
 		return numberOfEntries == 0;
 	}
 	
-	/**Ìí¼ÓĞÂµÄÔªËØ£¬µ±Êı×éÈİÁ¿ÂúÊ±£¬Ôò±¶ÔöÊı×éÈİÁ¿£¬Ö®ºóÔÙ½«ĞÂÔªËØ¼Óµ½Êı×é×îºó*/
+	/**æ·»åŠ æ–°çš„å…ƒç´ ï¼Œå½“æ•°ç»„å®¹é‡æ»¡æ—¶ï¼Œåˆ™å€å¢æ•°ç»„å®¹é‡ï¼Œä¹‹åå†å°†æ–°å…ƒç´ åŠ åˆ°æ•°ç»„æœ€å*/
 	@Override
 	public boolean add(T newEntry) {
 		checkInitialization();
@@ -67,63 +67,63 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 		return true;
 	}
 	
-	/** É¾³ı°üÖĞµÄ×îºóÒ»¸öÔªËØ*/
+	/** åˆ é™¤åŒ…ä¸­çš„æœ€åä¸€ä¸ªå…ƒç´ */
 	@Override
 	public T remove() {
 		checkInitialization();
-		// É¾³ı×î°üµÄ×îºóÒ»¸öÔªËØ²¢½«·µ»ØÖµ¸³Öµ¸øresult
+		// åˆ é™¤æœ€åŒ…çš„æœ€åä¸€ä¸ªå…ƒç´ å¹¶å°†è¿”å›å€¼èµ‹å€¼ç»™result
 		T result = removeEntry(numberOfEntries - 1);
-		// ·µ»ØÉ¾³ıÔªËØµÄÖµ
+		// è¿”å›åˆ é™¤å…ƒç´ çš„å€¼
 		return result;
 	}
 
-	/** É¾³ı¸ø¶¨ÔªËØÔÚ°üÖĞµÄµÚÒ»´Î³öÏÖ*/
+	/** åˆ é™¤ç»™å®šå…ƒç´ åœ¨åŒ…ä¸­çš„ç¬¬ä¸€æ¬¡å‡ºç°*/
 	@Override
 	public boolean remove(T anEntry) {
 		checkInitialization();
-		// ÕÒµ½Êı×éÖĞµÚÒ»´Î³öÏÖ¸ø¶¨ÖµµÄÏÂ±ê²¢¸³Öµ¸øindex
+		// æ‰¾åˆ°æ•°ç»„ä¸­ç¬¬ä¸€æ¬¡å‡ºç°ç»™å®šå€¼çš„ä¸‹æ ‡å¹¶èµ‹å€¼ç»™index
 		int index = getIndexOf(anEntry);
-		// É¾³ı¸ø¶¨ÏÂ±êindexµÄÔªËØ²¢½«·µ»ØÖµ¸³Öµ¸øresult
+		// åˆ é™¤ç»™å®šä¸‹æ ‡indexçš„å…ƒç´ å¹¶å°†è¿”å›å€¼èµ‹å€¼ç»™result
 		T result = removeEntry(index);
-		// Ê¹ÓÃequals·½·¨ÅĞ¶ÏÊÇ·ñ·µ»Ø³É¹¦£¬
-		// ÈôanEntryµÄÖµÓëresultµÄÖµÏàµÈ£¬·µ»ØTrue,·ñÔò·µ»ØFalse
+		// ä½¿ç”¨equalsæ–¹æ³•åˆ¤æ–­æ˜¯å¦è¿”å›æˆåŠŸï¼Œ
+		// è‹¥anEntryçš„å€¼ä¸resultçš„å€¼ç›¸ç­‰ï¼Œè¿”å›True,å¦åˆ™è¿”å›False
 		return anEntry.equals(result);
 	}
 
-	/** É¾³ı°üÖĞËùÓĞµÄ¸ø¶¨µÄÔªËØ*/
+	/** åˆ é™¤åŒ…ä¸­æ‰€æœ‰çš„ç»™å®šçš„å…ƒç´ */
 	@Override
 	public boolean removeAll(T anEntry) {
 		checkInitialization();
-		// µÃµ½¸ø¶¨ÔªËØÔÚÊı×éÖĞµÚÒ»´Î³öÏÖµÄÏÂ±ê²¢¸³Öµ¸øindex
+		// å¾—åˆ°ç»™å®šå…ƒç´ åœ¨æ•°ç»„ä¸­ç¬¬ä¸€æ¬¡å‡ºç°çš„ä¸‹æ ‡å¹¶èµ‹å€¼ç»™index
 		int index = getIndexOf(anEntry);
-		// ³õÊ¼»¯ result
+		// åˆå§‹åŒ– result
 		T result = null;
 		
-		// Í¨¹ıÑ­»·É¾³ı°üÖĞËùÓĞ¸ø¶¨µÄÖµ
-		while(index > -1){					// Èôindex²»Îª¸ºÖµ¼´°üÖĞÈÔÓĞ¸ø¶¨µÄÔªËØ£¬Ôò¼ÌĞøÑ­»·
-			result = removeEntry(index);	// É¾³ı¸ø¶¨Êı×éÏÂ±êµÄÔªËØ£¬²¢½«·µ»ØÖµ¸³¸øresult
-			index = getIndexOf(anEntry);	// ¼ÌĞøÔÙ°üÖĞÑ°ÕÒ¸ø¶¨ÖµµÄÏÂ±ê
+		// é€šè¿‡å¾ªç¯åˆ é™¤åŒ…ä¸­æ‰€æœ‰ç»™å®šçš„å€¼
+		while(index > -1){					// è‹¥indexä¸ä¸ºè´Ÿå€¼å³åŒ…ä¸­ä»æœ‰ç»™å®šçš„å…ƒç´ ï¼Œåˆ™ç»§ç»­å¾ªç¯
+			result = removeEntry(index);	// åˆ é™¤ç»™å®šæ•°ç»„ä¸‹æ ‡çš„å…ƒç´ ï¼Œå¹¶å°†è¿”å›å€¼èµ‹ç»™result
+			index = getIndexOf(anEntry);	// ç»§ç»­å†åŒ…ä¸­å¯»æ‰¾ç»™å®šå€¼çš„ä¸‹æ ‡
 		}
-		return anEntry.equals(result);		// ·µ»Ø²éÕÒÉ¾³ı½á¹û£¬ÈôÉ¾³ı³É¹¦£¬·µ»ØTrue,·ñÔò£¬·µ»ØFalse
+		return anEntry.equals(result);		// è¿”å›æŸ¥æ‰¾åˆ é™¤ç»“æœï¼Œè‹¥åˆ é™¤æˆåŠŸï¼Œè¿”å›True,å¦åˆ™ï¼Œè¿”å›False
 	}
 	
-	/** Çå¿Õ°üÖĞµÄËùÓĞÔªËØ*/
+	/** æ¸…ç©ºåŒ…ä¸­çš„æ‰€æœ‰å…ƒç´ */
 	@Override
 	public void clear() {
-		// Í¨¹ıisEmptyÀ´¿ØÖÆwhileÑ­»·£¬
-		// ÈôisEmpty=False£¬ÔòÃ¿´ÎÉ¾³ı°üµÄ×îºóÒ»¸öÔªËØ
-		// ÈôisEmpty=True,Ôò½áÊøÑ­»·
+		// é€šè¿‡isEmptyæ¥æ§åˆ¶whileå¾ªç¯ï¼Œ
+		// è‹¥isEmpty=Falseï¼Œåˆ™æ¯æ¬¡åˆ é™¤åŒ…çš„æœ€åä¸€ä¸ªå…ƒç´ 
+		// è‹¥isEmpty=True,åˆ™ç»“æŸå¾ªç¯
 		while(!isEmpty()){
 			remove();
 		}
 	}
 	
-	/** ¸ù¾İÖ¸¶¨µÄÏÂ±êÈ¥É¾³ı°üÖĞµÄÔªËØ*/
+	/** æ ¹æ®æŒ‡å®šçš„ä¸‹æ ‡å»åˆ é™¤åŒ…ä¸­çš„å…ƒç´ */
 	private T removeEntry(int givenIndex){
 		
 		T result = null;
-		// Èô°ü·Ç¿Õ£¬ÇÒ¸ø¶¨µÄÏÂ±ê·Ç¸º£¬Ôò½«°üµÄ×îºóÒ»¸öÔªËØ¸³Öµµ½ÒªÉ¾³ıµÄÔªËØµÄÎ»ÖÃ
-		// ÔÙ½«×îºóÒ»¸öÔªËØ¸³ÖµÎªnull,×îºó½«numberOfEntries-1
+		// è‹¥åŒ…éç©ºï¼Œä¸”ç»™å®šçš„ä¸‹æ ‡éè´Ÿï¼Œåˆ™å°†åŒ…çš„æœ€åä¸€ä¸ªå…ƒç´ èµ‹å€¼åˆ°è¦åˆ é™¤çš„å…ƒç´ çš„ä½ç½®
+		// å†å°†æœ€åä¸€ä¸ªå…ƒç´ èµ‹å€¼ä¸ºnull,æœ€åå°†numberOfEntries-1
 		if(!isEmpty() && (givenIndex >= 0)){
 			result = bag[givenIndex];
 			int lastIndex = numberOfEntries - 1;
@@ -135,7 +135,7 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 		return result;		
 	}
 
-	/** ²éÕÒ¸ø¶¨ÔªËØ³öÏÖÔÚ°üÖĞµÄ´ÎÊı*/
+	/** æŸ¥æ‰¾ç»™å®šå…ƒç´ å‡ºç°åœ¨åŒ…ä¸­çš„æ¬¡æ•°*/
 	@Override
 	public int getFrequencyOf(T anEntry) {
 		checkInitialization();
@@ -148,14 +148,14 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 		return counter;
 	}
 	
-	/** Ê¹ÓÃgetIndexOf·½·¨À´²é¿´°üÖĞÊÇ·ñ°üº¬Ö¸¶¨ÔªËØ*/
+	/** ä½¿ç”¨getIndexOfæ–¹æ³•æ¥æŸ¥çœ‹åŒ…ä¸­æ˜¯å¦åŒ…å«æŒ‡å®šå…ƒç´ */
 	@Override
 	public boolean contains(T anEntry) {
 		checkInitialization();
 		return getIndexOf(anEntry) > -1;
 	}
 
-	/** ½«°üÖĞµÄÔªËØ¸³Öµ¸øĞÂµÄÊı×éÊı×é²¢·µ¸ÃÊı×é*/
+	/** å°†åŒ…ä¸­çš„å…ƒç´ èµ‹å€¼ç»™æ–°çš„æ•°ç»„æ•°ç»„å¹¶è¿”è¯¥æ•°ç»„*/
 	@Override
 	public T[] toArray() {
 		checkInitialization();
@@ -169,12 +169,12 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 		return result;
 	}
 	
-	/** ÅĞ¶ÏÊı×éÊÇ·ñÂúÁË*/
+	/** åˆ¤æ–­æ•°ç»„æ˜¯å¦æ»¡äº†*/
 	private boolean isArrayFull(){
 		return numberOfEntries >= bag.length;
 	}
 	
-	/** ÅĞ¶Ï¿Í»§¶ËËùÒªÇóµÄ°üµÄÈİÁ¿ÊÇ·ñ¹ı´ó£¬Èô¹ı´óÔòÅ×³öÒì³£*/
+	/** åˆ¤æ–­å®¢æˆ·ç«¯æ‰€è¦æ±‚çš„åŒ…çš„å®¹é‡æ˜¯å¦è¿‡å¤§ï¼Œè‹¥è¿‡å¤§åˆ™æŠ›å‡ºå¼‚å¸¸*/
 	private void checkCapacity(int capacity){
 		if(capacity > MAX_CAPACITY){
 			throw new IllegalStateException("Attempt to create a bag"+
@@ -183,7 +183,7 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 		}
 	}
 	
-	/** ÅĞ¶Ï¶ÔÏóÊÇ·ñÕı³£³õÊ¼»¯£¬ÈôÎ´Õı³£³õÊ¼»¯£¬ÔòÅ×³öÒì³£*/
+	/** åˆ¤æ–­å¯¹è±¡æ˜¯å¦æ­£å¸¸åˆå§‹åŒ–ï¼Œè‹¥æœªæ­£å¸¸åˆå§‹åŒ–ï¼Œåˆ™æŠ›å‡ºå¼‚å¸¸*/
 	private void checkInitialization(){
 		if(!initialized){
 			throw new SecurityException("Uninitialized object used " + 
@@ -191,10 +191,10 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 		}
 	}// end checkinitialization
 	
-	/** ±¶ÔöÊı×éÈİÁ¿·½·¨£¬Ê¹ÓÃArrays¹¤¾ß£¬
-	 *  ½«Ô­Êı×é¿½±´µ½Ò»¸öĞÂµÄÈİÁ¿ÎªÔ­Êı×éÁ½±¶µÄÊı×éÖĞ
-	 *  °ÑĞÂÊı×éµÄÒıÓÃ¸³Öµ¸øÔ­±äÁ¿
-	 *  ¼´Íê³ÉÁËÊı×éµÄÀ©Èİ²Ù×÷
+	/** å€å¢æ•°ç»„å®¹é‡æ–¹æ³•ï¼Œä½¿ç”¨Arrayså·¥å…·ï¼Œ
+	 *  å°†åŸæ•°ç»„æ‹·è´åˆ°ä¸€ä¸ªæ–°çš„å®¹é‡ä¸ºåŸæ•°ç»„ä¸¤å€çš„æ•°ç»„ä¸­
+	 *  æŠŠæ–°æ•°ç»„çš„å¼•ç”¨èµ‹å€¼ç»™åŸå˜é‡
+	 *  å³å®Œæˆäº†æ•°ç»„çš„æ‰©å®¹æ“ä½œ
 	 * */
 	private void doubleCapacity(){
 		int newLength = 2 * bag.length;
@@ -202,26 +202,26 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 		bag = Arrays.copyOf(bag, newLength);
 	}// end doubleCapacity
 	
-	/** ¸ù¾İ¸ø¶¨Öµ²éÕÒÔªËØÔÚÊı×éÖĞµÄÏÂ±êÎ»ÖÃ*/
+	/** æ ¹æ®ç»™å®šå€¼æŸ¥æ‰¾å…ƒç´ åœ¨æ•°ç»„ä¸­çš„ä¸‹æ ‡ä½ç½®*/
 	private int getIndexOf(T anEntry){
-		// ³õÊÔ»¯ÔªËØÏÂ±êÎ»ÖÃ
+		// åˆè¯•åŒ–å…ƒç´ ä¸‹æ ‡ä½ç½®
 		int where = -1;
-		// ³õÊ¼»¯²éÕÒ½á¹û
+		// åˆå§‹åŒ–æŸ¥æ‰¾ç»“æœ
 		boolean found = false;
-		// ³õÊ¼»¯Êı×éÏÂ±ê
+		// åˆå§‹åŒ–æ•°ç»„ä¸‹æ ‡
 		int index = 0;
 
-		// ÈôÕÒµ½¸ÃÔªËØÔÚÊı×éÖĞµÄÎ»ÖÃ£¬Ôò½áÊøÑ­»·£¬found=true
-		// ÈôÖªµÀÑ­»·½áÊøÈÔÎ´ÕÒµ½ÔªËØ£¬Ôò½áÊøÑ­»·£¬found=false
+		// è‹¥æ‰¾åˆ°è¯¥å…ƒç´ åœ¨æ•°ç»„ä¸­çš„ä½ç½®ï¼Œåˆ™ç»“æŸå¾ªç¯ï¼Œfound=true
+		// è‹¥çŸ¥é“å¾ªç¯ç»“æŸä»æœªæ‰¾åˆ°å…ƒç´ ï¼Œåˆ™ç»“æŸå¾ªç¯ï¼Œfound=false
 		while(!found && (index < numberOfEntries)){
 			if(anEntry.equals(bag[index])){
 				found = true;
 				where = index;
 			}
-			// Ã¿¾­¹ıÒ»¸öÔªËØ£¬Êı×éÏÂ±ê+1
+			// æ¯ç»è¿‡ä¸€ä¸ªå…ƒç´ ï¼Œæ•°ç»„ä¸‹æ ‡+1
 			index++;
 		}
-		// ·µ»Ø¸ø¶¨ÔªËØÏÂ±êÎ»ÖÃ
+		// è¿”å›ç»™å®šå…ƒç´ ä¸‹æ ‡ä½ç½®
 		return where;
 	}
 }

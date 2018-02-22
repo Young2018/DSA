@@ -1,6 +1,6 @@
 package cn.young22.dsa.ch07;
 
-/** ´òÓ¡°´µÝ¼õË³ÐòÊä³öÊý×ÖµÄ³ÌÐò*/
+/** æ‰“å°æŒ‰é€’å‡é¡ºåºè¾“å‡ºæ•°å­—çš„ç¨‹åº*/
 public class CountDown {
 	
 	public static void main(String[] args){
@@ -17,7 +17,7 @@ public class CountDown {
 		countDown4(10);
 	}
 	
-	/** µÚÒ»ÖÖÊµÏÖ·½°¸*/
+	/** ç¬¬ä¸€ç§å®žçŽ°æ–¹æ¡ˆ*/
 	public static void countDown1(int integer){
 		System.out.print(integer + " ");
 		if(integer > 1){
@@ -25,7 +25,7 @@ public class CountDown {
 		}
 	}
 	
-	/** µÚ¶þÖÖÊµÏÖ·½°¸*/
+	/** ç¬¬äºŒç§å®žçŽ°æ–¹æ¡ˆ*/
 	public static void countDown2(int integer){
 		if(integer == 1){
 			System.out.print(integer + " ");
@@ -35,7 +35,7 @@ public class CountDown {
 		}
 	}
 	
-	/** µÚÈýÖÖÊµÏÖ·½°¸*/
+	/** ç¬¬ä¸‰ç§å®žçŽ°æ–¹æ¡ˆ*/
 	public static void countDown3(int integer){
 		if(integer >= 1){
 			System.out.print(integer + " ");
@@ -43,7 +43,7 @@ public class CountDown {
 		}
 	}
 	
-	/** µÚËÄÖÖÊµÏÖ·½°¸£¬Ê¹ÓÃµü´úÊµÏÖ*/
+	/** ç¬¬å››ç§å®žçŽ°æ–¹æ¡ˆï¼Œä½¿ç”¨è¿­ä»£å®žçŽ°*/
 	public static void countDown4(int integer){
 		while (integer >= 1){
 			System.out.print(integer + " ");
@@ -53,17 +53,12 @@ public class CountDown {
 }
 /*
 Output:
-
 Algorithm 1: 
 10 9 8 7 6 5 4 3 2 1 
-
 Algorithm 2: 
 10 9 8 7 6 5 4 3 2 1 
-
 Algorithm 3: 
 10 9 8 7 6 5 4 3 2 1 
-
 Algorithm 4: 
 10 9 8 7 6 5 4 3 2 1 
-
  */

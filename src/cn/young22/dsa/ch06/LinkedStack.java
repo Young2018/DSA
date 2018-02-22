@@ -6,30 +6,30 @@ import cn.young22.dsa.ch05.StackInterface;
 import jdk.nashorn.internal.objects.annotations.Getter;
 import jdk.nashorn.internal.objects.annotations.Setter;
 /**	
- * 	LinkedStackÊµÏÖÁËStackInterfaceµÄËùÓĞ·½·¨
- * 	Ê¹ÓÃÁ´±íÊµÏÖÁËÕ»
+ * 	LinkedStackå®ç°äº†StackInterfaceçš„æ‰€æœ‰æ–¹æ³•
+ * 	ä½¿ç”¨é“¾è¡¨å®ç°äº†æ ˆ
  * 
  * */
 public class LinkedStack<T> implements StackInterface<T>{
 	
-	private Node topNode;	// Í·½áµãµÄÒıÓÃ
+	private Node topNode;	// å¤´ç»“ç‚¹çš„å¼•ç”¨
 	
-	/** Ä¬ÈÏ¹¹Ôì·½·¨£¬½«Í·½áµã³õÊ¼»¯Îªnull*/
+	/** é»˜è®¤æ„é€ æ–¹æ³•ï¼Œå°†å¤´ç»“ç‚¹åˆå§‹åŒ–ä¸ºnull*/
 	public LinkedStack(){
 		topNode = null;
 	}// end of default constructor
 	
-	/** Í·½áµã*/
+	/** å¤´ç»“ç‚¹*/
 	private class Node{
 		private T 	data; // Entry in stack
 		private Node next; // link to the next node
 		
-		/** ½áµãµÄ¹¹Ôì·½·¨£¬½öÓÃdataÓò³õÊ¼»¯½áµã*/
+		/** ç»“ç‚¹çš„æ„é€ æ–¹æ³•ï¼Œä»…ç”¨dataåŸŸåˆå§‹åŒ–ç»“ç‚¹*/
 		private Node(T dataPortion){
 			this(dataPortion, null);
 		}
 		
-		/** ½áµãµÄ¹¹Ôì·½·¨£¬ÓÃdataºÍnextÁ½¸öÓò³õÊ¼»¯½áµã*/
+		/** ç»“ç‚¹çš„æ„é€ æ–¹æ³•ï¼Œç”¨dataå’Œnextä¸¤ä¸ªåŸŸåˆå§‹åŒ–ç»“ç‚¹*/
 		private Node(T dataPortion, Node linkPortion){
 			data = dataPortion;
 			next = linkPortion;
@@ -56,31 +56,31 @@ public class LinkedStack<T> implements StackInterface<T>{
 		}
 	}// end Node
 	
-	/** push·½·¨£¬½«¿Í»§¸øµÄĞÂÖµ¼Óµ½Õ»¶¥*/
+	/** pushæ–¹æ³•ï¼Œå°†å®¢æˆ·ç»™çš„æ–°å€¼åŠ åˆ°æ ˆé¡¶*/
 	@Override
 	public void push(T newEntry) {
 		Node newNode = new Node(newEntry, topNode);
 		topNode = newNode;
 	}
 
-	/** pop·½·¨£¬½«Õ»¶¥ÔªËØÉ¾³ı*/
+	/** popæ–¹æ³•ï¼Œå°†æ ˆé¡¶å…ƒç´ åˆ é™¤*/
 	@Override
 	public T pop() {
-		// È¡µÃÕ»¶¥ÔªËØµÄÒıÓÃ
+		// å–å¾—æ ˆé¡¶å…ƒç´ çš„å¼•ç”¨
 		T top = peek();
 		
-		// ¶ÏÑÔtopNode²»Îª¿Õ½áµã
+		// æ–­è¨€topNodeä¸ä¸ºç©ºç»“ç‚¹
 		assert (topNode != null);
-		// ½«topNodeµÄÒıÓÃÖ¸ÏòËüµÄÏÂÒ»¸ö½áµã
+		// å°†topNodeçš„å¼•ç”¨æŒ‡å‘å®ƒçš„ä¸‹ä¸€ä¸ªç»“ç‚¹
 		topNode = topNode.getNextNode();
 		
-		// ·µ»Øtop½áµãµÄÒıÓÃ
+		// è¿”å›topç»“ç‚¹çš„å¼•ç”¨
 		return top;
 	}
 
-	/** peek·½·¨£¬»ñÈ¡Õ»¶¥ÔªËØµÄÖµ
-	 *  ÈôÕ»Îª¿Õ£¬ÔòÅ×³ö¿ÕÕ»Òì³£
-	 *  ·ñÔò£¬·µ»ØÕ»¶¥ÔªËØµÄÖµ
+	/** peekæ–¹æ³•ï¼Œè·å–æ ˆé¡¶å…ƒç´ çš„å€¼
+	 *  è‹¥æ ˆä¸ºç©ºï¼Œåˆ™æŠ›å‡ºç©ºæ ˆå¼‚å¸¸
+	 *  å¦åˆ™ï¼Œè¿”å›æ ˆé¡¶å…ƒç´ çš„å€¼
 	 * */
 	@Override
 	public T peek() {
@@ -91,16 +91,16 @@ public class LinkedStack<T> implements StackInterface<T>{
 		}	
 	}
 	
-	/** isEmpty·½·¨£¬ÅĞ¶ÏÕ»ÊÇ·ñÎª¿Õ*/
+	/** isEmptyæ–¹æ³•ï¼Œåˆ¤æ–­æ ˆæ˜¯å¦ä¸ºç©º*/
 	@Override
 	public boolean isEmpty() {
 		return topNode == null;
 	}
 
-	/** clear·½·¨£¬½«Õ»Çå¿Õ*/
+	/** clearæ–¹æ³•ï¼Œå°†æ ˆæ¸…ç©º*/
 	@Override
 	public void clear() {
-		// ½«Õ»¶¥µÄÒıÓÃ¸³ÖµÎªnull¼´É¾³ıÁËËùÓĞµÄ½Úµã
+		// å°†æ ˆé¡¶çš„å¼•ç”¨èµ‹å€¼ä¸ºnullå³åˆ é™¤äº†æ‰€æœ‰çš„èŠ‚ç‚¹
 		topNode = null;
 	}
 	

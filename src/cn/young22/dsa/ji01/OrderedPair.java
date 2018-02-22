@@ -1,39 +1,39 @@
 package cn.young22.dsa.ji01;
-/** Ò»¸ö¾ßÓĞÒÑ¾­ÅÅĞòºÃµÄ³É¶ÔÊı¾İÀà*/
+/** ä¸€ä¸ªå…·æœ‰å·²ç»æ’åºå¥½çš„æˆå¯¹æ•°æ®ç±»*/
 
 public class OrderedPair<T> implements Pairable<T> {
 
 	private T first, second;
 	
-	/** Ä¬ÈÏ¹¹ÔìÆ÷·½·¨*/
+	/** é»˜è®¤æ„é€ å™¨æ–¹æ³•*/
 	public OrderedPair(){
 		
 	}
 	
-	/** ¹¹ÔìÆ÷·½·¨*/
+	/** æ„é€ å™¨æ–¹æ³•*/
 	public OrderedPair(T firstItem, T secondItem){
 		first = firstItem;
 		second = secondItem;
 	}
 	
-	/** ·µ»Ø³É¶ÔÊı¾İÖĞµÄµÚÒ»¸ö*/
+	/** è¿”å›æˆå¯¹æ•°æ®ä¸­çš„ç¬¬ä¸€ä¸ª*/
 	@Override
 	public T getFisrt() {
 		return first;
 	}
 	
-	/** ·µ»Ø³É¶ÔÊı¾İÖĞµÄµÚ¶ş¸ö*/
+	/** è¿”å›æˆå¯¹æ•°æ®ä¸­çš„ç¬¬äºŒä¸ª*/
 	@Override
 	public T getSecond() {
 		return second;
 	}
 	
-	/** ·µ»Ø´ú±í¸Ã³É¶ÔÊı¾İµÄ×Ö·û´®*/
+	/** è¿”å›ä»£è¡¨è¯¥æˆå¯¹æ•°æ®çš„å­—ç¬¦ä¸²*/
 	public String toString(){
 		return "(" + first + "," + second + ")";
 	}
 	
-	/** ¸Ä±ä³É¶ÔÊı¾İµÄË³Ğò*/
+	/** æ”¹å˜æˆå¯¹æ•°æ®çš„é¡ºåº*/
 	@Override
 	public void changeOrder() {
 		T temp = first;
@@ -44,7 +44,7 @@ public class OrderedPair<T> implements Pairable<T> {
 }
 
 /*
- * ´´½¨OrderedPair¶ÔÏó£¬ÀıÈç£¬Îª´´½¨String¶ÔÏó£¬¿ÉÒÔĞ´ÈçÏÂµÄÓï¾ä
+ * åˆ›å»ºOrderedPairå¯¹è±¡ï¼Œä¾‹å¦‚ï¼Œä¸ºåˆ›å»ºStringå¯¹è±¡ï¼Œå¯ä»¥å†™å¦‚ä¸‹çš„è¯­å¥
  * 
  * OrderedPair<String> fruit = new OrderedPair<>("apple", "orange");
  * 

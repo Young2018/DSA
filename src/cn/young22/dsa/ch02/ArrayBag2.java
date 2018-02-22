@@ -2,45 +2,45 @@ package cn.young22.dsa.ch02;
 
 import cn.young22.dsa.ch01.BagInterface;
 
-/** ArrayBag2ÀàÔÚArrayBag1ÀàµÄ»ù´¡ÉÏÌí¼ÓÁË:
- * 	remove()µÄÊµÏÖ
- *  remove(T anEntry)µÄÊµÏÖ
- *  removeAll(T anEntry)µÄÊµÏÖ
- *  clear()µÄÊµÏÖ
+/** ArrayBag2ç±»åœ¨ArrayBag1ç±»çš„åŸºç¡€ä¸Šæ·»åŠ äº†:
+ * 	remove()çš„å®ç°
+ *  remove(T anEntry)çš„å®ç°
+ *  removeAll(T anEntry)çš„å®ç°
+ *  clear()çš„å®ç°
  *  
- *  ÔÚÊµÏÖÉÏÊö4¸ö·½·¨Ê±£¬ÓÃµ½ÁËÒ»ÏÂ¼¸¸ö·½·¨£º
- *  getIndexOf(T anEntry)		Í¨¹ı¸ø¶¨ÖµÕÒµ½ËüÔÚ°üÖĞµÄµÚÒ»´Î³öÏÖÎ»ÖÃ
- *  removeEntry(int givenIndex)	Í¨¹ı¸ø¶¨µÄÔÚÊı×éÖĞµÄË÷ÒıÉ¾³ı°üÖĞµÄÔªËØ
+ *  åœ¨å®ç°ä¸Šè¿°4ä¸ªæ–¹æ³•æ—¶ï¼Œç”¨åˆ°äº†ä¸€ä¸‹å‡ ä¸ªæ–¹æ³•ï¼š
+ *  getIndexOf(T anEntry)		é€šè¿‡ç»™å®šå€¼æ‰¾åˆ°å®ƒåœ¨åŒ…ä¸­çš„ç¬¬ä¸€æ¬¡å‡ºç°ä½ç½®
+ *  removeEntry(int givenIndex)	é€šè¿‡ç»™å®šçš„åœ¨æ•°ç»„ä¸­çš„ç´¢å¼•åˆ é™¤åŒ…ä¸­çš„å…ƒç´ 
  * */
 
 public class ArrayBag2<T> implements BagInterface<T>{
-	// ¶¨ÒåÒ»¸ö·ºĞÍµÄÊı×é£¬²¢ÉèÖÃÎªfinal,²»ÈÃËü±»ĞŞ¸Ä
+	// å®šä¹‰ä¸€ä¸ªæ³›å‹çš„æ•°ç»„ï¼Œå¹¶è®¾ç½®ä¸ºfinal,ä¸è®©å®ƒè¢«ä¿®æ”¹
 	private final T[] bag;	
-	// ¶¨ÒåintÀàĞÍµÄnumberOfEntries±äÁ¿£¬ÓÃÀ´´æ·Å°üÖĞµÄÔªËØ¸öÊı
+	// å®šä¹‰intç±»å‹çš„numberOfEntrieså˜é‡ï¼Œç”¨æ¥å­˜æ”¾åŒ…ä¸­çš„å…ƒç´ ä¸ªæ•°
 	private int numberOfEntries;
-	// ²¼¶ûĞÍµÄ±äÁ¿initializedÓÃÔÚ¹¹Ôì·½·¨ÖĞ£¬ÓÃÀ´ÅĞ¶Ï¶ÔÏóÊÇ·ñÕı³£±»¹¹ÔìÍêÈ«
+	// å¸ƒå°”å‹çš„å˜é‡initializedç”¨åœ¨æ„é€ æ–¹æ³•ä¸­ï¼Œç”¨æ¥åˆ¤æ–­å¯¹è±¡æ˜¯å¦æ­£å¸¸è¢«æ„é€ å®Œå…¨
 	private boolean initialized = false;
-	// ³õÊÔµÄ°üÈİÁ¿
+	// åˆè¯•çš„åŒ…å®¹é‡
 	private static final int DEFAULT_CAPACITY = 25;
-	// °üµÄ×î´óÈİÁ¿
+	// åŒ…çš„æœ€å¤§å®¹é‡
 	private static final int MAX_CAPACITY = 10000;
 	
-	/** Ä¬ÈÏ¹¹ÔìÆ÷·½·¨*/
+	/** é»˜è®¤æ„é€ å™¨æ–¹æ³•*/
 	public ArrayBag2(){
 		this(DEFAULT_CAPACITY);
 	}
 	
-	/** ´´½¨Ò»¸ö¸ø¶¨ÈİÁ¿µÄArrayBag¶ÔÏó*/
+	/** åˆ›å»ºä¸€ä¸ªç»™å®šå®¹é‡çš„ArrayBagå¯¹è±¡*/
 	public ArrayBag2(int desiredCapacity) {
-		// ½«¿Í»§Ö¸¶¨µÄÈİÁ¿Óë×î´óµÄÈİÁ¿±È½Ï£¬Èô´óÓÚ×î´óÈİÁ¿£¬ÔòÅ×³öÒì³£
+		// å°†å®¢æˆ·æŒ‡å®šçš„å®¹é‡ä¸æœ€å¤§çš„å®¹é‡æ¯”è¾ƒï¼Œè‹¥å¤§äºæœ€å¤§å®¹é‡ï¼Œåˆ™æŠ›å‡ºå¼‚å¸¸
 		if(desiredCapacity <= MAX_CAPACITY){
-			// ÔÚ·ÖÅäÊı×éÊÇ²»ÄÜÊ¹ÓÃ·ºĞÍ£¬µ«¿ÉÒÔÊ¹ÓÃObjectÀàĞÍ
-			// ¹ÊÏÈ·ÖÅäObjectÀàĞÍµÄÊı×é£¬ÔÙ½øĞĞÇ¿ÖÆÀàĞÍ×ª»»£¬±ä³É·ºĞÍÊı×é
-			// µ«ÊÇ×ªĞÍÍêºó»¹»áÔÚ±àÒëÊ±³öÏÖ¾¯¸æ
+			// åœ¨åˆ†é…æ•°ç»„æ˜¯ä¸èƒ½ä½¿ç”¨æ³›å‹ï¼Œä½†å¯ä»¥ä½¿ç”¨Objectç±»å‹
+			// æ•…å…ˆåˆ†é…Objectç±»å‹çš„æ•°ç»„ï¼Œå†è¿›è¡Œå¼ºåˆ¶ç±»å‹è½¬æ¢ï¼Œå˜æˆæ³›å‹æ•°ç»„
+			// ä½†æ˜¯è½¬å‹å®Œåè¿˜ä¼šåœ¨ç¼–è¯‘æ—¶å‡ºç°è­¦å‘Š
 			// ArrayBag2.java uses unchecked or unsafe operations
 			// Note:Recompile with -Xlint:unchecked for details
-			// ÓÉÓÚÊı×é¸Õ¸Õ·ÖÅä£¬ÆäÖĞ½öº¬ÓĞnullÏî£¬¹ÊÕâÖÖÀàĞÍ×ª»»Ê±°²È«µÄ£¬Ê¹ÓÃ
-			// @SuppressWarnings("unchecked")À´ÈÃ±àÒë³ÌĞòºöÂÔÕâ¸ö¾¯¸æ
+			// ç”±äºæ•°ç»„åˆšåˆšåˆ†é…ï¼Œå…¶ä¸­ä»…å«æœ‰nullé¡¹ï¼Œæ•…è¿™ç§ç±»å‹è½¬æ¢æ—¶å®‰å…¨çš„ï¼Œä½¿ç”¨
+			// @SuppressWarnings("unchecked")æ¥è®©ç¼–è¯‘ç¨‹åºå¿½ç•¥è¿™ä¸ªè­¦å‘Š
 			@SuppressWarnings("unchecked")
 			T[] tempBag = (T[])new Object[desiredCapacity];
 			bag = tempBag;
@@ -56,10 +56,10 @@ public class ArrayBag2<T> implements BagInterface<T>{
 	/**
 	 * 
 	* @FunctionName: add
-	* @Action: Ïò°üÖĞÌí¼ÓÒ»¸öĞÂÔªËØ
+	* @Action: å‘åŒ…ä¸­æ·»åŠ ä¸€ä¸ªæ–°å…ƒç´ 
 	* @param @param newEntry
-	* @ReturnType£º boolean    
-	* @return: µ±Ìí¼Ó³É¹¦Ê±·µ»ØÕæ£¬µ±Ìí¼ÓÊ§°ÜÊ±·µ»Ø¼Ù
+	* @ReturnTypeï¼š boolean    
+	* @return: å½“æ·»åŠ æˆåŠŸæ—¶è¿”å›çœŸï¼Œå½“æ·»åŠ å¤±è´¥æ—¶è¿”å›å‡
 	 */
 	public boolean add(T newEntry) {
 		checkInitialization();
@@ -77,11 +77,11 @@ public class ArrayBag2<T> implements BagInterface<T>{
 	/**
 	 * 
 	* @FunctionName: toArray
-	* @Action: ¼ìË÷°üÖĞµÄËùÓĞÔªËØ£¬½«Æä¸³Öµµ½Ò»¸öÊı×éÖĞ  
-	* @ReturnType£º T[]    
+	* @Action: æ£€ç´¢åŒ…ä¸­çš„æ‰€æœ‰å…ƒç´ ï¼Œå°†å…¶èµ‹å€¼åˆ°ä¸€ä¸ªæ•°ç»„ä¸­  
+	* @ReturnTypeï¼š T[]    
 	* @throws
-	* @return£º Ò»¸ö¸ù¾İ°üÖĞÔªËØĞÂ½¨µÄÊı×é
-	* 		  ×¢Òâ£ºÈô°üÎª¿Õ£¬Ôò·µ»ØµÄÊı×éÒ²Îª¿Õ
+	* @returnï¼š ä¸€ä¸ªæ ¹æ®åŒ…ä¸­å…ƒç´ æ–°å»ºçš„æ•°ç»„
+	* 		  æ³¨æ„ï¼šè‹¥åŒ…ä¸ºç©ºï¼Œåˆ™è¿”å›çš„æ•°ç»„ä¹Ÿä¸ºç©º
 	 */
 	public T[] toArray() {
 		checkInitialization();
@@ -98,21 +98,21 @@ public class ArrayBag2<T> implements BagInterface<T>{
 	/**
 	 * 
 	* @FunctionName: isArrayFull
-	* @Action: ÅĞ¶Ï°üÊÇ·ñÂúÁË
-	* @ReturnType£º boolean    
-	* @return Èô°üÂú£¬·µ»ØÕæ£¬·ñÔò·µ»Ø¼Ù
+	* @Action: åˆ¤æ–­åŒ…æ˜¯å¦æ»¡äº†
+	* @ReturnTypeï¼š boolean    
+	* @return è‹¥åŒ…æ»¡ï¼Œè¿”å›çœŸï¼Œå¦åˆ™è¿”å›å‡
 	 */
 	public boolean isArrayFull(){
-		// µ±Êı×éÖĞµÄÔªËØ¸öÊı´óÓÚ»òµÈÓÚÊı×éµÄ´óĞ¡Ê±£¬·µ»ØTrue
+		// å½“æ•°ç»„ä¸­çš„å…ƒç´ ä¸ªæ•°å¤§äºæˆ–ç­‰äºæ•°ç»„çš„å¤§å°æ—¶ï¼Œè¿”å›True
 		return numberOfEntries >= bag.length;
 	}
 	
 	/**
 	 * 
 	* @FunctionName: isEmpty
-	* @Action: ÅĞ¶Ï°üÊÇ·ñÎª¿Õ
-	* @ReturnType£º boolean    
-	* @return£º·µ»ØÕæ»ò¼Ù
+	* @Action: åˆ¤æ–­åŒ…æ˜¯å¦ä¸ºç©º
+	* @ReturnTypeï¼š boolean    
+	* @returnï¼šè¿”å›çœŸæˆ–å‡
 	 */
 	public boolean isEmpty(){
 		return numberOfEntries == 0;
@@ -121,8 +121,8 @@ public class ArrayBag2<T> implements BagInterface<T>{
 	/**
 	 * 
 	* @FunctionName: getCurrentSize
-	* @Action: ÏÔÊ¾µ±Ç°°üÖĞµÄ¶ÔÏó¸öÊı
-	* @return ·µ»Øµ±Ç°°üÖĞµÄ¶ÔÏó¸öÊı
+	* @Action: æ˜¾ç¤ºå½“å‰åŒ…ä¸­çš„å¯¹è±¡ä¸ªæ•°
+	* @return è¿”å›å½“å‰åŒ…ä¸­çš„å¯¹è±¡ä¸ªæ•°
 	 */
 	public int getCurrentSize(){
 		return numberOfEntries;
@@ -132,14 +132,14 @@ public class ArrayBag2<T> implements BagInterface<T>{
 	/**
 	 * 
 	* @FunctionName: remove
-	* @Action: É¾³ı°üÖĞµÄ×îºóÒ»¸öÔªËØ
+	* @Action: åˆ é™¤åŒ…ä¸­çš„æœ€åä¸€ä¸ªå…ƒç´ 
 	* @param @return    
-	* @ReturnType£º T    
-	* @return£º ³É¹¦Ôò·µ»Ø±»É¾³ıµÄÔªËØ£¬Ê§°Ü·µ»Ønull
+	* @ReturnTypeï¼š T    
+	* @returnï¼š æˆåŠŸåˆ™è¿”å›è¢«åˆ é™¤çš„å…ƒç´ ï¼Œå¤±è´¥è¿”å›null
 	 */
 	public T remove() {
 		checkInitialization();
-		// É¾³ı°üÖĞµÄ×îºóÒ»¸öÔªËØ
+		// åˆ é™¤åŒ…ä¸­çš„æœ€åä¸€ä¸ªå…ƒç´ 
 		T result = removeEntry(numberOfEntries - 1);
 		return result;
 	}
@@ -147,39 +147,39 @@ public class ArrayBag2<T> implements BagInterface<T>{
 	/**
 	 * 
 	* @FunctionName: remove
-	* @Action: É¾³ıÒ»¸öÖ¸¶¨µÄÔªËØ£¬É¾³ıµÄÔªËØµÄÎªÊı×éÖĞµÚÒ»´Î³öÏÖ¸ÃÖµµÄÎ»ÖÃ
-	* @param @param anEntry Òª±»É¾³ıµÄÔªËØ
-	* @ReturnType£º boolean    
-	* @return£º³É¹¦Ôò·µ»ØÕæ£¬Ê§°Ü·µ»Ø¼Ù
+	* @Action: åˆ é™¤ä¸€ä¸ªæŒ‡å®šçš„å…ƒç´ ï¼Œåˆ é™¤çš„å…ƒç´ çš„ä¸ºæ•°ç»„ä¸­ç¬¬ä¸€æ¬¡å‡ºç°è¯¥å€¼çš„ä½ç½®
+	* @param @param anEntry è¦è¢«åˆ é™¤çš„å…ƒç´ 
+	* @ReturnTypeï¼š boolean    
+	* @returnï¼šæˆåŠŸåˆ™è¿”å›çœŸï¼Œå¤±è´¥è¿”å›å‡
 	 */
 	public boolean remove(T anEntry) {
-		// ¼ì²é¶ÔÏóÊÇ·ñÕı³£³õÊ¼»¯
+		// æ£€æŸ¥å¯¹è±¡æ˜¯å¦æ­£å¸¸åˆå§‹åŒ–
 		checkInitialization();
-		// »ñÈ¡¸ø¶¨ÔªËØµÄÏÂ±êÎ»ÖÃ
+		// è·å–ç»™å®šå…ƒç´ çš„ä¸‹æ ‡ä½ç½®
 		int index = getIndexOf(anEntry);
-		// É¾³ı¸ø¶¨ÏÂ±êµÄÔªËØ
+		// åˆ é™¤ç»™å®šä¸‹æ ‡çš„å…ƒç´ 
 		T result = removeEntry(index);
-		// ·µ»ØÉ¾³ıµÄ½á¹û
+		// è¿”å›åˆ é™¤çš„ç»“æœ
 		return anEntry.equals(result);
 	}
 	
 	/**
 	 * 
 	* @FunctionName: removeAll
-	* @Action: É¾³ıÒ»¸öÖ¸¶¨µÄÔªËØÔÚÊı×éÖĞµÄËùÓĞ³öÏÖ
+	* @Action: åˆ é™¤ä¸€ä¸ªæŒ‡å®šçš„å…ƒç´ åœ¨æ•°ç»„ä¸­çš„æ‰€æœ‰å‡ºç°
 	* @param @param anEntry
-	* @ReturnType£º boolean    
-	* @return£º³É¹¦Ôò·µ»ØÕæ£¬Ê§°Ü·µ»Ø¼Ù
+	* @ReturnTypeï¼š boolean    
+	* @returnï¼šæˆåŠŸåˆ™è¿”å›çœŸï¼Œå¤±è´¥è¿”å›å‡
 	 */
 	public boolean removeAll(T anEntry){
-		// ¼ì²é¶ÔÏóÊÇ·ñÕı³£³õÊ¼»¯
+		// æ£€æŸ¥å¯¹è±¡æ˜¯å¦æ­£å¸¸åˆå§‹åŒ–
 		checkInitialization();
-		// ²éÕÒbagÖĞµÚÒ»¸ö¸ø¶¨ÖµµÄÎ»ÖÃ
+		// æŸ¥æ‰¾bagä¸­ç¬¬ä¸€ä¸ªç»™å®šå€¼çš„ä½ç½®
 		int index = getIndexOf(anEntry);
-		// ³õÊ¼»¯resultÎªnull
+		// åˆå§‹åŒ–resultä¸ºnull
 		T result = null;
 		
-		// Í¨¹ıÑ­»·É¾³ı°üÖĞËùÓĞµÄ¸ø¶¨µÄÖµ
+		// é€šè¿‡å¾ªç¯åˆ é™¤åŒ…ä¸­æ‰€æœ‰çš„ç»™å®šçš„å€¼
 		while(index > -1){
 			result = removeEntry(index);
 			index = getIndexOf(anEntry);		
@@ -191,11 +191,11 @@ public class ArrayBag2<T> implements BagInterface<T>{
 	/**
 	 * 
 	* @FunctionName: clear
-	* @Action: Çå¿ÕÕû¸ö°ü    
-	* @ReturnType£º void    
+	* @Action: æ¸…ç©ºæ•´ä¸ªåŒ…    
+	* @ReturnTypeï¼š void    
 	 */
 	public void clear() {
-		// Èô°ü²»Îª¿Õ£¬ÔòÒ»Ö±É¾³ı¸Ã°üµÄ×îºóÒ»¸öÔªËØ
+		// è‹¥åŒ…ä¸ä¸ºç©ºï¼Œåˆ™ä¸€ç›´åˆ é™¤è¯¥åŒ…çš„æœ€åä¸€ä¸ªå…ƒç´ 
 		while(!isEmpty()){
 			remove();
 		}
@@ -204,16 +204,16 @@ public class ArrayBag2<T> implements BagInterface<T>{
 	/**
 	 * 
 	* @FunctionName: getFrequencyOf
-	* @Action: ÏÔÊ¾ÌØ¶¨ÔªËØÔÚ°üÖĞµÄ¸öÊı
-	* @param @param anEntry Òª±»¼ÆÊıµÄÔªËØ
-	* @ReturnType£º int    
-	* @return ·µ»ØÌØ¶¨ÔªËØµÄ¸öÊı
+	* @Action: æ˜¾ç¤ºç‰¹å®šå…ƒç´ åœ¨åŒ…ä¸­çš„ä¸ªæ•°
+	* @param @param anEntry è¦è¢«è®¡æ•°çš„å…ƒç´ 
+	* @ReturnTypeï¼š int    
+	* @return è¿”å›ç‰¹å®šå…ƒç´ çš„ä¸ªæ•°
 	 */
 	public int getFrequencyOf(T anEntry) {
 		checkInitialization();
 		int counter = 0;
 		for(int index = 0; index < numberOfEntries; index++){
-			// ÕâÀï²»¿ÉÒÔÊ¹ÓÃbag[index].equals(anEntry),ÒòÎªbag[index]¿ÉÄÜÃ»ÓĞÖµ£¬³ÌĞò»áÅ×³öNullPointerException
+			// è¿™é‡Œä¸å¯ä»¥ä½¿ç”¨bag[index].equals(anEntry),å› ä¸ºbag[index]å¯èƒ½æ²¡æœ‰å€¼ï¼Œç¨‹åºä¼šæŠ›å‡ºNullPointerException
 			if(anEntry.equals(bag[index])){
 				counter++;
 			}
@@ -224,26 +224,26 @@ public class ArrayBag2<T> implements BagInterface<T>{
 	/**
 	 * 
 	* @FunctionName: contains
-	* @Action: ÅĞ¶Ï°üÖĞÊÇ·ñº¬ÓĞÌØ¶¨µÄÔªËØ
+	* @Action: åˆ¤æ–­åŒ…ä¸­æ˜¯å¦å«æœ‰ç‰¹å®šçš„å…ƒç´ 
 	* @param @param anEntry
 	* @param @return    
-	* @ReturnType£º boolean    
-	* @return£ºÈô´æÔÚ¸ø¶¨µÄÔªËØ£¬·µ»ØÕæ£¬·ñÔò·µ»Ø¼Ù
+	* @ReturnTypeï¼š boolean    
+	* @returnï¼šè‹¥å­˜åœ¨ç»™å®šçš„å…ƒç´ ï¼Œè¿”å›çœŸï¼Œå¦åˆ™è¿”å›å‡
 	 */
 	public boolean contains(T anEntry) {
 		checkInitialization();
-		// µ÷ÓÃgetIndexOf·½·¨ÔÚbagÊı×éÖĞÕÒanEntry£¬
-		// ÈôÕÒµ½£¬·µ»ØµÄÖµ²»Îª¸ºÖµ
+		// è°ƒç”¨getIndexOfæ–¹æ³•åœ¨bagæ•°ç»„ä¸­æ‰¾anEntryï¼Œ
+		// è‹¥æ‰¾åˆ°ï¼Œè¿”å›çš„å€¼ä¸ä¸ºè´Ÿå€¼
 		return getIndexOf(anEntry) > -1;
 	}
 	
 	/**
 	 * 
 	* @FunctionName: getIndexOf
-	* @Action: ¸ù¾İ¸ø¶¨µÄÔªËØ£¬ÔÚbagÖĞÕÒµ½ÆäÏÂ±êÖµ
+	* @Action: æ ¹æ®ç»™å®šçš„å…ƒç´ ï¼Œåœ¨bagä¸­æ‰¾åˆ°å…¶ä¸‹æ ‡å€¼
 	* @param @param anEntry 
-	* @ReturnType£º int    
-	* @return: ¸ø¶¨ÖµµÄÏÂ±ê
+	* @ReturnTypeï¼š int    
+	* @return: ç»™å®šå€¼çš„ä¸‹æ ‡
 	 */
 	private int getIndexOf(T anEntry){
 		int where = -1;
@@ -266,20 +266,20 @@ public class ArrayBag2<T> implements BagInterface<T>{
 	/**
 	 * 
 	* @FunctionName: removeEntry
-	* @Action: Í¨¹ı¸ø¶¨Ë÷ÒıÉ¾³ı°üÖĞµÄÔªËØ 
+	* @Action: é€šè¿‡ç»™å®šç´¢å¼•åˆ é™¤åŒ…ä¸­çš„å…ƒç´  
 	* @param @param givenIndex
-	* @ReturnType£º T    
-	* @return ÈôÉ¾³ı³É¹¦£¬·µ»ØTrue,·ñÔò,·µ»ØFalse
+	* @ReturnTypeï¼š T    
+	* @return è‹¥åˆ é™¤æˆåŠŸï¼Œè¿”å›True,å¦åˆ™,è¿”å›False
 	 */
 	private T removeEntry(int givenIndex){
 		T result = null;
 		
 		if(!isEmpty() && (givenIndex > -1)){
-			result = bag[givenIndex]; // ÒªÉ¾³ıµÄÔªËØ
-			int lastIndex = numberOfEntries - 1;// ÕÒµ½×îºóÒ»¸öÔªËØµÄÏÂ±ê
-			bag[givenIndex] = bag[lastIndex];// ½«×îºóÒ»¸öÔªËØÒÆµ½ÒªÉ¾³ıÔªËØµÄÎ»ÖÃ
-			bag[lastIndex] = null;// ½«×îºóÒ»¸öÔªËØµÄÖµ¸³ÖµÎªnull
-			numberOfEntries--;// ½«bagÖĞµÄÔªËØÊıÄ¿-1
+			result = bag[givenIndex]; // è¦åˆ é™¤çš„å…ƒç´ 
+			int lastIndex = numberOfEntries - 1;// æ‰¾åˆ°æœ€åä¸€ä¸ªå…ƒç´ çš„ä¸‹æ ‡
+			bag[givenIndex] = bag[lastIndex];// å°†æœ€åä¸€ä¸ªå…ƒç´ ç§»åˆ°è¦åˆ é™¤å…ƒç´ çš„ä½ç½®
+			bag[lastIndex] = null;// å°†æœ€åä¸€ä¸ªå…ƒç´ çš„å€¼èµ‹å€¼ä¸ºnull
+			numberOfEntries--;// å°†bagä¸­çš„å…ƒç´ æ•°ç›®-1
 		}// end if
 		
 		return result;
@@ -288,8 +288,8 @@ public class ArrayBag2<T> implements BagInterface<T>{
 	/**
 	 * 
 	* @FunctionName: checkInitilization
-	* @Action: ¼ì²â¶ÔÏóÊÇ·ñ±»Õı³£³õÊ¼»¯,Èô¶ÔÏóÎ´Õı³£³õÊ¼»¯£¬ÔòÅ×³öÒì³£
-	* @ReturnType£º void    
+	* @Action: æ£€æµ‹å¯¹è±¡æ˜¯å¦è¢«æ­£å¸¸åˆå§‹åŒ–,è‹¥å¯¹è±¡æœªæ­£å¸¸åˆå§‹åŒ–ï¼Œåˆ™æŠ›å‡ºå¼‚å¸¸
+	* @ReturnTypeï¼š void    
 	 */
 	public void checkInitialization(){
 		if(!initialized){

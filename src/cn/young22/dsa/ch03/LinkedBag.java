@@ -2,30 +2,30 @@ package cn.young22.dsa.ch03;
 
 import cn.young22.dsa.ch01.BagInterface;
 
-/** °üµÄÁ´Ê½ÊµÏÖµÄ´úÂë¿ò¼Ü
- * 	½öÊµÏÖÁËadd()ºÍtoArray()·½·¨
+/** åŒ…çš„é“¾å¼å®ç°çš„ä»£ç æ¡†æ¶
+ * 	ä»…å®ç°äº†add()å’ŒtoArray()æ–¹æ³•
  * */
 
 public class LinkedBag<T> implements BagInterface<T>{
-	/** °üÖĞµÄ½ÚµãÀà*/
+	/** åŒ…ä¸­çš„èŠ‚ç‚¹ç±»*/
 	private class Node {
 		private T 	data;	// Entry in bag
 		private Node next; 	// Link to the next node
 		
-		/** ½ÚµãµÄ¹¹Ôì·½·¨£¬½«¿Í»§´«ÈëµÄdataPortion¸³Öµ¸ø½Úµã£¬next¸³ÖµÎªnull*/
+		/** èŠ‚ç‚¹çš„æ„é€ æ–¹æ³•ï¼Œå°†å®¢æˆ·ä¼ å…¥çš„dataPortionèµ‹å€¼ç»™èŠ‚ç‚¹ï¼Œnextèµ‹å€¼ä¸ºnull*/
 		private Node(T dataPortion){
 			this(dataPortion, null);
 		}
 		
-		/** ½ÚµãµÄ¹¹Ôì·½·¨£¬½«¿Í»§¶Ë´«ÈëµÄdataPortionºÍnextNode·Ö±ğ¸³Öµ¸ødataºÍnext*/
+		/** èŠ‚ç‚¹çš„æ„é€ æ–¹æ³•ï¼Œå°†å®¢æˆ·ç«¯ä¼ å…¥çš„dataPortionå’ŒnextNodeåˆ†åˆ«èµ‹å€¼ç»™dataå’Œnext*/
 		private Node(T dataPortion, Node nextNode){
 			data = dataPortion;
 			next = nextNode;
 		}
 	}
-	// Í·½áµã
+	// å¤´ç»“ç‚¹
 	private Node firstNode;
-	// °üÖĞµÄ½Úµã¸öÊı
+	// åŒ…ä¸­çš„èŠ‚ç‚¹ä¸ªæ•°
 	private int numberOfEntries;
 	
 	

@@ -1,34 +1,34 @@
 package cn.young22.dsa.ch01;
 
-/** Ò»¸öÓÃÀ´²âÊÔĞ¡Öí´æÇ®¹ŞµÄÀà*/
+/** ä¸€ä¸ªç”¨æ¥æµ‹è¯•å°çŒªå­˜é’±ç½çš„ç±»*/
 public class PiggyBankExample {
 
 	public static void main(String[] args) {
-		// ³õÊ¼»¯Ò»¸öĞ¡Öí´æÇ®¹Ş
+		// åˆå§‹åŒ–ä¸€ä¸ªå°çŒªå­˜é’±ç½
 		PiggyBank myBank = new PiggyBank();
-		// Ïò´æÇ®¹ŞÖĞ¼ÓÈëÓ²±Ò
+		// å‘å­˜é’±ç½ä¸­åŠ å…¥ç¡¬å¸
 		addCoin(new Coin(1, 2010), myBank);
 		addCoin(new Coin(5, 2011), myBank);
 		addCoin(new Coin(10, 2000), myBank);
 		addCoin(new Coin(25, 2012), myBank);
 		
-		// ¿ªÊ¼´Ó´æÇ®¹ŞÖĞÈ¡³öÓ²±Ò
+		// å¼€å§‹ä»å­˜é’±ç½ä¸­å–å‡ºç¡¬å¸
 		System.out.println("Removing all the coins:");
 		
-		// È¡³öÓ²±ÒµÄÊıÄ¿
+		// å–å‡ºç¡¬å¸çš„æ•°ç›®
 		int amountRemoved = 0;
 		
-		// ´Ó´æÇ®¹ŞÖĞÒ»¸öÒ»¸öµÄÈ¡³öÓ²±Ò²¢Êä³öÓ²±ÒµÄĞÅÏ¢
+		// ä»å­˜é’±ç½ä¸­ä¸€ä¸ªä¸€ä¸ªçš„å–å‡ºç¡¬å¸å¹¶è¾“å‡ºç¡¬å¸çš„ä¿¡æ¯
 		while(!myBank.isEmpty()){
 			Coin removedCoin = myBank.remove();
 			System.out.println("Removed a " + removedCoin.getMyName() + ".");
 			amountRemoved = amountRemoved + removedCoin.getValue();
 		}
-		// Ó²±ÒÈ«²¿È¡Íê
+		// ç¡¬å¸å…¨éƒ¨å–å®Œ
 		System.out.println("All done. Removed " + amountRemoved + " cents.");
 	}
 	
-	/** Ïò´æÇ®¹ŞÖĞ¼ÓÈëÓ²±ÒµÄ·½·¨*/
+	/** å‘å­˜é’±ç½ä¸­åŠ å…¥ç¡¬å¸çš„æ–¹æ³•*/
 	public static void addCoin(Coin aCoin, PiggyBank aBank){
 		if(aBank.add(aCoin)){
 			System.out.println("Added a " + aCoin.getMyName() + ".");
@@ -39,7 +39,7 @@ public class PiggyBankExample {
 	}// end addCoin
 }// end PiggyBankExample
 
-/*ÔËĞĞ½á¹û£º
+/*è¿è¡Œç»“æœï¼š
 Added a PENNY.
 Added a NICKEL.
 Added a DIME.

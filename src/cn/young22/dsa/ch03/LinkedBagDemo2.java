@@ -3,12 +3,12 @@ package cn.young22.dsa.ch03;
 import cn.young22.dsa.ch01.BagInterface;
 
 /**
- * Õâ¸öÀàÊ¹ÓÃÀ´²âÊÔLinkedBag2ÖĞĞÂÌí¼ÓµÄ·½·¨µÄ
- * Ö÷Òª²âÊÔÁËremoveÏµÁĞµÄ·½·¨
- * Õâ¸öÀàµÄÄÚÈİÓëArrayBagDemo2ÀàµÄÄÚÈİÀàËÆ£¬
- * ²»Í¬µãÔÚÓÚ£º
- * 		ÓÉÓÚËüÃÇµÄ¹¹Ôì·½·¨²»Í¬£¬ÔÚ³õÊ¼»¯Ê±LinkedBag2Àà²»ĞèÒªÌî½Úµã¸öÊı
- * 		ÔÚArrayBagDemo2ÀàµÄ»ù´¡ÉÏ³éÏóÁËtestRemoveAll·½·¨
+ * è¿™ä¸ªç±»ä½¿ç”¨æ¥æµ‹è¯•LinkedBag2ä¸­æ–°æ·»åŠ çš„æ–¹æ³•çš„
+ * ä¸»è¦æµ‹è¯•äº†removeç³»åˆ—çš„æ–¹æ³•
+ * è¿™ä¸ªç±»çš„å†…å®¹ä¸ArrayBagDemo2ç±»çš„å†…å®¹ç±»ä¼¼ï¼Œ
+ * ä¸åŒç‚¹åœ¨äºï¼š
+ * 		ç”±äºå®ƒä»¬çš„æ„é€ æ–¹æ³•ä¸åŒï¼Œåœ¨åˆå§‹åŒ–æ—¶LinkedBag2ç±»ä¸éœ€è¦å¡«èŠ‚ç‚¹ä¸ªæ•°
+ * 		åœ¨ArrayBagDemo2ç±»çš„åŸºç¡€ä¸ŠæŠ½è±¡äº†testRemoveAllæ–¹æ³•
  * */
 
 public class LinkedBagDemo2 {
@@ -143,40 +143,32 @@ public class LinkedBagDemo2 {
 
 /*
 Output:
-
 Testing the method isEmpty with an empty bag
 isEmpty finds the bag 
 empty: OK.
-
 Adding A A B A C fadsd A A F G 
 The bag contains 10 string(s), as follows:
 G F A A fadsd C A B A A 
-
 Removing a string from the bag
 remove returns G
 The bag contains 9 string(s), as follows:
 F A A fadsd C A B A A 
-
 Removing "B" from the bag:
 remove("B") returns true
 The bag contains 8 string(s), as follows:
 A A fadsd C A F A A 
-
 Removing "A" from the bag:
 remove("A") returns true
 The bag contains 7 string(s), as follows:
 A fadsd C A F A A 
-
 Removing "C" from the bag:
 remove("C") returns true
 The bag contains 6 string(s), as follows:
 fadsd A A F A A 
-
 Removing "D" from the bag:
 remove("D") returns false
 The bag contains 6 string(s), as follows:
 fadsd A A F A A 
-
 Removing "A" from the bag:
 remove("A") returns true
 The bag contains 5 string(s), as follows:
@@ -187,7 +179,6 @@ Does this bag cotain B? false
 Does this bag cotain C? false
 Does this bag cotain D? false
 Does this bag cotain E? false
-
 Testing the method of getFrequency of:
 In this bag, the count of  is 0
 In this bag, the count of B is 0
@@ -195,11 +186,8 @@ In this bag, the count of A is 3
 In this bag, the count of C is 0
 In this bag, the count of D is 0
 In this bag, the count of A is 3
-
-
 Tests method removeAll()
 removeAll("A") returns true
 The bag contains 2 string(s), as follows:
 fadsd F 
-
 */

@@ -1,12 +1,12 @@
 package cn.young22.dsa.ch05;
 /**
- * Ò»¸ö³éÏóÊı¾İÀàĞÍÕ»µÄ½Ó¿Ú
+ * ä¸€ä¸ªæŠ½è±¡æ•°æ®ç±»å‹æ ˆçš„æ¥å£
  * */
 public interface StackInterface<T> {
 	/**
 	 * 
 	* @FunctionName: push
-	* @Action: ÔÚÕ»¶¥Ìí¼ÓÒ»¸öĞÂÔªËØ
+	* @Action: åœ¨æ ˆé¡¶æ·»åŠ ä¸€ä¸ªæ–°å…ƒç´ 
 	* @param @param newEntry    
 	* @ReturnType: void    
 	 */
@@ -15,35 +15,35 @@ public interface StackInterface<T> {
 	/**
 	 * 
 	* @FunctionName: pop
-	* @Action: ´ÓÕ»¶¥É¾³ıÒ»¸öÔªËØ 
-	* @ReturnType£º T    
-	* @return ÔÚÕ»¶¥µÄÔªËØ
+	* @Action: ä»æ ˆé¡¶åˆ é™¤ä¸€ä¸ªå…ƒç´  
+	* @ReturnTypeï¼š T    
+	* @return åœ¨æ ˆé¡¶çš„å…ƒç´ 
 	 */
 	public T pop();
 	
 	/**
 	 * 
 	* @FunctionName: peek
-	* @Action: ¼ìË÷Õ»¶¥ÔªËØ
-	* @ReturnType£º T    
-	* @return ·µ»ØÕ»¶¥ÔªËØ
+	* @Action: æ£€ç´¢æ ˆé¡¶å…ƒç´ 
+	* @ReturnTypeï¼š T    
+	* @return è¿”å›æ ˆé¡¶å…ƒç´ 
 	 */
 	public T peek();
 	
 	/**
 	 * 
 	* @FunctionName: isEmpty
-	* @Action: ÅĞ¶ÏÕ»ÊÇ·ñÊÇ¿ÕµÄ
-	* @ReturnType£º boolean    
-	* @return£ºÈôÕ»¿Õ£¬·µ»ØTrue,·ñÔò£¬·µ»ØFalse
+	* @Action: åˆ¤æ–­æ ˆæ˜¯å¦æ˜¯ç©ºçš„
+	* @ReturnTypeï¼š boolean    
+	* @returnï¼šè‹¥æ ˆç©ºï¼Œè¿”å›True,å¦åˆ™ï¼Œè¿”å›False
 	 */
 	public boolean isEmpty();
 	
 	/**
 	 * 
 	* @FunctionName: clear
-	* @Action: Çå³şÕ»µÄËùÓĞÔªËØ 
-	* @ReturnType£º void    
+	* @Action: æ¸…æ¥šæ ˆçš„æ‰€æœ‰å…ƒç´  
+	* @ReturnTypeï¼š void    
 	* @return
 	 */
 	public void clear();

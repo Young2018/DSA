@@ -2,42 +2,42 @@ package cn.young22.dsa.ch02;
 
 import cn.young22.dsa.ch01.BagInterface;
 /**
- *  ²âÊÔResizeableArrayBagÀà
+ *  æµ‹è¯•ResizeableArrayBagç±»
  * */
 public class ResizeableArrayBagDemo {
 
 	public static void main(String[] args) {
 		// A bag whose initial capacity is small
-		// ³õÊ¼»¯Ò»¸öÈİÁ¿Ö»ÓĞ3µÄ°ü
+		// åˆå§‹åŒ–ä¸€ä¸ªå®¹é‡åªæœ‰3çš„åŒ…
 		BagInterface<String> aBag = new ResizeableArrayBag<>(3);
-		// ²âÊÔ´ËÊ±°ü¿ÕÊÇ·ñÎªÕæ
+		// æµ‹è¯•æ­¤æ—¶åŒ…ç©ºæ˜¯å¦ä¸ºçœŸ
 		testIsEmpty(aBag, true);
 		
-		// ²âÊÔadd·½·¨£¬½«contentsOfBagµÄÖµ¸³Öµµ½aBagÖĞ
-		// ×¢Òâ£¬ÕâÊ±contentsOfBagÖĞÓĞ7¸öÔªËØ£¬¶ø³õÊ¼»¯µÄaBagµÄÈİÁ¿½öÎª3£¬¹ÊÔÚÔËĞĞÊ±aBag»á×Ô¶¯µÄÔö¼ÓÈİÁ¿
+		// æµ‹è¯•addæ–¹æ³•ï¼Œå°†contentsOfBagçš„å€¼èµ‹å€¼åˆ°aBagä¸­
+		// æ³¨æ„ï¼Œè¿™æ—¶contentsOfBagä¸­æœ‰7ä¸ªå…ƒç´ ï¼Œè€Œåˆå§‹åŒ–çš„aBagçš„å®¹é‡ä»…ä¸º3ï¼Œæ•…åœ¨è¿è¡Œæ—¶aBagä¼šè‡ªåŠ¨çš„å¢åŠ å®¹é‡
 		System.out.println("Adding to the bag more strings that its initial capacity");
 		String[] contentsOfBag = {"A", "D", "B", "A", "C", "A", "D"};
 		testAdd(aBag, contentsOfBag);
 		
-		// Ìí¼ÓÁËÔªËØºóÔÙ²âÊÔisEmpty·½·¨
+		// æ·»åŠ äº†å…ƒç´ åå†æµ‹è¯•isEmptyæ–¹æ³•
 		testIsEmpty(aBag, false);
 		String[] testStrings2 = {"A", "B", "C", "D", "Z"};
-		// Ê¹ÓÃtestStrings2È¥²âÊÔÃ¿¸ö¸ø¶¨×Ö·û³öÏÖÔÚaBagÖĞµÄÆµÂÊ»òÅĞ¶Ï°üÖĞÊÇ·ñ°üº¬¸ø¶¨×Ö·û
+		// ä½¿ç”¨testStrings2å»æµ‹è¯•æ¯ä¸ªç»™å®šå­—ç¬¦å‡ºç°åœ¨aBagä¸­çš„é¢‘ç‡æˆ–åˆ¤æ–­åŒ…ä¸­æ˜¯å¦åŒ…å«ç»™å®šå­—ç¬¦
 		testFrequency(aBag, testStrings2);
 		testContains(aBag, testStrings2);
 		
-		// ²âÊÔremove()ºÍremove(anEntry)·½·¨£¬
-		// Èô´«ÈëµÄ×Ö·û´®Îª""»ònullÔòµ÷ÓÃremove()·½·¨£¬É¾³ı°üÖĞµÄ×îºóÒ»¸öÔªËØµÄÖµ
-		// ·ñÔò£¬Ôòµ÷ÓÃremove(anEntry)·½·¨£¬É¾³ı°üÖĞ¸ø¶¨ÖµµÄµÚÒ»´Î³öÏÖ
+		// æµ‹è¯•remove()å’Œremove(anEntry)æ–¹æ³•ï¼Œ
+		// è‹¥ä¼ å…¥çš„å­—ç¬¦ä¸²ä¸º""æˆ–nullåˆ™è°ƒç”¨remove()æ–¹æ³•ï¼Œåˆ é™¤åŒ…ä¸­çš„æœ€åä¸€ä¸ªå…ƒç´ çš„å€¼
+		// å¦åˆ™ï¼Œåˆ™è°ƒç”¨remove(anEntry)æ–¹æ³•ï¼Œåˆ é™¤åŒ…ä¸­ç»™å®šå€¼çš„ç¬¬ä¸€æ¬¡å‡ºç°
 		String[] testStrings3 = {"", "B", "A", "C", "Z"};
 		testRemove(aBag, testStrings3);
 		
-		// ²âÊÔremoveAll()·½·¨£¬É¾³ı¸ø¶¨ÔªËØÔÚ°üÖĞµÄËùÓĞÖµ
+		// æµ‹è¯•removeAll()æ–¹æ³•ï¼Œåˆ é™¤ç»™å®šå…ƒç´ åœ¨åŒ…ä¸­çš„æ‰€æœ‰å€¼
 		System.out.println("\nRemove the specific string in the bag");
 		aBag.removeAll("A");
 		displayBag(aBag);
 		
-		// ²âÊÔclear()·½·¨£¬Çé¿öÕû¸ö°üÖĞµÄÔªËØ
+		// æµ‹è¯•clear()æ–¹æ³•ï¼Œæƒ…å†µæ•´ä¸ªåŒ…ä¸­çš„å…ƒç´ 
 		System.out.println("\nClearing the bag:");
 		aBag.clear();
 		testIsEmpty(aBag, true);
@@ -130,11 +130,9 @@ public class ResizeableArrayBagDemo {
 
 /*
 Expected output:
-
 Testing isEmpty with an empty bag:
 isEmpty finds the bag 
 empty: OK
-
 Adding to the bag more strings that its initial capacity
 Adding to the bag: A D B A C A D 
 The bag contains 7 string(s), as follows:
@@ -142,56 +140,45 @@ A D B A C A D
 Testing isEmpty with a bag that is not empty
 isEmpty finds the bag 
 not empty: OK.
-
-
 Testing the method getFrequencyOf:
 In this bag, the count of A is 3
 In this bag, the count of B is 1
 In this bag, the count of C is 1
 In this bag, the count of D is 2
 In this bag, the count of Z is 0
-
 Testing the method contains
 Does this bag contain A? true
 Does this bag contain B? true
 Does this bag contain C? true
 Does this bag contain D? true
 Does this bag contain Z? false
-
 Removing a string from the bag:
 remove() returnsD
 The bag contains 6 string(s), as follows:
 A D B A C A 
-
 Removing "B" from the bag:
 remove("B") returns true
 The bag contains 5 string(s), as follows:
 A D A A C 
-
 Removing "A" from the bag:
 remove("A") returns true
 The bag contains 4 string(s), as follows:
 C D A A 
-
 Removing "C" from the bag:
 remove("C") returns true
 The bag contains 3 string(s), as follows:
 A D A 
-
 Removing "Z" from the bag:
 remove("Z") returns false
 The bag contains 3 string(s), as follows:
 A D A 
-
 Remove the specific string in the bag
 The bag contains 1 string(s), as follows:
 D 
-
 Clearing the bag:
 Testing isEmpty with an empty bag:
 isEmpty finds the bag 
 empty: OK
-
 The bag contains 0 string(s), as follows:
  
  

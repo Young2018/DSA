@@ -1,14 +1,14 @@
 package cn.young22.dsa.ch07;
 
-/** Ê¹ÓÃµİ¹éÇó1µ½Ò»¸öºÜ´óÊı×ÖµÄºÍ
- *  Õâ¸ö³ÌĞòÓĞ×ÅÃ÷ÏÔµÄ²»×ã£¬µ±Êı×ÖÉÔÎ¢´óÒ»µãÊ±£¬
- *  ¾Í»á³öÏÖException in thread "main" java.lang.StackOverflowError
- *  µÄ´íÎó
+/** ä½¿ç”¨é€’å½’æ±‚1åˆ°ä¸€ä¸ªå¾ˆå¤§æ•°å­—çš„å’Œ
+ *  è¿™ä¸ªç¨‹åºæœ‰ç€æ˜æ˜¾çš„ä¸è¶³ï¼Œå½“æ•°å­—ç¨å¾®å¤§ä¸€ç‚¹æ—¶ï¼Œ
+ *  å°±ä¼šå‡ºç°Exception in thread "main" java.lang.StackOverflowError
+ *  çš„é”™è¯¯
  * */
 public class SumOf {
 	
 	public static void main(String[] args) {
-		// ¶¨ÒåÒ»¸ö½Ï´óµÄÕûÊı
+		// å®šä¹‰ä¸€ä¸ªè¾ƒå¤§çš„æ•´æ•°
 		final int A_BIG_INTEGER = 1000;
 		int sumOfOneToA_BIG_INTEGER = sumOf(A_BIG_INTEGER);
 		System.out.println(sumOfOneToA_BIG_INTEGER);
@@ -29,6 +29,5 @@ public class SumOf {
 
 /*
 Output:
-
 500500
  */

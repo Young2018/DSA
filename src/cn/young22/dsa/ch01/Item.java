@@ -2,14 +2,14 @@ package cn.young22.dsa.ch01;
 
 import jdk.nashorn.internal.objects.annotations.Getter;
 
-/** Ò»¸öÓÃÀ´ÃèÊöÉÌÆ·Ãû³ÆºÍ¼Û¸ñµÄÀà*/
+/** ä¸€ä¸ªç”¨æ¥æè¿°å•†å“åç§°å’Œä»·æ ¼çš„ç±»*/
 public class Item {
-	private String description;	// ÎïÆ·ÃèÊö
-	private int    price;		// ÎïÆ·¼Û¸ñ£¬ÒÔ·ÖÎªµ¥Î»
+	private String description;	// ç‰©å“æè¿°
+	private int    price;		// ç‰©å“ä»·æ ¼ï¼Œä»¥åˆ†ä¸ºå•ä½
 	
-	/** ¹¹ÔìÆ÷·½·¨£¬
-	 * ½«¿Í»§¶Ë´«À´µÄproductDescription¸³Öµ¸ødescription
-	 * productPrice¸³Öµ¸øprice
+	/** æ„é€ å™¨æ–¹æ³•ï¼Œ
+	 * å°†å®¢æˆ·ç«¯ä¼ æ¥çš„productDescriptionèµ‹å€¼ç»™description
+	 * productPriceèµ‹å€¼ç»™price
 	 * */
 	public Item(String productDescription, int productPrice){
 		description = productDescription;
@@ -26,7 +26,7 @@ public class Item {
 		return price;
 	}
 	
-	// ÒÔÏÂÃæµÄ¸ñÊ½Êä³ö¶ÔÏóµÄĞÅÏ¢
+	// ä»¥ä¸‹é¢çš„æ ¼å¼è¾“å‡ºå¯¹è±¡çš„ä¿¡æ¯
 	@Override
 	public String toString() {
 		return description + "\t$" + price / 100 + "." + price % 100;

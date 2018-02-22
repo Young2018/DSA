@@ -3,96 +3,96 @@ package cn.young22.dsa.ch03;
 import cn.young22.dsa.ch01.BagInterface;
 
 /**
- *  LinkedBag2ÀàÊµÏÖÁËËùÓĞµÄ¹æ¸ñËµÃ÷ËùĞèÒªµÄ·½·¨
+ *  LinkedBag2ç±»å®ç°äº†æ‰€æœ‰çš„è§„æ ¼è¯´æ˜æ‰€éœ€è¦çš„æ–¹æ³•
  *  
  * */
 public class LinkedBag2<T> implements BagInterface<T>{
-	/** °üµÄ½Úµã*/
+	/** åŒ…çš„èŠ‚ç‚¹*/
 	private class Node {
 		private T 	data;	// Entry in bag
 		private Node next; 	// Link to the next node
 		
-		/** ½öÊ¹ÓÃdata³õÊ¼»¯µÄNode*/
+		/** ä»…ä½¿ç”¨dataåˆå§‹åŒ–çš„Node*/
 		private Node(T dataPortion){
 			this(dataPortion, null);
 		}
 		
-		/** Ê¹ÓÃdataºÍnextNode³õÊ¼»¯µÄ½Úµã*/
+		/** ä½¿ç”¨dataå’ŒnextNodeåˆå§‹åŒ–çš„èŠ‚ç‚¹*/
 		private Node(T dataPortion, Node nextNode){
 			data = dataPortion;
 			next = nextNode;
 		}
 	}
 	
-	// °üµÄµÚÒ»¸ö½Úµã
+	// åŒ…çš„ç¬¬ä¸€ä¸ªèŠ‚ç‚¹
 	private Node firstNode;
-	// °üÖĞ½ÚµãµÄ¸öÊı
+	// åŒ…ä¸­èŠ‚ç‚¹çš„ä¸ªæ•°
 	private int numberOfEntries;
 	
-	/** LinkedBag2ÀàµÄÄ¬ÈÏ¹¹Ôì·½·¨£¬½«µÚÒ»¸ö½Úµã³õÊ¼»¯Îªnull£¬°üÖĞµÄÔªËØ¸öÊı³õÊ¼»¯Îª0*/
+	/** LinkedBag2ç±»çš„é»˜è®¤æ„é€ æ–¹æ³•ï¼Œå°†ç¬¬ä¸€ä¸ªèŠ‚ç‚¹åˆå§‹åŒ–ä¸ºnullï¼ŒåŒ…ä¸­çš„å…ƒç´ ä¸ªæ•°åˆå§‹åŒ–ä¸º0*/
 	public LinkedBag2(){
 		firstNode = null;
 		numberOfEntries = 0;
 	}
 	
-	/** ·µ»Ø°üÖĞµ±Ç°µÄ½Úµã¸öÊı*/
+	/** è¿”å›åŒ…ä¸­å½“å‰çš„èŠ‚ç‚¹ä¸ªæ•°*/
 	@Override
 	public int getCurrentSize() {
 		return numberOfEntries;
 	}
 	
-	/** ÅĞ¶Ï°üÊÇ·ñÎª¿Õ£¬Èô½Úµã¸öÊıÎª0£¬·µ»ØTrue,·ñÔò,·µ»ØFalse*/
+	/** åˆ¤æ–­åŒ…æ˜¯å¦ä¸ºç©ºï¼Œè‹¥èŠ‚ç‚¹ä¸ªæ•°ä¸º0ï¼Œè¿”å›True,å¦åˆ™,è¿”å›False*/
 	@Override
 	public boolean isEmpty() {
 		return numberOfEntries == 0;
 	}
 
-	/** Ê¹ÓÃÍ·²å·¨Íù°üÖĞĞÂÌí½Úµã*/
+	/** ä½¿ç”¨å¤´æ’æ³•å¾€åŒ…ä¸­æ–°æ·»èŠ‚ç‚¹*/
 	@Override
 	public boolean add(T newEntry) {
 		// Add to beginning of chain:
-		// ĞÂ½¨Ò»¸öÒÔnewEntryÎªdataÖµµÄNode¶ÔÏó
+		// æ–°å»ºä¸€ä¸ªä»¥newEntryä¸ºdataå€¼çš„Nodeå¯¹è±¡
 		Node newNode = new Node(newEntry);
-		// ½« newNodeµÄÏÂÒ»¸ö½ÚµãÒıÓÃÖ¸ÏòÍ·½Úµã
+		// å°† newNodeçš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹å¼•ç”¨æŒ‡å‘å¤´èŠ‚ç‚¹
 		newNode.next = firstNode;	// make new node reference rest of chain
 									// (firstNode is null if chain is empty)
 									// New node is at beginning of chain
-		// ½«Í·½áµãµÄÒıÓÃÖ¸ÏònewNode
+		// å°†å¤´ç»“ç‚¹çš„å¼•ç”¨æŒ‡å‘newNode
 		firstNode = newNode;
-		// ½«°üÖĞµÄÔªËØ¸öÊı¼Ó1
+		// å°†åŒ…ä¸­çš„å…ƒç´ ä¸ªæ•°åŠ 1
 		numberOfEntries++;
 		
 		return true;
 	}// end add
 
-	/** É¾³ıÁ´°üÖĞµÄµÚÒ»¸ö½Úµã*/
+	/** åˆ é™¤é“¾åŒ…ä¸­çš„ç¬¬ä¸€ä¸ªèŠ‚ç‚¹*/
 	@Override
 	public T remove() {
-		// ĞÂ½¨·ºĞÍÀàĞÍµÄresult±äÁ¿²¢¸³³õÖµÎªnull
+		// æ–°å»ºæ³›å‹ç±»å‹çš„resultå˜é‡å¹¶èµ‹åˆå€¼ä¸ºnull
 		T result = null;
-		// ÈôÍ·½áµã²»Îª¿Õ£¬ÔòÉ¾³ı°üÖĞµÄÍ·½áµã
+		// è‹¥å¤´ç»“ç‚¹ä¸ä¸ºç©ºï¼Œåˆ™åˆ é™¤åŒ…ä¸­çš„å¤´ç»“ç‚¹
 		if(firstNode != null){
 			result = firstNode.data;
 			firstNode = firstNode.next;
-			// ÕâÀï²»ĞèÒªĞ´ÏñC»òC++ÖĞµÄÊÍ·ÅfirstNodeµÄ·½·¨
-			// ÒòÎªÔÚJavaÖĞÃ»ÓĞ±»ÒıÓÃµÄ¶ÔÏó»á±»JVM×Ô¶¯»ØÊÕ
-			numberOfEntries--;	// ½«°üÖĞÔªËØµÄ¸öÊı¼õ1
+			// è¿™é‡Œä¸éœ€è¦å†™åƒCæˆ–C++ä¸­çš„é‡Šæ”¾firstNodeçš„æ–¹æ³•
+			// å› ä¸ºåœ¨Javaä¸­æ²¡æœ‰è¢«å¼•ç”¨çš„å¯¹è±¡ä¼šè¢«JVMè‡ªåŠ¨å›æ”¶
+			numberOfEntries--;	// å°†åŒ…ä¸­å…ƒç´ çš„ä¸ªæ•°å‡1
 		}
 		return result;
 	}
 	
-	/** Ëø¶¨¸ø¶¨ÔªËØÔÚ°üÖĞµÄÎ»ÖÃ
-	 * Èç¹û²éÕÒ³É¹¦,·µ»ØÒ»¸öÖ¸ÏòÕâ¸ö½ÚµãµÄË÷Òı
-	 * ·ñÔò£¬·µ»Ønull
+	/** é”å®šç»™å®šå…ƒç´ åœ¨åŒ…ä¸­çš„ä½ç½®
+	 * å¦‚æœæŸ¥æ‰¾æˆåŠŸ,è¿”å›ä¸€ä¸ªæŒ‡å‘è¿™ä¸ªèŠ‚ç‚¹çš„ç´¢å¼•
+	 * å¦åˆ™ï¼Œè¿”å›null
 	 * */
 	private Node getReferenceTo(T anEntry){
-		// ³õÊ¼»¯±êÖ¾±äÁ¿ foundÎª¼Ù
+		// åˆå§‹åŒ–æ ‡å¿—å˜é‡ foundä¸ºå‡
 		boolean found = false;
-		// ½«µÚÒ»¸ö½ÚµãµÄË÷Òı¸³¸øcurrentNode,´Ó´Ë¿ªÊ¼²éÕÒ¸ø¶¨µÄÖµ
+		// å°†ç¬¬ä¸€ä¸ªèŠ‚ç‚¹çš„ç´¢å¼•èµ‹ç»™currentNode,ä»æ­¤å¼€å§‹æŸ¥æ‰¾ç»™å®šçš„å€¼
 		Node currentNode = firstNode;
 		
-		// µ±ÕÒµ½dataÓòÎªanEntryµÄ½ÚµãºóÖÕÖ¹Ñ­»·£¬ found = true
-		// µ±±éÀúÍêÕû¸ÄÁ´±íÈÔÎ´ÕÒµ½dataÓòÎªanEntryµÄ½Úµã£¬½áÊøÑ­»·£¬ found Îª³õÊ¼Öµ²»±ä
+		// å½“æ‰¾åˆ°dataåŸŸä¸ºanEntryçš„èŠ‚ç‚¹åç»ˆæ­¢å¾ªç¯ï¼Œ found = true
+		// å½“éå†å®Œæ•´æ”¹é“¾è¡¨ä»æœªæ‰¾åˆ°dataåŸŸä¸ºanEntryçš„èŠ‚ç‚¹ï¼Œç»“æŸå¾ªç¯ï¼Œ found ä¸ºåˆå§‹å€¼ä¸å˜
 		while(!found && (currentNode != null)){
 			if(anEntry.equals(currentNode.data)){
 				found = true;
@@ -100,43 +100,43 @@ public class LinkedBag2<T> implements BagInterface<T>{
 				currentNode = currentNode.next;
 			}
 		}		
-		// ·µ»ØÕÒµ½µÄ½ÚµãµÄÒıÓÃ£¬
-		// Èô³É¹¦ÔÚÁ´±íÖĞÕÒµ½¸ø¶¨µÄanEntryÖµµÄ½Úµã,Ôò·µ»Ø¸Ã½ÚµãµÄÒıÓÃ
-		// ·ñÔò£¬·µ»Ønull
+		// è¿”å›æ‰¾åˆ°çš„èŠ‚ç‚¹çš„å¼•ç”¨ï¼Œ
+		// è‹¥æˆåŠŸåœ¨é“¾è¡¨ä¸­æ‰¾åˆ°ç»™å®šçš„anEntryå€¼çš„èŠ‚ç‚¹,åˆ™è¿”å›è¯¥èŠ‚ç‚¹çš„å¼•ç”¨
+		// å¦åˆ™ï¼Œè¿”å›null
 		return currentNode;		
 	}
 
-	/** Èç¹û¿ÉĞĞµÄ»°£¬É¾³ıÖ¸¶¨ÔªËØµÄµÚÒ»´ÎÔÚÁ´±íÖĞµÄ³öÏÖ*/
+	/** å¦‚æœå¯è¡Œçš„è¯ï¼Œåˆ é™¤æŒ‡å®šå…ƒç´ çš„ç¬¬ä¸€æ¬¡åœ¨é“¾è¡¨ä¸­çš„å‡ºç°*/
 	@Override
 	public boolean remove(T anEntry) {
-		// ³õÊ¼»¯É¾³ıµÄ½á¹ûÎªfalse
+		// åˆå§‹åŒ–åˆ é™¤çš„ç»“æœä¸ºfalse
 		boolean result = false;
-		// ²éÕÒ¸ø¶¨ÖµanEntryÔÚÁ´±íµÄµÚÒ»´Î³öÏÖ£¬²¢½«¸Ã½ÚµãµÄÒıÓÃ¸³Öµ¸ønodeN
+		// æŸ¥æ‰¾ç»™å®šå€¼anEntryåœ¨é“¾è¡¨çš„ç¬¬ä¸€æ¬¡å‡ºç°ï¼Œå¹¶å°†è¯¥èŠ‚ç‚¹çš„å¼•ç”¨èµ‹å€¼ç»™nodeN
 		Node nodeN = getReferenceTo(anEntry);
 		
-		// Èô¸Ã½ÚµãµÄÒıÓÃ²»Îªnull,ÔòÔÚÁ´±íÖĞÉ¾³ı¸Ã½Úµã£¬²¢½«result¸³ÖµÎªtrue
+		// è‹¥è¯¥èŠ‚ç‚¹çš„å¼•ç”¨ä¸ä¸ºnull,åˆ™åœ¨é“¾è¡¨ä¸­åˆ é™¤è¯¥èŠ‚ç‚¹ï¼Œå¹¶å°†resultèµ‹å€¼ä¸ºtrue
 		if(nodeN != null){
 			nodeN.data = firstNode.data;
 			firstNode = firstNode.next;
 			numberOfEntries--;
 			result = true;
 		}
-		// ·µ»ØÉ¾³ı½á¹û
+		// è¿”å›åˆ é™¤ç»“æœ
 		return result;
 	}
 	
-	/** Èç¹û¿ÉĞĞµÄ»°£¬É¾³ıÖ¸¶¨ÔªËØÔÚÁ´±íÖĞµÄËùÓĞ³öÏÖ*/
+	/** å¦‚æœå¯è¡Œçš„è¯ï¼Œåˆ é™¤æŒ‡å®šå…ƒç´ åœ¨é“¾è¡¨ä¸­çš„æ‰€æœ‰å‡ºç°*/
 	@Override
 	public boolean removeAll(T anEntry) {
-		// ³õÊ¼»¯É¾³ı½á¹ûÎªfalse
+		// åˆå§‹åŒ–åˆ é™¤ç»“æœä¸ºfalse
 		boolean result = false;
-		// ²éÕÒ¸ø¶¨ÖµanEntryÔÚÁ´±íµÄµÚÒ»´Î³öÏÖ£¬²¢½«¸Ã½ÚµãµÄÒıÓÃ¸³Öµ¸ønodeN
+		// æŸ¥æ‰¾ç»™å®šå€¼anEntryåœ¨é“¾è¡¨çš„ç¬¬ä¸€æ¬¡å‡ºç°ï¼Œå¹¶å°†è¯¥èŠ‚ç‚¹çš„å¼•ç”¨èµ‹å€¼ç»™nodeN
 		Node nodeN = getReferenceTo(anEntry);
 		
-		// µ±¸Ã½ÚµãµÄÒıÓÃ²»ÎªnullÊ±£¬½øĞĞÉ¾³ı½ÚµãµÄÑ­»·, 
-		// Ã¿É¾³ıÒ»¸ö½Úµã£¬½«°üÖĞµÄ½Úµã¸öÊı¼õ1£¬½«É¾³ı½á¹û¸³ÖµÎªtrue,
-		// ÔÙ¼ÌĞø²éÕÒ°üÖĞÊÇ·ñ»¹ÓĞ¸Ä¸ø¶¨ÖµµÄ½Úµã, ¼ÌĞøÑ­»·
-		// nodeNÎªnullÊ±£¬½áÊøÑ­»·
+		// å½“è¯¥èŠ‚ç‚¹çš„å¼•ç”¨ä¸ä¸ºnullæ—¶ï¼Œè¿›è¡Œåˆ é™¤èŠ‚ç‚¹çš„å¾ªç¯, 
+		// æ¯åˆ é™¤ä¸€ä¸ªèŠ‚ç‚¹ï¼Œå°†åŒ…ä¸­çš„èŠ‚ç‚¹ä¸ªæ•°å‡1ï¼Œå°†åˆ é™¤ç»“æœèµ‹å€¼ä¸ºtrue,
+		// å†ç»§ç»­æŸ¥æ‰¾åŒ…ä¸­æ˜¯å¦è¿˜æœ‰æ”¹ç»™å®šå€¼çš„èŠ‚ç‚¹, ç»§ç»­å¾ªç¯
+		// nodeNä¸ºnullæ—¶ï¼Œç»“æŸå¾ªç¯
 		while(nodeN != null){
 			nodeN.data = firstNode.data;
 			firstNode = firstNode.next;
@@ -144,73 +144,73 @@ public class LinkedBag2<T> implements BagInterface<T>{
 			result = true;
 			nodeN = getReferenceTo(anEntry);
 		}
-		// ·µ»ØÉ¾³ı½á¹û
+		// è¿”å›åˆ é™¤ç»“æœ
 		return result;
 	}
 	
-	/** Çå³ı°üÖĞµÄËùÓĞ½Úµã*/
+	/** æ¸…é™¤åŒ…ä¸­çš„æ‰€æœ‰èŠ‚ç‚¹*/
 	@Override
 	public void clear() {
-		// µ±°ü²»¿ÕÊ±£¬µ÷ÓÃremove()·½·¨É¾³ı°üÖĞµÄµÚÒ»¸ö½Úµã£¬Ö±µ½°ü¿ÕÎªÖ¹
+		// å½“åŒ…ä¸ç©ºæ—¶ï¼Œè°ƒç”¨remove()æ–¹æ³•åˆ é™¤åŒ…ä¸­çš„ç¬¬ä¸€ä¸ªèŠ‚ç‚¹ï¼Œç›´åˆ°åŒ…ç©ºä¸ºæ­¢
 		while(!isEmpty()){
 			remove();
 		}
 	}
 	
-	/** ²éÕÒ¸ø¶¨ÖµÔÚ°üÖĞ³öÏÖµÄ´ÎÊı*/
+	/** æŸ¥æ‰¾ç»™å®šå€¼åœ¨åŒ…ä¸­å‡ºç°çš„æ¬¡æ•°*/
 	@Override
 	public int getFrequencyOf(T anEntry) {
-		// ³õÊ¼»¯¸ø¶¨Öµ³öÏÖµÄ´ÎÊıÎª0
+		// åˆå§‹åŒ–ç»™å®šå€¼å‡ºç°çš„æ¬¡æ•°ä¸º0
 		int frequency = 0;
-		// ³õÊ¼»¯Ñ­»·¼ÆÊıÆ÷Îª0
+		// åˆå§‹åŒ–å¾ªç¯è®¡æ•°å™¨ä¸º0
 		int loopCounter = 0;
-		// ½«µÚÒ»¸ö½ÚµãµÄÒıÓÃ¸³Öµ¸øcurrentNode
+		// å°†ç¬¬ä¸€ä¸ªèŠ‚ç‚¹çš„å¼•ç”¨èµ‹å€¼ç»™currentNode
 		Node currentNode = firstNode;
 		
-		// µ±Ñ­»·¼ÆÊıÆ÷Ğ¡ÓÚ½Úµã¸öÊıÇÒµ±Ç°½Úµã²»Îª¿ÕÊ±£¬½øÈëÑ­»·
+		// å½“å¾ªç¯è®¡æ•°å™¨å°äºèŠ‚ç‚¹ä¸ªæ•°ä¸”å½“å‰èŠ‚ç‚¹ä¸ä¸ºç©ºæ—¶ï¼Œè¿›å…¥å¾ªç¯
 		while((loopCounter < numberOfEntries) && (currentNode != null)){
-			// ±È½Ï¸ø¶¨ÖµºÍµ±Ç°½ÚµãµÄdataÓò£¬ÈôÏàÍ¬£¬Ôò½«frequency + 1
+			// æ¯”è¾ƒç»™å®šå€¼å’Œå½“å‰èŠ‚ç‚¹çš„dataåŸŸï¼Œè‹¥ç›¸åŒï¼Œåˆ™å°†frequency + 1
 			if(anEntry.equals(currentNode.data)){
 				frequency++;
 			}		
-			loopCounter++;						// Ñ­»·¼ÆÊıÆ÷ + 1
-			currentNode = currentNode.next;		// ±éÀúÏÂÒ»¸ö½Úµã
+			loopCounter++;						// å¾ªç¯è®¡æ•°å™¨ + 1
+			currentNode = currentNode.next;		// éå†ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
 		}
-		// ·µ»Ø¸ø¶¨ÖµÔÚ°üÖĞ³öÏÖµÄÆµ´Î
+		// è¿”å›ç»™å®šå€¼åœ¨åŒ…ä¸­å‡ºç°çš„é¢‘æ¬¡
 		return frequency;
 	}
 	
-	/** ²éÕÒ°üÖĞÊÇ·ñº¬ÓĞ¸ø¶¨Öµ£¬ÈôÓĞÔò·µ»Øtrue,·ñÔò·µ»Øfalse*/
+	/** æŸ¥æ‰¾åŒ…ä¸­æ˜¯å¦å«æœ‰ç»™å®šå€¼ï¼Œè‹¥æœ‰åˆ™è¿”å›true,å¦åˆ™è¿”å›false*/
 	@Override
 	public boolean contains(T anEntry) {
-		// ³õÊ¼»¯²éÕÒ±êÊ¶Îªfalse
+		// åˆå§‹åŒ–æŸ¥æ‰¾æ ‡è¯†ä¸ºfalse
 		boolean found = false;
-		// ½«µÚÒ»¸ö½ÚµãµÄÒıÓÃ¸³Öµ¸øcurrentNode
+		// å°†ç¬¬ä¸€ä¸ªèŠ‚ç‚¹çš„å¼•ç”¨èµ‹å€¼ç»™currentNode
 		Node currentNode = firstNode;
 		
-		// µ±»¹Ã»ÓĞÕÒµ½¸ø¶¨ÖµÇÒµ±Ç°µÄ½Úµã²»Îª¿ÕÊ±£¬½øÈëÑ­»·
+		// å½“è¿˜æ²¡æœ‰æ‰¾åˆ°ç»™å®šå€¼ä¸”å½“å‰çš„èŠ‚ç‚¹ä¸ä¸ºç©ºæ—¶ï¼Œè¿›å…¥å¾ªç¯
 		while(!found && (currentNode != null)){
-			// Èôµ±Ç°½ÚµãÓë¸ø¶¨ÖµÏàµÈ£¬Ôò½«found¸³ÖµÎªtrue
+			// è‹¥å½“å‰èŠ‚ç‚¹ä¸ç»™å®šå€¼ç›¸ç­‰ï¼Œåˆ™å°†foundèµ‹å€¼ä¸ºtrue
 			if(anEntry.equals(currentNode.data)){
 				found = true;
 			}
-			// ·ñÔò£¬¼ÌĞø±éÀúÏÂÒ»¸ö½Úµã
+			// å¦åˆ™ï¼Œç»§ç»­éå†ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
 			else{
 				currentNode = currentNode.next;
 			}
 		}
-		// ·µ»Ø²éÕÒ½á¹û
+		// è¿”å›æŸ¥æ‰¾ç»“æœ
 		return found;
 	}
 	
-	/** ½«Á´°üÖĞµÄÖµ¸³¸øÊı×é²¢·µ»Ø¸ÃÊı×é*/
+	/** å°†é“¾åŒ…ä¸­çš„å€¼èµ‹ç»™æ•°ç»„å¹¶è¿”å›è¯¥æ•°ç»„*/
 	@Override
 	public T[] toArray() {
 		// The cast is safe because the new array contains null entries
 		@SuppressWarnings("unchecked")
 		T[] result = (T[])new Object[numberOfEntries]; // unchecked cast
 		
-		// Ñ­»·¿ØÖÆË÷Òı
+		// å¾ªç¯æ§åˆ¶ç´¢å¼•
 		int index = 0;
 		Node currentNode = firstNode;
 		while((index < numberOfEntries) && (currentNode != null)){
@@ -218,7 +218,7 @@ public class LinkedBag2<T> implements BagInterface<T>{
 			index++;
 			currentNode = currentNode.next;
 		}
-		// ·µ»ØÁ´°üµÄÊı×éĞÎÊ½
+		// è¿”å›é“¾åŒ…çš„æ•°ç»„å½¢å¼
 		return result;
 	}
 }

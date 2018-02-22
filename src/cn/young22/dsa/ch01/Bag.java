@@ -1,7 +1,7 @@
 package cn.young22.dsa.ch01;
 /**
- * °üµÄ¾ßÌåÊµÏÖ´úÂë¿ò¼Ü
- * ÀàÒªÊµÏÖBagInterface<T>µÄ·½·¨
+ * åŒ…çš„å…·ä½“å®ç°ä»£ç æ¡†æ¶
+ * ç±»è¦å®ç°BagInterface<T>çš„æ–¹æ³•
  * */
 public class Bag<T> implements BagInterface<T>{
 

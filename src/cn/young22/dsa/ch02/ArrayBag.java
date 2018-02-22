@@ -2,25 +2,25 @@ package cn.young22.dsa.ch02;
 
 import cn.young22.dsa.ch01.BagInterface;
 
-/** Ê¹ÓÃÊı×éÊµÏÖ°üµÄÀàµÄ´úÂë½á¹¹
- *  ¶¨Òå¸ÃÀàµÄË½ÓĞÊı¾İ:´æ´¢ÔªËØµÄ°übag, °üÖĞµÄÔªËØ¸öÊınumberOfEntries
- *  ¼°Êı×éµÄÄ¬ÈÏÈİÁ¿DEFAULT_CAPACITY
- *  ÊµÏÖ¹¹Ôì·½·¨£º ÊµÏÖÒ»¸ö¸ø¶¨ÈİÁ¿µÄArrayBag¹¹Ôì·½·¨£¬ÔÚ¸Ã·½·¨ÖĞ³õÊ¼»¯bagÊı×é
- *  ÊµÏÖBagInterface<T>ÖĞÒªÇóÊµÏÖµÄ·½·¨
+/** ä½¿ç”¨æ•°ç»„å®ç°åŒ…çš„ç±»çš„ä»£ç ç»“æ„
+ *  å®šä¹‰è¯¥ç±»çš„ç§æœ‰æ•°æ®:å­˜å‚¨å…ƒç´ çš„åŒ…bag, åŒ…ä¸­çš„å…ƒç´ ä¸ªæ•°numberOfEntries
+ *  åŠæ•°ç»„çš„é»˜è®¤å®¹é‡DEFAULT_CAPACITY
+ *  å®ç°æ„é€ æ–¹æ³•ï¼š å®ç°ä¸€ä¸ªç»™å®šå®¹é‡çš„ArrayBagæ„é€ æ–¹æ³•ï¼Œåœ¨è¯¥æ–¹æ³•ä¸­åˆå§‹åŒ–bagæ•°ç»„
+ *  å®ç°BagInterface<T>ä¸­è¦æ±‚å®ç°çš„æ–¹æ³•
  * */
 public class ArrayBag<T> implements BagInterface<T> {
-	// ¶¨ÒåÖÕÌ¬µÄ·ºĞÍÊı×ébag
+	// å®šä¹‰ç»ˆæ€çš„æ³›å‹æ•°ç»„bag
 	private final T[] bag;	
-	// ¶¨Òå°üÖĞÔªËØµÄ¸öÊı
+	// å®šä¹‰åŒ…ä¸­å…ƒç´ çš„ä¸ªæ•°
 	private int numberOfEntries;
-	// ¶¨Òå°üÖĞÄ¬ÈÏÔªËØµÄ¸öÊı
+	// å®šä¹‰åŒ…ä¸­é»˜è®¤å…ƒç´ çš„ä¸ªæ•°
 	private static final int DEFAULT_CAPACITY = 25;
 	
-	/** Ä¬ÈÏ¹¹ÔìÆ÷·½·¨£¬´´½¨Ò»¸öÄ¬ÈÏÈİÁ¿µÄ°ü*/
+	/** é»˜è®¤æ„é€ å™¨æ–¹æ³•ï¼Œåˆ›å»ºä¸€ä¸ªé»˜è®¤å®¹é‡çš„åŒ…*/
 	public ArrayBag(){
 		this(DEFAULT_CAPACITY);
 	}
-	/** ´´½¨Ò»¸ö¸ø¶¨ÈİÁ¿µÄArrayBag¶ÔÏó*/
+	/** åˆ›å»ºä¸€ä¸ªç»™å®šå®¹é‡çš„ArrayBagå¯¹è±¡*/
 	public ArrayBag(int capacity) {
 		@SuppressWarnings("unchecked")
 		T[] tempBag = (T[])new Object[capacity];
@@ -31,10 +31,10 @@ public class ArrayBag<T> implements BagInterface<T> {
 	/**
 	 * 
 	* @FunctionName: add
-	* @Action: Ïò°üÖĞÌí¼ÓÒ»¸öĞÂÔªËØ
+	* @Action: å‘åŒ…ä¸­æ·»åŠ ä¸€ä¸ªæ–°å…ƒç´ 
 	* @param @param newEntry
-	* @ReturnType£º boolean    
-	* @return: µ±Ìí¼Ó³É¹¦Ê±·µ»ØÕæ£¬µ±Ìí¼ÓÊ§°ÜÊ±·µ»Ø¼Ù
+	* @ReturnTypeï¼š boolean    
+	* @return: å½“æ·»åŠ æˆåŠŸæ—¶è¿”å›çœŸï¼Œå½“æ·»åŠ å¤±è´¥æ—¶è¿”å›å‡
 	 */
 	public boolean add(T newEntry) {
 		// to be defined
@@ -44,11 +44,11 @@ public class ArrayBag<T> implements BagInterface<T> {
 	/**
 	 * 
 	* @FunctionName: toArray
-	* @Action: ¼ìË÷°üÖĞµÄËùÓĞÔªËØ£¬½«Æä¸³Öµµ½Ò»¸öÊı×éÖĞ  
-	* @ReturnType£º T[]    
+	* @Action: æ£€ç´¢åŒ…ä¸­çš„æ‰€æœ‰å…ƒç´ ï¼Œå°†å…¶èµ‹å€¼åˆ°ä¸€ä¸ªæ•°ç»„ä¸­  
+	* @ReturnTypeï¼š T[]    
 	* @throws
-	* @return£º Ò»¸ö¸ù¾İ°üÖĞÔªËØĞÂ½¨µÄÊı×é
-	* 		  ×¢Òâ£ºÈô°üÎª¿Õ£¬Ôò·µ»ØµÄÊı×éÒ²Îª¿Õ
+	* @returnï¼š ä¸€ä¸ªæ ¹æ®åŒ…ä¸­å…ƒç´ æ–°å»ºçš„æ•°ç»„
+	* 		  æ³¨æ„ï¼šè‹¥åŒ…ä¸ºç©ºï¼Œåˆ™è¿”å›çš„æ•°ç»„ä¹Ÿä¸ºç©º
 	 */
 	public T[] toArray() {
 		// to be defined
@@ -58,9 +58,9 @@ public class ArrayBag<T> implements BagInterface<T> {
 	/**
 	 * 
 	* @FunctionName: isArrayFull
-	* @Action: ÅĞ¶Ï°üÊÇ·ñÂúÁË
-	* @ReturnType£º boolean    
-	* @return Èô°üÂú£¬·µ»ØÕæ£¬·ñÔò·µ»Ø¼Ù
+	* @Action: åˆ¤æ–­åŒ…æ˜¯å¦æ»¡äº†
+	* @ReturnTypeï¼š boolean    
+	* @return è‹¥åŒ…æ»¡ï¼Œè¿”å›çœŸï¼Œå¦åˆ™è¿”å›å‡
 	 */
 	public boolean isArrayFull(){
 		// to be defined
@@ -70,9 +70,9 @@ public class ArrayBag<T> implements BagInterface<T> {
 	/**
 	 * 
 	* @FunctionName: isEmpty
-	* @Action: ÅĞ¶Ï°üÊÇ·ñÎª¿Õ
-	* @ReturnType£º boolean    
-	* @return£º·µ»ØÕæ»ò¼Ù
+	* @Action: åˆ¤æ–­åŒ…æ˜¯å¦ä¸ºç©º
+	* @ReturnTypeï¼š boolean    
+	* @returnï¼šè¿”å›çœŸæˆ–å‡
 	 */
 	public boolean isEmpty(){
 		// to be defined
@@ -82,8 +82,8 @@ public class ArrayBag<T> implements BagInterface<T> {
 	/**
 	 * 
 	* @FunctionName: getCurrentSize
-	* @Action: ÏÔÊ¾µ±Ç°°üÖĞµÄ¶ÔÏó¸öÊı
-	* @return ·µ»Øµ±Ç°°üÖĞµÄ¶ÔÏó¸öÊı
+	* @Action: æ˜¾ç¤ºå½“å‰åŒ…ä¸­çš„å¯¹è±¡ä¸ªæ•°
+	* @return è¿”å›å½“å‰åŒ…ä¸­çš„å¯¹è±¡ä¸ªæ•°
 	 */
 	public int getCurrentSize(){
 		return numberOfEntries;
@@ -94,10 +94,10 @@ public class ArrayBag<T> implements BagInterface<T> {
 	/**
 	 * 
 	* @FunctionName: remove
-	* @Action: É¾³ıÈÎÒâÒ»¸ö°üÖĞµÄÔªËØ
+	* @Action: åˆ é™¤ä»»æ„ä¸€ä¸ªåŒ…ä¸­çš„å…ƒç´ 
 	* @param @return    
-	* @ReturnType£º T    
-	* @return£º ³É¹¦Ôò·µ»Ø±»É¾³ıµÄÔªËØ£¬Ê§°Ü·µ»Ønull
+	* @ReturnTypeï¼š T    
+	* @returnï¼š æˆåŠŸåˆ™è¿”å›è¢«åˆ é™¤çš„å…ƒç´ ï¼Œå¤±è´¥è¿”å›null
 	 */
 	public T remove() {
 		return null;
@@ -106,10 +106,10 @@ public class ArrayBag<T> implements BagInterface<T> {
 	/**
 	 * 
 	* @FunctionName: remove
-	* @Action: É¾³ıÒ»¸öÖ¸¶¨µÄÔªËØ
-	* @param @param anEntry Òª±»É¾³ıµÄÔªËØ
-	* @ReturnType£º boolean    
-	* @return£º³É¹¦Ôò·µ»ØÕæ£¬Ê§°Ü·µ»Ø¼Ù
+	* @Action: åˆ é™¤ä¸€ä¸ªæŒ‡å®šçš„å…ƒç´ 
+	* @param @param anEntry è¦è¢«åˆ é™¤çš„å…ƒç´ 
+	* @ReturnTypeï¼š boolean    
+	* @returnï¼šæˆåŠŸåˆ™è¿”å›çœŸï¼Œå¤±è´¥è¿”å›å‡
 	 */
 	public boolean remove(T anEntry) {
 		return false;
@@ -118,8 +118,8 @@ public class ArrayBag<T> implements BagInterface<T> {
 	/**
 	 * 
 	* @FunctionName: clear
-	* @Action: Çå¿ÕÕû¸ö°ü    
-	* @ReturnType£º void    
+	* @Action: æ¸…ç©ºæ•´ä¸ªåŒ…    
+	* @ReturnTypeï¼š void    
 	 */
 	public void clear() {
 	}
@@ -127,10 +127,10 @@ public class ArrayBag<T> implements BagInterface<T> {
 	/**
 	 * 
 	* @FunctionName: getFrequencyOf
-	* @Action: ÏÔÊ¾ÌØ¶¨ÔªËØÔÚ°üÖĞµÄ¸öÊı
-	* @param @param anEntry Òª±»¼ÆÊıµÄÔªËØ
-	* @ReturnType£º int    
-	* @return ·µ»ØÌØ¶¨ÔªËØµÄ¸öÊı
+	* @Action: æ˜¾ç¤ºç‰¹å®šå…ƒç´ åœ¨åŒ…ä¸­çš„ä¸ªæ•°
+	* @param @param anEntry è¦è¢«è®¡æ•°çš„å…ƒç´ 
+	* @ReturnTypeï¼š int    
+	* @return è¿”å›ç‰¹å®šå…ƒç´ çš„ä¸ªæ•°
 	 */
 	public int getFrequencyOf(T anEntry) {
 		return 0;
@@ -139,11 +139,11 @@ public class ArrayBag<T> implements BagInterface<T> {
 	/**
 	 * 
 	* @FunctionName: contains
-	* @Action: ÅĞ¶Ï°üÖĞÊÇ·ñº¬ÓĞÌØ¶¨µÄÔªËØ
+	* @Action: åˆ¤æ–­åŒ…ä¸­æ˜¯å¦å«æœ‰ç‰¹å®šçš„å…ƒç´ 
 	* @param @param anEntry
 	* @param @return    
-	* @ReturnType£º boolean    
-	* @return£ºÈô´æÔÚ¸ø¶¨µÄÔªËØ£¬·µ»ØÕæ£¬·ñÔò·µ»Ø¼Ù
+	* @ReturnTypeï¼š boolean    
+	* @returnï¼šè‹¥å­˜åœ¨ç»™å®šçš„å…ƒç´ ï¼Œè¿”å›çœŸï¼Œå¦åˆ™è¿”å›å‡
 	 */
 	public boolean contains(T anEntry) {
 		return false;
@@ -152,10 +152,10 @@ public class ArrayBag<T> implements BagInterface<T> {
 	/**
 	 * 
 	* @FunctionName: removeAll
-	* @Action: É¾³ıÒ»¸öÖ¸¶¨µÄÔªËØÔÚÊı×éÖĞµÄËùÓĞ³öÏÖ
+	* @Action: åˆ é™¤ä¸€ä¸ªæŒ‡å®šçš„å…ƒç´ åœ¨æ•°ç»„ä¸­çš„æ‰€æœ‰å‡ºç°
 	* @param @param anEntry
-	* @ReturnType£º boolean    
-	* @return£º³É¹¦Ôò·µ»ØÕæ£¬Ê§°Ü·µ»Ø¼Ù
+	* @ReturnTypeï¼š boolean    
+	* @returnï¼šæˆåŠŸåˆ™è¿”å›çœŸï¼Œå¤±è´¥è¿”å›å‡
 	 */
 	@Override
 	public boolean removeAll(T anEntry) {
