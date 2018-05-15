@@ -1,7 +1,5 @@
 package cn.young22.dsa.ch05;
 
-import cn.young22.dsa.ch06.ArrayStack;
-import cn.young22.dsa.ch06.LinkedStack;
 import cn.young22.dsa.ch06.VectorStack;
 /** 测试所实现的
  * 	LinkedStack

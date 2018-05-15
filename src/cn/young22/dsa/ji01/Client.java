@@ -1,5 +1,6 @@
 package cn.young22.dsa.ji01;
-/** OrderedPair类的测试*/
+
+/** OrderedPair类的测试 */
 public class Client {
 
 	public static void main(String[] args) {
@@ -17,15 +18,15 @@ public class Client {
 		// get second object of this pair
 		String secondPair = aPair.getSecond();
 		// print the info of the secondValue
-		System.out.println(secondPair);	
+		System.out.println(secondPair);
+
+		OrderedPair<Integer> pair = new OrderedPair<>(32, 32);
+		System.out.println(pair);
 	}
 }
 /*
  * output:
- * 	
- * 	(hi,how are you?)
-	(how are you?,hi)
-	how are you?
-	hi
+ * 
+ * (hi,how are you?) (how are you?,hi) how are you? hi
  * 
  */

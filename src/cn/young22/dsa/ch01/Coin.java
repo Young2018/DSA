@@ -106,6 +106,7 @@ public class Coin {
 	}
 	
 	/** 以value/year/side-up的格式返回硬币的字符串信息*/
+	@Override
 	public String toString(){
 		return value + "/" + year + "/" + sideUp;
 	}

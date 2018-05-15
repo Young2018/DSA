@@ -55,6 +55,7 @@ public class ArrayBag1<T> implements BagInterface<T> {
 	* @ReturnType： boolean    
 	* @return: 当添加成功时返回真，当添加失败时返回假
 	 */
+	@Override
 	public boolean add(T newEntry) {
 		checkInitilization();	// check if the object has been initialized properly
 		boolean result = true;	// default result is true
@@ -77,6 +78,7 @@ public class ArrayBag1<T> implements BagInterface<T> {
 	* @return： 一个根据包中元素新建的数组
 	* 		  注意：若包为空，则返回的数组也为空
 	 */
+	@Override
 	public T[] toArray() {
 		checkInitilization();	
 		// the cast is safe because the new array contains null entries
@@ -119,6 +121,7 @@ public class ArrayBag1<T> implements BagInterface<T> {
 	* @ReturnType： boolean    
 	* @return：若包空，返回真，否则，返回假
 	 */
+	@Override
 	public boolean isEmpty(){
 		return numberOfEntries == 0;
 	};
@@ -129,6 +132,7 @@ public class ArrayBag1<T> implements BagInterface<T> {
 	* @Action: 显示当前包中的对象个数
 	* @return 返回当前包中的对象个数
 	 */
+	@Override
 	public int getCurrentSize(){
 		return numberOfEntries;
 		
@@ -142,6 +146,7 @@ public class ArrayBag1<T> implements BagInterface<T> {
 	* @ReturnType： int    
 	* @return 返回特定元素的个数
 	 */
+	@Override
 	public int getFrequencyOf(T anEntry) {
 		checkInitilization();
 		int counter = 0;
@@ -163,6 +168,7 @@ public class ArrayBag1<T> implements BagInterface<T> {
 	* @ReturnType： boolean    
 	* @return：若存在给定的元素，返回真，否则返回假
 	 */
+	@Override
 	public boolean contains(T anEntry) {
 		checkInitilization();
 		boolean found = false;
@@ -188,6 +194,7 @@ public class ArrayBag1<T> implements BagInterface<T> {
 	* @ReturnType： T    
 	* @return： 成功则返回被删除的元素，失败返回null
 	 */
+	@Override
 	public T remove() {
 		return null;
 	}
@@ -200,6 +207,7 @@ public class ArrayBag1<T> implements BagInterface<T> {
 	* @ReturnType： boolean    
 	* @return：成功则返回真，失败返回假
 	 */
+	@Override
 	public boolean remove(T anEntry) {
 		return false;
 	}
@@ -210,6 +218,7 @@ public class ArrayBag1<T> implements BagInterface<T> {
 	* @Action: 清空整个包    
 	* @ReturnType： void    
 	 */
+	@Override
 	public void clear() {
 	}
 	
