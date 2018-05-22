@@ -21,11 +21,11 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 	}
 	
 	/** 以给定容量的的方式初始化一个ResizeableArrayBag对象*/
+	@SuppressWarnings("unchecked")
 	public ResizeableArrayBag(int initialCapacity) {
 		// 检查用户指定的容量是否超过最大容量
 		checkCapacity(initialCapacity);
 		
-		@SuppressWarnings("unchekced")
 		T[] tempBag = (T[])new Object[initialCapacity];
 		bag = tempBag;
 		numberOfEntries = 0;
@@ -160,7 +160,7 @@ public class ResizeableArrayBag<T> implements BagInterface<T>{
 	public T[] toArray() {
 		checkInitialization();
 		
-		@SuppressWarnings("unchekced")
+		@SuppressWarnings("unchecked")
 		T[] result = (T[])new Object[numberOfEntries];
 		for(int index = 0; index < numberOfEntries; index++){
 			result[index] = bag[index];

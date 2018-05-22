@@ -88,7 +88,7 @@ public class ArrayBag2<T> implements BagInterface<T>{
 	public T[] toArray() {
 		checkInitialization();
 		
-		@SuppressWarnings("Unchecked")
+		@SuppressWarnings("unchecked")
 		T[] result = (T[])new Object[numberOfEntries];
 		
 		for(int index = 0; index < numberOfEntries; index++){

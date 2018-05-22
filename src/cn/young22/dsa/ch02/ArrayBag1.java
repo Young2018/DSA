@@ -232,7 +232,6 @@ public class ArrayBag1<T> implements BagInterface<T> {
 	 */
 	@Override
 	public boolean removeAll(T anEntry) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }
